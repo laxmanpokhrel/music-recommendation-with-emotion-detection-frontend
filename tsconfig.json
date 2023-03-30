@@ -20,7 +20,7 @@
       "@Components/*": ["components/*"],
       "@Assets/*": ["assets/*"],
       "@Utils/*": ["utils/*"],
-      "@Store /*": ["store/*"],
+      "@Store/*": ["store/*"],
       "@Services/*": ["services/*"],
       "@Interface/*": ["interface/*"],
       "@Models/*": ["models/*"],
