@@ -17,7 +17,10 @@
     "jsx": "react-jsx",
     "baseUrl": "./src/",
     "paths": {
-      "@Components/*": ["components/*"],
+      "@UI/*": ["ui/*"],
+      "@Atoms/*": ["ui/atoms*"],
+      "@Molecules/*": ["ui/molecules*"],
+      "@Compounds/*": ["ui/compounds*"],
       "@Assets/*": ["assets/*"],
       "@Utils/*": ["utils/*"],
       "@Store/*": ["store/*"],
