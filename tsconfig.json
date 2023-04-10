@@ -18,9 +18,9 @@
     "baseUrl": "./src/",
     "paths": {
       "@UI/*": ["ui/*"],
-      "@Atoms/*": ["ui/atoms*"],
-      "@Molecules/*": ["ui/molecules*"],
-      "@Compounds/*": ["ui/compounds*"],
+      "@Atoms/*": ["ui/atoms/*"],
+      "@Molecules/*": ["ui/molecules/*"],
+      "@Compounds/*": ["ui/compounds/*"],
       "@Assets/*": ["assets/*"],
       "@Utils/*": ["utils/*"],
       "@Store/*": ["store/*"],

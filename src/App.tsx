@@ -1,4 +1,4 @@
-import Template from "@Components/Template";
+import Template from "@Atoms/Template";
 import { templateActions } from "@Store/actions";
 import { useDispatch } from "react-redux";
 export default function App() {
