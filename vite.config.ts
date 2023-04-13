@@ -4,6 +4,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   resolve: {
+    extensions: [".ts", ".tsx"],
     alias: {
       "@": new URL("./src/", import.meta.url).pathname,
       "@UI": new URL("./src/ui/", import.meta.url).pathname,
@@ -17,5 +18,8 @@ export default defineConfig({
       "@Interfaces": new URL("./src/interfaces/", import.meta.url).pathname,
       "@Hooks": new URL("./src/hooks/", import.meta.url).pathname,
     },
+  },
+  build: {
+    sourcemap: true,
   },
 });
