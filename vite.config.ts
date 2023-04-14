@@ -17,6 +17,7 @@ export default defineConfig({
       "@Models": new URL("./src/models/", import.meta.url).pathname,
       "@Interfaces": new URL("./src/interfaces/", import.meta.url).pathname,
       "@Hooks": new URL("./src/hooks/", import.meta.url).pathname,
+      "@Api": new URL("./src/api/", import.meta.url).pathname,
     },
   },
   build: {

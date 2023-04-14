@@ -27,7 +27,8 @@
       "@Services/*": ["services/*"],
       "@Interface/*": ["interface/*"],
       "@Models/*": ["models/*"],
-      "@Hooks /*": ["hooks/*"]
+      "@Hooks /*": ["hooks/*"],
+      "@Api/*": ["api/*"]
     }
   },
   "include": ["src", "src/**/*.ts"],
