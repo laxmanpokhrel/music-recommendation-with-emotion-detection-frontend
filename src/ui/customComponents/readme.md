@@ -1,0 +1,1 @@
+### In this folder we add the components that use third party packages and are modified in our own terms.
