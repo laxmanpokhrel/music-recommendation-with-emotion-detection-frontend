@@ -1,5 +1,6 @@
 import axios from "axios";
 const { BASE_URL } = process.env;
+const token = localStorage.getItem("token");
 
 export const api = axios.create({
   baseURL: `${BASE_URL}`,
@@ -10,7 +11,6 @@ export const api = axios.create({
   },
 });
 
-const token = localStorage.getItem("token");
 export const authenticatedApi = axios.create({
   baseURL: `${BASE_URL}`,
   timeout: 50000,
