@@ -1,0 +1,4 @@
+/**
+ * @param {number} contactId
+ * @returns
+ */

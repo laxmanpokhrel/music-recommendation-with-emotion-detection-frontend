@@ -4,6 +4,7 @@
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
+    "checkJs": false,
     "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
@@ -24,12 +25,12 @@
       "@Assets/*": ["assets/*"],
       "@Utils/*": ["utils/*"],
       "@Store/*": ["store/*"],
-      "@Services/*": ["services/*"],
       "@Interface/*": ["schemas/interfaces/*"],
       "@Types/*": ["schemas/types/*"],
       "@Models/*": ["schemas/models/*"],
-      "@Hooks /*": ["hooks/*"],
-      "@Api/*": ["api/*"]
+      "@Hooks/*": ["hooks/*"],
+      "@Api/*": ["api/*"],
+      "@Services/*": ["api/services/*"]
     }
   },
   "include": ["src", "src/**/*.ts"],

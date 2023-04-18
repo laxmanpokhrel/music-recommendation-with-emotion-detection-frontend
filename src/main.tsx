@@ -4,6 +4,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import store from "./store";
 const queryClient = new QueryClient();
 
@@ -14,5 +15,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <App />
       </BrowserRouter>
     </Provider>
+    <ReactQueryDevtools initialIsOpen={false} />
   </QueryClientProvider>
 );
