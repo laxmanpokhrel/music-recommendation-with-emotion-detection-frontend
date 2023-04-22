@@ -11,7 +11,9 @@ export default defineConfig({
       "@UI": new URL("./src/ui/", import.meta.url).pathname,
       "@Atoms": new URL("./src/ui/atoms/", import.meta.url).pathname,
       "@Molecules": new URL("./src/ui/molecules/", import.meta.url).pathname,
-      "@Compounds": new URL("./src/ui/compounds/", import.meta.url).pathname,
+      "@Organisms": new URL("./src/ui/organisms/", import.meta.url).pathname,
+      "@Templates": new URL("./src/ui/templates/", import.meta.url).pathname,
+      "@Pages": new URL("./src/ui/pages/", import.meta.url).pathname,
       "@Utils": new URL("./src/utils/", import.meta.url).pathname,
       "@Store": new URL("./src/store/", import.meta.url).pathname,
       "@Models": new URL("./src/schemas/models/", import.meta.url).pathname,
@@ -21,6 +23,7 @@ export default defineConfig({
       "@Hooks": new URL("./src/hooks/", import.meta.url).pathname,
       "@Api": new URL("./src/api/", import.meta.url).pathname,
       "@Services": new URL("./src/api/services", import.meta.url).pathname,
+      "@Constants": new URL("./src/constants", import.meta.url).pathname,
     },
   },
   build: {

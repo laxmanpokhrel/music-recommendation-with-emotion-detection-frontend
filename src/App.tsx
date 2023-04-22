@@ -1,14 +1,18 @@
-import Template from "@Atoms/Template";
+import Template from "@UI/atoms/TestComponent";
 import { templateActions } from "@Store/actions";
 import { useDispatch } from "react-redux";
+import { initDomToCode } from "dom-to-code";
 export default function App() {
   const dispatch = useDispatch();
   dispatch(templateActions.templateReducerOne({ key: "value" }));
 
   return (
-    <div className="App">
-      <div>This is starter kit.</div>
-      <Template />
-    </div>
+    <>
+      {process.env.NODE_ENV !== "production" && initDomToCode()}
+      <div className="App">
+        <div>This is starter kit.</div>
+        <Template />
+      </div>
+    </>
   );
 }

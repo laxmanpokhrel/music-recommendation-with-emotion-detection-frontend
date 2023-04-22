@@ -21,7 +21,9 @@
       "@UI/*": ["ui/*"],
       "@Atoms/*": ["ui/atoms/*"],
       "@Molecules/*": ["ui/molecules/*"],
-      "@Compounds/*": ["ui/compounds/*"],
+      "@Organisms/*": ["ui/organisms/*"],
+      "@Templates/*": ["ui/templates/*"],
+      "@Pages/*": ["ui/pages/*"],
       "@Assets/*": ["assets/*"],
       "@Utils/*": ["utils/*"],
       "@Store/*": ["store/*"],
@@ -30,7 +32,8 @@
       "@Models/*": ["schemas/models/*"],
       "@Hooks/*": ["hooks/*"],
       "@Api/*": ["api/*"],
-      "@Services/*": ["api/services/*"]
+      "@Services/*": ["services/*"],
+      "@Constants/*": ["constants/*"]
     }
   },
   "include": ["src", "src/**/*.ts"],

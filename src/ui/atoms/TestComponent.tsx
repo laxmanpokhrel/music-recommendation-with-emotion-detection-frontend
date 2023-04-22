@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
 import { useQuery, UseQueryResult } from "react-query";
-import { fetchGamesRequest } from "@Services/games";
+import { templateRequest } from "@Api/services/projects";
 import Response from "@Types/response";
 import Game from "@Models/game";
 
@@ -16,14 +16,14 @@ interface IProps {
 
 export default function Template(props: IProps) {
   const { isLoading, data, isError, error }: UseQueryResult<Game[], Error> =
-    useQuery<Game[], Error>(["example-games"], fetchGamesRequest);
+    useQuery<Game[], Error>(["example-games"], templateRequest);
 
   if (isLoading) return <h5>Loading....</h5>;
   if (isError) return <h5>{error?.message}</h5>;
 
   return (
     <div>
-      {data?.map((item: Game) => (
+      {data?.map((item) => (
         <p key={item.title}>{item.title}</p>
       ))}
       <div> This is a template component. {props.name}</div>
