@@ -32,8 +32,8 @@
       "@Models/*": ["schemas/models/*"],
       "@Hooks/*": ["hooks/*"],
       "@Api/*": ["api/*"],
-      "@Services/*": ["services/*"],
-      "@Constants/*": ["constants/*"]
+      "@Services/*": ["api/services/*"],
+      "@Constants/*": ["api/constants/*"]
     }
   },
   "include": ["src", "src/**/*.ts"],

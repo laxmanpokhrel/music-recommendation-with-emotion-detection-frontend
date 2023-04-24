@@ -1,5 +1,5 @@
 import AtomTemplate from "@UI/atoms/lib/AtomTemplate";
-import CustomComponent from "@UI/TEST/CustomComponent";
+import CustomComponent from "@UI/test/CustomComponent";
 import React from "react";
 
 interface IProps {

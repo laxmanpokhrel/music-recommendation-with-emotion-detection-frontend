@@ -1,8 +1,8 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
-import { useQuery, UseQueryResult } from "react-query";
-import { templateRequest } from "@Api/services/projects";
-import Response from "@Types/response";
+import { ReactNode } from "react";
+import { fetchProjects } from "@Api/services/projects";
 import Game from "@Models/game";
+import useCustomQuery from "@Hooks/useCustomQuery";
+import { useQuery, UseQueryResult } from "react-query";
 
 // '?' means the prop is optional
 // ButtonHTMLAttributes<HTMLButtonElement> is an interface in React that defines the standard HTML attributes that can be used with a button element.
@@ -15,8 +15,11 @@ interface IProps {
 }
 
 export default function Template(props: IProps) {
-  const { isLoading, data, isError, error }: UseQueryResult<Game[], Error> =
-    useQuery<Game[], Error>(["example-games"], templateRequest);
+  const { isLoading, data, isError, error } = useCustomQuery<Game>({
+    queryKey: ["projects"],
+    queryFn: fetchProjects,
+    enabled: true,
+  });
 
   if (isLoading) return <h5>Loading....</h5>;
   if (isError) return <h5>{error?.message}</h5>;

@@ -22,8 +22,8 @@ export default defineConfig({
       "@Types": new URL("./src/schemas/types/", import.meta.url).pathname,
       "@Hooks": new URL("./src/hooks/", import.meta.url).pathname,
       "@Api": new URL("./src/api/", import.meta.url).pathname,
-      "@Services": new URL("./src/api/services", import.meta.url).pathname,
-      "@Constants": new URL("./src/constants", import.meta.url).pathname,
+      "@Services": new URL("./src/api/services/", import.meta.url).pathname,
+      "@Constants": new URL("./src/constants/", import.meta.url).pathname,
     },
   },
   build: {

@@ -12,7 +12,7 @@ export default function App() {
       {process.env.NODE_ENV !== "production" && initDomToCode()}
       <div className="App">
         <div>This is starter kit.</div>
-        {/* <Template /> */}
+        <Template />
         <TemplateCard />
       </div>
     </>
