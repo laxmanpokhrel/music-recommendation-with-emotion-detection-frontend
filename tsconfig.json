@@ -33,7 +33,8 @@
       "@Hooks/*": ["hooks/*"],
       "@Api/*": ["api/*"],
       "@Services/*": ["api/services/*"],
-      "@Constants/*": ["api/constants/*"]
+      "@Constants/*": ["api/constants/*"],
+      "@Queries/*": ["api/queries/*"]
     }
   },
   "include": ["src", "src/**/*.ts"],

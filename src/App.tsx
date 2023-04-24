@@ -13,7 +13,7 @@ export default function App() {
       <div className="App">
         <div>This is starter kit.</div>
         <Template />
-        <TemplateCard />
+        {/* <TemplateCard /> */}
       </div>
     </>
   );
