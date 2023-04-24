@@ -1,7 +1,6 @@
-import useCustomQuery from "@Hooks/useCustomQuery";
 import Project from "@Models/Project";
 import { useQuery, UseQueryResult } from "react-query";
-import { fetchProjects } from "@Services/projects";
+import { fetchProjects } from "@Services/project";
 
 export const getProjects = (): UseQueryResult<Project[], Error> =>
   useQuery<Project[], Error>({
