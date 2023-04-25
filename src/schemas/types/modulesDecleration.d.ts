@@ -1,1 +1,1 @@
-// declare module 'module-name' 
+declare module "uuid";

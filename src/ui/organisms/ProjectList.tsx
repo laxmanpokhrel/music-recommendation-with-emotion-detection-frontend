@@ -1,3 +1,4 @@
+import { v4 as uuid } from "uuid";
 import { getProjects } from "@Api/queries/projectQueries";
 import ProjectCard from "@UI/molecules/ProjectCard";
 
@@ -11,8 +12,8 @@ export default function ProjectList(): JSX.Element {
   return (
     <div className="projects-list naxatw-w-full naxatw-grid naxatw-grid-cols-2 naxatw-gap-3">
       {projectsData?.map((item, index) => (
-        <ProjectCard data={item} />
+        <ProjectCard data={item} key={uuid()} />
       ))}
     </div>
   );
-}
+} 

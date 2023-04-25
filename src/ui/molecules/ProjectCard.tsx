@@ -16,7 +16,7 @@ export default function ProjectCard({ data }: IProjectCardProps): JSX.Element {
       <div className="title">
         <span className="naxatw-font-bold naxatw-text-sm">{data.title}</span>
       </div>
-      <Icon iconName="plus" />
+      <Icon iconName="plus" />  
     </div>
   );
 }

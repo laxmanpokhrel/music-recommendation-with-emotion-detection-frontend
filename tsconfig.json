@@ -27,13 +27,13 @@
       "@Assets/*": ["assets/*"],
       "@Utils/*": ["utils/*"],
       "@Store/*": ["store/*"],
+      "@Constants/*": ["constants/*"],
+      "@Hooks/*": ["hooks/*"],
+      "@Api/*": ["api/*"],
       "@Interface/*": ["schemas/interfaces/*"],
       "@Types/*": ["schemas/types/*"],
       "@Models/*": ["schemas/models/*"],
-      "@Hooks/*": ["hooks/*"],
-      "@Api/*": ["api/*"],
       "@Services/*": ["api/services/*"],
-      "@Constants/*": ["api/constants/*"],
       "@Queries/*": ["api/queries/*"]
     }
   },
