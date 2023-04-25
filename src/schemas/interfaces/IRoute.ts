@@ -6,5 +6,5 @@ export default interface IRoute {
   name: string;
   component: ComponentType<any>;
   authenticated: boolean;
-  permissionType: Permission;
+  permissionType?: Permission | undefined;
 }

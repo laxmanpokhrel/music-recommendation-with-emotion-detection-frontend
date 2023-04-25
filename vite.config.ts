@@ -24,6 +24,7 @@ export default defineConfig({
       "@Services": new URL("./src/api/services/", import.meta.url).pathname,
       "@Constants": new URL("./src/constants/", import.meta.url).pathname,
       "@Queries": new URL("./src/api/queries/", import.meta.url).pathname,
+      "@Routes": new URL("./src/routes/", import.meta.url).pathname,
     },
   },
   build: {

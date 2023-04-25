@@ -33,7 +33,8 @@
       "@Types/*": ["schemas/types/*"],
       "@Models/*": ["schemas/models/*"],
       "@Services/*": ["api/services/*"],
-      "@Queries/*": ["api/queries/*"]
+      "@Queries/*": ["api/queries/*"],
+      "@Routes/*": ["routes/*"]
     }
   },
   "include": ["src", "src/**/*.ts"],
