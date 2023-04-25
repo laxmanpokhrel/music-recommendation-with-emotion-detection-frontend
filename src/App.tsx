@@ -1,8 +1,7 @@
-import Template from "@UI/atoms/TestComponent";
 import { templateActions } from "@Store/actions";
 import { useDispatch } from "react-redux";
 import { initDomToCode } from "dom-to-code";
-import TemplateCard from "@UI/atoms/templateCard";
+import ProjectPage from "@Pages/ProjectPage";
 export default function App() {
   const dispatch = useDispatch();
   dispatch(templateActions.templateReducerOne({ key: "value" }));
@@ -10,10 +9,9 @@ export default function App() {
   return (
     <>
       {process.env.NODE_ENV !== "production" && initDomToCode()}
-      <div className="App">
+      <div className="App naxatw-bg-gray-900">
         <div>This is starter kit.</div>
-        <Template />
-        {/* <TemplateCard /> */}
+        <ProjectPage />
       </div>
     </>
   );

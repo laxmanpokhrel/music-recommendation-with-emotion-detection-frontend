@@ -5,20 +5,22 @@ enum AspectRation {
 }
 
 interface IProps {
-  aspectRation: AspectRation | string;
+  aspectRation?: string;
   alt: string;
   src: string;
   styleClass?: string;
 }
 export default function Image({
-  aspectRation,
+  aspectRation = "auto",
   styleClass,
   src,
   alt,
 }: IProps): JSX.Element {
   return (
-    <div className={`naxatw-aspect-${aspectRation} ${styleClass}`}>
-      <img src={src} alt={alt} width="100%" height="100%" />
+    <div
+      className={`image-cover naxatw-aspect-${aspectRation} ${styleClass}}  `}
+    >
+      <img src={src} alt={alt} />
     </div>
   );
 }

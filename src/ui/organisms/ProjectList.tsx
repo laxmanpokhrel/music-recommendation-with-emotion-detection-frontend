@@ -1,0 +1,18 @@
+import { getProjects } from "@Api/queries/projectQueries";
+import ProjectCard from "@UI/molecules/ProjectCard";
+
+export default function ProjectList(): JSX.Element {
+  const { isLoading, data: projectsData, isError, error } = getProjects();
+
+  if (isLoading) return <span>Loading...</span>;
+
+  if (isError) return <span>{error.message}</span>;
+
+  return (
+    <div className="projects-list naxatw-w-full naxatw-grid naxatw-grid-cols-2 naxatw-gap-3">
+      {projectsData?.map((item, index) => (
+        <ProjectCard data={item} />
+      ))}
+    </div>
+  );
+}
