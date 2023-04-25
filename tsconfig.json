@@ -18,7 +18,6 @@
     "jsx": "react-jsx",
     "baseUrl": "./src/",
     "paths": {
-      "@UI/*": ["ui/*"],
       "@Atoms/*": ["ui/atoms/*"],
       "@Molecules/*": ["ui/molecules/*"],
       "@Organisms/*": ["ui/organisms/*"],

@@ -8,7 +8,6 @@ export default defineConfig({
     extensions: [".ts", ".tsx"],
     alias: {
       "@": new URL("./src/", import.meta.url).pathname,
-      "@UI": new URL("./src/ui/", import.meta.url).pathname,
       "@Atoms": new URL("./src/ui/atoms/", import.meta.url).pathname,
       "@Molecules": new URL("./src/ui/molecules/", import.meta.url).pathname,
       "@Organisms": new URL("./src/ui/organisms/", import.meta.url).pathname,

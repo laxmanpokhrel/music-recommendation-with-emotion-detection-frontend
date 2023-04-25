@@ -2,5 +2,5 @@ interface IProps {
   iconName: string;
 }
 export default function Icon({ iconName }: IProps): JSX.Element {
-  return <span className="material-icon">{iconName}</span>;
+  return <i className="material-icons">{iconName}</i>;
 }

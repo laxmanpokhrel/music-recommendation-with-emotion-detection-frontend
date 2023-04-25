@@ -1,17 +1,12 @@
-enum AspectRation {
-  SQUARE = "square",
-  VIDEO = "video",
-  AUTO = "auto",
-}
-
 interface IProps {
   aspectRation?: string;
   alt: string;
   src: string;
   styleClass?: string;
 }
+
 export default function Image({
-  aspectRation = "auto",
+  aspectRation,
   styleClass,
   src,
   alt,
@@ -19,6 +14,7 @@ export default function Image({
   return (
     <div
       className={`image-cover naxatw-aspect-${aspectRation} ${styleClass}}  `}
+      style={{ aspectRatio: aspectRation }}
     >
       <img src={src} alt={alt} />
     </div>
