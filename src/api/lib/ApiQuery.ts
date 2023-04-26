@@ -1,6 +1,7 @@
 import { api } from "@Api/config";
 import {
   getService,
+  getSingleService,
   hardDeleteService,
   patchService,
   postService,
@@ -22,6 +23,46 @@ class ApiQuery<T> {
     this.url = url;
   }
 
+  /**
+   *
+   * @param queryParams Params to pass to useQuery. "queryFn" is added by default according to standerd.
+   * @returns
+   */
+  public loadData(
+    queryParams:
+      | QueryOptions<any, Error, any, QueryKey>
+      | QueryObserverOptions<T | T[], Error, T | T[], T | T[], QueryKey>
+  ): UseQueryResult<T | T[], Error> {
+    return useQuery<T | T[], Error>({
+      queryFn: () => getService(this.url),
+      ...queryParams,
+    });
+  }
+
+  /**
+   *
+   * @param queryParams Params to pass to useQuery. "QueryFn" is added by default according to standerd.
+   * @param id Indetifier of the data defined on the server
+   * @returns
+   */
+  public loadSingleData(
+    queryParams:
+      | QueryOptions<any, Error, any, QueryKey>
+      | QueryObserverOptions<T | T[], Error, T | T[], T | T[], QueryKey>,
+    id: string
+  ): UseQueryResult<T | T[], Error> {
+    return useQuery<T | T[], Error>({
+      queryFn: () => getSingleService(this.url, id),
+      ...queryParams,
+    });
+  }
+
+  /**
+   *
+   * @param queryParams Params to pass to useQuery. "queryFn" is added by default according to standerd.
+   * @param payload Payload to deliver to the server.
+   * @returns
+   */
   public postData(
     queryParams:
       | QueryOptions<any, Error, any, QueryKey>
@@ -34,6 +75,12 @@ class ApiQuery<T> {
     });
   }
 
+  /**
+   *
+   * @param queryParams Params to pass to useQuery. "queryFn" is added by default according to standerd.
+   * @param payload Payload to deliver to the server.
+   * @returns
+   */
   public patchData(
     queryParams:
       | QueryOptions<any, Error, any, QueryKey>
@@ -49,18 +96,11 @@ class ApiQuery<T> {
     });
   }
 
-  public loadData(
-    queryParams:
-      | QueryOptions<any, Error, any, QueryKey>
-      | QueryObserverOptions<T | T[], Error, T | T[], T | T[], QueryKey>
-  ): UseQueryResult<T | T[], Error> {
-    const loadDataService = api.get(`/api/${this.url}`);
-    return useQuery<T | T[], Error>({
-      queryFn: () => getService(this.url),
-      ...queryParams,
-    });
-  }
-
+  /**
+   *
+   * @param queryParams Params to pass to useQuery. "queryFn" is added by default according to standerd.
+   * @returns
+   */
   public softDeleteData(
     queryParams:
       | QueryOptions<any, Error, any, QueryKey>
@@ -72,6 +112,11 @@ class ApiQuery<T> {
     });
   }
 
+  /**
+   *
+   * @param queryParams Params to pass to useQuery. "queryFn" is added by default according to standerd.
+   * @returns
+   */
   public hardDeleteData(
     queryParams:
       | QueryOptions<any, Error, any, QueryKey>
