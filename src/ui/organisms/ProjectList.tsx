@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import { getProjects } from "@Api/queries/projectQueries";
+import { getProjects } from "@Api/lib/projectQueries";
 import ProjectCard from "@Molecules/ProjectCard";
 
 export default function ProjectList(): JSX.Element {

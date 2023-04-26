@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom";
 
 export default function AppRoutes() {
   return (
-    <Suspense fallback={<h3>Loding...</h3>}>
+    <Suspense fallback={<h3>Loding Fallback...</h3>}>
       <Routes>
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/about" element={<AboutPage />} />

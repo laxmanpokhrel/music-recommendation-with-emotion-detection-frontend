@@ -1,0 +1,1 @@
+### we can use both generate routes and hardcode the urls in <Route/> tag, but the idea is when a page contains a subpage part anf that part changes under routes of that path then all the other components should not re-render which url changes of that particular root address. TO solve this we use suspense and nested routing
