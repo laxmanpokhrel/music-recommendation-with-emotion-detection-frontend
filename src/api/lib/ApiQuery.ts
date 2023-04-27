@@ -35,7 +35,7 @@ declare type MutationParamsType = MutationOptions<any, Error, any, any>;
  * while initializing this class you can give it a key on which the data received from the server can be stored and specity the nodule that will be specific to.
  * NOTE: key you provided will be used by load methods without modifying them, but other methods will add the service name provided by the method as prefix Eg: `post-mutation_key`
  */
-class ApiQuery<T extends { id: string }> {
+class ApiQuery<T extends { id: number }> {
   url = "";
   key = "mutation_key";
 

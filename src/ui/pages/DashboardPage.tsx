@@ -11,26 +11,18 @@ export default function DashboardPage() {
     () => new ApiQuery<Project>("/projects", "projects"),
     []
   );
-  const { data } = projectQuery.loadData({
+  const { data, isLoading, error, isError } = projectQuery.loadData({
     queryKey: ["get-project"],
   });
-  const postData = projectQuery.postData({})
-  // const classMutation-projectQuery.postData({})
-  const mutationParams = {
-    mutationFn: () => fetchProjects(),
-    onSuccess: () => {},
-  };
-  const mutation = useMutation({
-    mutationFn: () => fetchProjects(),
-    
-    onSuccess(data, variables, context) {},
-  });
+
+  if (isLoading) return <h4>Loading...</h4>;
+  if (isError) return <h4>{error.message}</h4>;
+
   return (
     <div className="naxatw-grid naxatw-grid-cols-4 naxatw-gap-4">
       {((data as Project[]) || [])?.map((item) => (
         <ProjectCard key={uuid()} data={item} />
       ))}
-      this is dashboard page
     </div>
   );
 }
