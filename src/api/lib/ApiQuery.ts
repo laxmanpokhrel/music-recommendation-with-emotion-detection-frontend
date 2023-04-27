@@ -7,7 +7,7 @@ import {
   postService,
   softDeleteService,
 } from "@Api/services/lib";
-import { hasBinaryData, jsonToFormData } from "@Utils/index";
+import { hasBinaryData, jsonToFormData, objectsEqual } from "@Utils/index";
 import {
   MutationFunction,
   MutationOptions,
@@ -35,7 +35,7 @@ declare type MutationParamsType = MutationOptions<any, Error, any, any>;
  * while initializing this class you can give it a key on which the data received from the server can be stored and specity the nodule that will be specific to.
  * NOTE: key you provided will be used by load methods without modifying them, but other methods will add the service name provided by the method as prefix Eg: `post-mutation_key`
  */
-class ApiQuery<T> {
+class ApiQuery<T extends { id: string }> {
   url = "";
   key = "mutation_key";
 
@@ -101,7 +101,6 @@ class ApiQuery<T> {
         );
         if (previousData)
           queryClient.setQueryData(this.key, [data, ...previousData]);
-
         //! show notification here
       },
       ...mutationParams,
@@ -123,13 +122,20 @@ class ApiQuery<T> {
     return useMutation<T, Error, void, unknown>({
       mutationKey: [`patch-${this.key}`],
       onMutate: () => {
-        // !display postinf data notification
+        // !display patching data notification
       },
       mutationFn: () => patchService(this.url, payload),
-      onSuccess: () => {
-        const previousData = queryClient.getQueryData(this.key);
-        // updating the cache logic here
-        queryClient.setQueryData(`${this.key}`, []);
+      onSuccess: (data, variables, context) => {
+        const previousData: T[] | undefined = queryClient.getQueryData(
+          this.key
+        );
+        if (previousData) {
+          const index: number = previousData?.findIndex((item) =>
+            objectsEqual(item, payload)
+          );
+          if (index > -1) previousData[index] = data;
+          queryClient.setQueryData(`${this.key}`, [...previousData]);
+        }
         //! show notification here
       },
       ...mutationParams,
@@ -143,19 +149,33 @@ class ApiQuery<T> {
    */
 
   public softDeleteData(
-    mutationParams: MutationParamsType
+    mutationParams: MutationParamsType,
+    id: string
   ): UseMutationResult<T, Error, void, unknown> {
     const queryClient = useQueryClient();
     return useMutation<T, Error, void, unknown>({
       mutationKey: [`delete-${this.key}-s`],
       onMutate: () => {
-        // !display postinf data notification
+        // !display deleting data notification
       },
-      mutationFn: () => softDeleteService(this.url),
-      onSuccess: () => {
-        const previousData = queryClient.getQueryData(this.key);
-        // remove the item from the cache logic
-        queryClient.setQueryData(`${this.key}`, []);
+      mutationFn: () => softDeleteService(this.url, id),
+      onSuccess: (data, variable, context) => {
+        const previousData: T[] | undefined = queryClient.getQueryData(
+          this.key
+        );
+        if (previousData) {
+          // remove the item from the cache logic
+          const data: T[] | undefined = previousData.filter(
+            (item) => item.id === id
+          );
+          if (data) {
+            const index: number = previousData?.findIndex((item) =>
+              objectsEqual(item, data[0])
+            );
+            if (index > -1) previousData[index] = data[0];
+            queryClient.setQueryData(`${this.key}`, [...previousData]);
+          }
+        }
         //! show notification here
       },
       ...mutationParams,
@@ -169,7 +189,8 @@ class ApiQuery<T> {
    */
 
   public hardDeleteData(
-    mutationParams: MutationParamsType
+    mutationParams: MutationParamsType,
+    id: string
   ): UseMutationResult<T, Error, void, unknown> {
     const queryClient = useQueryClient();
     return useMutation<T, Error, void, unknown>({
@@ -177,11 +198,24 @@ class ApiQuery<T> {
       onMutate: () => {
         // !display postinf data notification
       },
-      mutationFn: () => hardDeleteService(this.url),
+      mutationFn: () => hardDeleteService(this.url, id),
       onSuccess: () => {
-        const previousData = queryClient.getQueryData(this.key);
-        // remove the item from the cache logic
-        queryClient.setQueryData(`${this.key}`, []);
+        const previousData: T[] | undefined = queryClient.getQueryData(
+          this.key
+        );
+        if (previousData) {
+          // remove the item from the cache logic
+          const data: T[] | undefined = previousData.filter(
+            (item) => item.id === id
+          );
+          if (data) {
+            const index: number = previousData?.findIndex((item) =>
+              objectsEqual(item, data[0])
+            );
+            if (index > -1) previousData[index] = data[0];
+            queryClient.setQueryData(`${this.key}`, [...previousData]);
+          }
+        }
         //! show notification here
       },
       ...mutationParams,
