@@ -46,7 +46,7 @@ class ApiQuery<T> {
 
   /**
    * Internally it uses `useQuery` from "react-query"
-   * @param queryParams Params to pass to `useQuery`. "queryFn" is added by default according to standerd. Also `queryKey` is added to the key provided during initialization
+   * @param queryParams Params to pass to `useQuery`. "queryFn" is added by default according to standard. Also `queryKey` is added to the key provided during initialization
    * @returns
    */
 
@@ -79,7 +79,7 @@ class ApiQuery<T> {
 
   /**
    * Internally it uses `useMutation` from "react-query"
-   * @param queryParams Params to pass to `useMutation`. "mutationFn" is added by default according to standerd.
+   * @param queryParams Params to pass to `useMutation`. "mutationFn" is added by default according to standard.
    * @param payload Payload to deliver to the server.
    * @returns
    */
@@ -91,10 +91,17 @@ class ApiQuery<T> {
     const queryClient = useQueryClient();
     return useMutation<T, Error, void, unknown>({
       mutationKey: [`post-${this.key}`],
+      onMutate: () => {
+        // !display postinf data notification
+      },
       mutationFn: () => postService(this.url, payload),
-      onSuccess(data, variables, context) {
-        const previousData = queryClient.getQueryData(this.key);
-        queryClient.setQueryData(`${this.key}`, []);
+      onSuccess: (data, variables, context) => {
+        const previousData: T[] | undefined = queryClient.getQueryData(
+          this.key
+        );
+        if (previousData)
+          queryClient.setQueryData(this.key, [data, ...previousData]);
+
         //! show notification here
       },
       ...mutationParams,
@@ -103,7 +110,7 @@ class ApiQuery<T> {
 
   /**
    *
-   * @param queryParams Params to pass to useQuery. "queryFn" is added by default according to standerd.
+   * @param queryParams Params to pass to useQuery. "queryFn" is added by default according to standard.
    * @param payload Payload to deliver to the server.
    * @returns
    */
@@ -115,8 +122,11 @@ class ApiQuery<T> {
     const queryClient = useQueryClient();
     return useMutation<T, Error, void, unknown>({
       mutationKey: [`patch-${this.key}`],
+      onMutate: () => {
+        // !display postinf data notification
+      },
       mutationFn: () => patchService(this.url, payload),
-      onSuccess(data, variables, context) {
+      onSuccess: () => {
         const previousData = queryClient.getQueryData(this.key);
         // updating the cache logic here
         queryClient.setQueryData(`${this.key}`, []);
@@ -128,7 +138,7 @@ class ApiQuery<T> {
 
   /**
    *
-   * @param queryParams Params to pass to useQuery. "queryFn" is added by default according to standerd.
+   * @param queryParams Params to pass to useQuery. "queryFn" is added by default according to standard.
    * @returns
    */
 
@@ -138,8 +148,11 @@ class ApiQuery<T> {
     const queryClient = useQueryClient();
     return useMutation<T, Error, void, unknown>({
       mutationKey: [`delete-${this.key}-s`],
+      onMutate: () => {
+        // !display postinf data notification
+      },
       mutationFn: () => softDeleteService(this.url),
-      onSuccess(data, variables, context) {
+      onSuccess: () => {
         const previousData = queryClient.getQueryData(this.key);
         // remove the item from the cache logic
         queryClient.setQueryData(`${this.key}`, []);
@@ -151,7 +164,7 @@ class ApiQuery<T> {
 
   /**
    *
-   * @param queryParams Params to pass to useQuery. "queryFn" is added by default according to standerd.
+   * @param queryParams Params to pass to useQuery. "queryFn" is added by default according to standard.
    * @returns
    */
 
@@ -161,8 +174,11 @@ class ApiQuery<T> {
     const queryClient = useQueryClient();
     return useMutation<T, Error, void, unknown>({
       mutationKey: [`delete-${this.key}-s`],
+      onMutate: () => {
+        // !display postinf data notification
+      },
       mutationFn: () => hardDeleteService(this.url),
-      onSuccess(data, variables, context) {
+      onSuccess: () => {
         const previousData = queryClient.getQueryData(this.key);
         // remove the item from the cache logic
         queryClient.setQueryData(`${this.key}`, []);

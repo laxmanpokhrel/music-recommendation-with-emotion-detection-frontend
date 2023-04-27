@@ -14,6 +14,7 @@ export default function DashboardPage() {
   const { data } = projectQuery.loadData({
     queryKey: ["get-project"],
   });
+  const postData = projectQuery.postData({})
   // const classMutation-projectQuery.postData({})
   const mutationParams = {
     mutationFn: () => fetchProjects(),
@@ -21,6 +22,7 @@ export default function DashboardPage() {
   };
   const mutation = useMutation({
     mutationFn: () => fetchProjects(),
+    
     onSuccess(data, variables, context) {},
   });
   return (
