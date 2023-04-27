@@ -2,7 +2,7 @@ import { BlockList } from "net";
 
 class Project {
   constructor(
-    public id: Number,
+    public id: number,
     public category_title: string[],
     public category_description: string[],
     public focus_area: string[],
