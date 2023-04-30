@@ -196,6 +196,11 @@ class ApiQuery<T extends { id: string }> {
       keepPreviousData: true,
     });
   }
+
+  static getKeyData(key: string) {
+    const queryClient = useQueryClient();
+    return queryClient.getQueryData(key);
+  }
 }
 
 export default ApiQuery;

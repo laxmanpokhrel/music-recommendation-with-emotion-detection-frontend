@@ -18,7 +18,7 @@ const appRoutes: IRoute[] = [
     authenticated: false,
   },
   {
-    path: '/dashboard',
+    path: '/dashboard/*',
     name: 'Dashboard ',
     component: DashboardPage,
     authenticated: false,

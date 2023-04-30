@@ -1,10 +1,14 @@
 import IRoute from '@Interface/IRoute';
 import { Route, Routes } from 'react-router-dom';
-import { Suspense } from 'react';
+import { ReactNode, Suspense } from 'react';
 
-export default function generateRoutes(routes: IRoute[]) {
+interface IGenerateRouteParams {
+  routes: IRoute[];
+  fallback?: ReactNode;
+}
+export default function generateRoutes({ routes, fallback = <h3>Loading Routes...</h3> }: IGenerateRouteParams) {
   return (
-    <Suspense fallback={<h3>Loding Nested Part...</h3>}>
+    <Suspense fallback={fallback}>
       <Routes>
         {routes?.map((route) => (
           <Route key={JSON.stringify(route)} path={route.path} element={route.component()} />
