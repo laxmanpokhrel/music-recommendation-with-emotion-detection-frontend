@@ -8,8 +8,8 @@ interface IAsynquerorProps {
   children?: ReactNode;
   watch: Partial<UseQueryResult<any, Error> | UseMutationResult<any, Error, void, unknown>>;
   skeleton?: JSX.Element | JSX.IntrinsicElements;
-  emptyMolecule?: JSX.Element | JSX.IntrinsicElements;
-  errorMolecule?: JSX.Element | JSX.IntrinsicElements;
+  emptyMolecule?: JSX.Element;
+  errorMolecule?: JSX.Element;
 }
 
 /**
@@ -31,6 +31,6 @@ export default function Asynqueror({
     return <ErrorMolecule errorMessage={error?.message} />;
   }
   if (isLoading) return <>{skeleton}</>;
-  if (!data || !data.length) return { emptyMolecule };
+  if (!data || !data.length) return emptyMolecule;
   return <>{children}</>;
 }

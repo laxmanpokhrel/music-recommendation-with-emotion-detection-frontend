@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export default function EmptyMolecule() {
   return (
     <div className="naxatw-w-full naxatw-h-full naxatw-flex naxatw-justify-center naxatw-items-center naxatw-bg-blend-color-burn naxatw-bg-[#F6F8FB]">
