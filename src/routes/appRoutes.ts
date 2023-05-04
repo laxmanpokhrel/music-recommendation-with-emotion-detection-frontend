@@ -1,8 +1,9 @@
+import React from 'react';
 import IRoute from '@Interface/IRoute';
-import ProjectPage from '@Pages/ProjectPage';
-import AboutPage from '@Pages/AboutPage';
-import DashboardPage from '@Pages/DashboardPage';
-import HomePage from '@Pages/HomePage';
+// Lazy loading
+const HomePage = React.lazy(() => import('@Pages/HomePage'));
+const DashboardPage = React.lazy(() => import('@Pages/DashboardPage'));
+const AboutPage = React.lazy(() => import('@Pages/AboutPage'));
 
 const appRoutes: IRoute[] = [
   {

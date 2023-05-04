@@ -1,12 +1,15 @@
 import { IDivProps } from '@Interface/IButtonProps';
 import { ReactNode } from 'react';
 import { UseQueryResult, UseMutationResult } from 'react-query';
+import EmptyMolecule from './EmptyMolecule';
 import ErrorMolecule from './ErrorMolecule';
 
-interface IAsynqueror extends IDivProps {
+interface IAsynquerorProps {
   children?: ReactNode;
-  watch: Omit<Partial<UseQueryResult<any, Error> | UseMutationResult<any, Error, void, unknown>>, 'data'>;
+  watch: Partial<UseQueryResult<any, Error> | UseMutationResult<any, Error, void, unknown>>;
   skeleton?: JSX.Element | JSX.IntrinsicElements;
+  emptyMolecule?: JSX.Element | JSX.IntrinsicElements;
+  errorMolecule?: JSX.Element | JSX.IntrinsicElements;
 }
 
 /**
@@ -15,9 +18,19 @@ interface IAsynqueror extends IDivProps {
  * @param watch the properties that is to watch
  *  @returns `JSX.Element`
  */
-export default function Asynqueror({ watch, children, skeleton, ...restProps }: IAsynqueror) {
-  const { isLoading, isError, error } = watch;
+export default function Asynqueror({
+  watch,
+  children,
+  skeleton,
+  emptyMolecule = <EmptyMolecule />,
+  errorMolecule,
+}: IAsynquerorProps) {
+  const { data, isLoading, isError, error } = watch;
+  if (isError) {
+    if (errorMolecule) return errorMolecule;
+    return <ErrorMolecule errorMessage={error?.message} />;
+  }
   if (isLoading) return <>{skeleton}</>;
-  if (isError) return <ErrorMolecule errorMessage={error?.message} />;
+  if (!data || !data.length) return { emptyMolecule };
   return <>{children}</>;
 }

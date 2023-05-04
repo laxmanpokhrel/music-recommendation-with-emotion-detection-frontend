@@ -14,6 +14,7 @@ export default defineConfig({
       '@Organisms': new URL('./src/ui/organisms/', import.meta.url).pathname,
       '@Templates': new URL('./src/ui/templates/', import.meta.url).pathname,
       '@Pages': new URL('./src/ui/pages/', import.meta.url).pathname,
+      '@CustomComponents': new URL('./src/ui/customComponents/', import.meta.url).pathname,
       '@Utils': new URL('./src/utils/', import.meta.url).pathname,
       '@Store': new URL('./src/store/', import.meta.url).pathname,
       '@Models': new URL('./src/schemas/models/', import.meta.url).pathname,

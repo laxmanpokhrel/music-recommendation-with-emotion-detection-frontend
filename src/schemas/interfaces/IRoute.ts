@@ -1,11 +1,11 @@
 import Permission from '@Constants/Permission';
-import { ComponentType, ReactNode } from 'react';
+import { ComponentType, LazyExoticComponent, ReactNode } from 'react';
 
 export default interface IRoute {
   id?: number;
   path: string;
   name: string;
-  component: () => JSX.Element;
+  component: LazyExoticComponent<() => JSX.Element>;
   authenticated: boolean;
   permissionType?: Permission | undefined;
 }

@@ -9,11 +9,11 @@ export default function Dashboardproject() {
   // create an object of ApiQuery class
   const projectApi = useMemo(() => new ApiQuery<Project>('/projects', 'projects'), []);
   // execute the fetchData method to fetch the data from the server.
-  const { data: projects, ...restProjectsStatus } = projectApi.fetchData();
+  const projects = projectApi.fetchData();
   return (
-    <Asynqueror watch={restProjectsStatus} skeleton={<DashboardprojectSkeleton />}>
+    <Asynqueror watch={projects} skeleton={<DashboardprojectSkeleton />}>
       <div className="naxatw-grid naxatw-grid-cols-2 naxatw-gap-2">
-        {((projects as Project[]) || []).map((project) => (
+        {((projects.data as Project[]) || []).map((project) => (
           <ProjectCard key={uuid()} data={project} />
         ))}
       </div>
