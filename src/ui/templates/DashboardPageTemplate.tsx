@@ -16,7 +16,7 @@ export default function DashboardPageTemplate() {
           <CollapseButton />
         </div>
       </div>
-      <div className="playground naxatw-w-[80%] naxatw-h-screen naxatw-bg-green-200 naxatw-overflow-y-auto">
+      <div className="playground naxatw-w-[80%] naxatw-h-screen naxatw-overflow-y-auto">
         {generateRoutes({ routes: dashboardRoutes })}
       </div>
     </div>

@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClientProvider, QueryClient, useQueryErrorResetBoundary } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { ErrorBoundary } from 'react-error-boundary';
 import './index.css';
 import store from './store';
 
@@ -13,6 +14,7 @@ const queryClient = new QueryClient({
     queries: {
       refetchOnWindowFocus: false,
       retry: false,
+      suspense: true,
       // retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
     },
   },

@@ -1,7 +1,5 @@
 import IRoute from '@Interface/IRoute';
-import AboutPage from '@Pages/AboutPage';
 import DashboardHome from '@Organisms/DashboardHome';
-import ProjectPage from '@Pages/ProjectPage';
 import Dashboardproject from '@Organisms/DashboardProject';
 import DashboardAbout from '@Organisms/DashboardAbout';
 

@@ -1,5 +1,5 @@
 import Icon from '@Atoms/Icon';
-import IButtonProps from '@Interface/IButtonProps';
+import { IButtonProps } from '@Interface/IButtonProps';
 
 interface ICollapseBtnProps extends IButtonProps {}
 export default function () {

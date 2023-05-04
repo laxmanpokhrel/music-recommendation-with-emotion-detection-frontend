@@ -57,10 +57,11 @@ class ApiQuery<T extends { id: string }> {
     return useMutation<T, Error, void, unknown>({
       mutationKey: [`post-${this.key}`],
       onMutate: () => {
-        // !display postinf data notification
+        // !display postinfo data notification
       },
       mutationFn: () => postService(this.url, payload),
       onSuccess: (data, variables, context) => {
+        // queryClient.invalidateQueries({ queryKey: [this.key] });
         const previousData: T[] | undefined = queryClient.getQueryData(this.key);
         if (previousData) queryClient.setQueryData(this.key, [data, ...previousData]);
         //! show notification here
@@ -88,6 +89,7 @@ class ApiQuery<T extends { id: string }> {
       },
       mutationFn: () => patchService(this.url, payload),
       onSuccess: (data, variables, context) => {
+        // queryClient.invalidateQueries({ queryKey: [this.key] });
         const previousData: T[] | undefined = queryClient.getQueryData(this.key);
         if (previousData) {
           const index: number = previousData?.findIndex((item) => objectsEqual(item, payload));
@@ -115,6 +117,7 @@ class ApiQuery<T extends { id: string }> {
       },
       mutationFn: () => softDeleteService(this.url, id),
       onSuccess: (data, variable, context) => {
+        // queryClient.invalidateQueries({ queryKey: [this.key] });
         const previousData: T[] | undefined = queryClient.getQueryData(this.key);
         if (previousData) {
           const data: T[] | undefined = previousData.filter(({ id }) => id === id);
@@ -145,6 +148,7 @@ class ApiQuery<T extends { id: string }> {
       },
       mutationFn: () => hardDeleteService(this.url, id),
       onSuccess: () => {
+        // queryClient.invalidateQueries({ queryKey: [this.key] });
         const previousData: T[] | undefined = queryClient.getQueryData(this.key);
         if (previousData) {
           // remove the item from the cache logic
