@@ -23,6 +23,7 @@
       "@Organisms/*": ["ui/organisms/*"],
       "@Templates/*": ["ui/templates/*"],
       "@Pages/*": ["ui/pages/*"],
+      "@CustomComponents/*": ["ui/customComponents/*"],
       "@Assets/*": ["assets/*"],
       "@Utils/*": ["utils/*"],
       "@Store/*": ["store/*"],

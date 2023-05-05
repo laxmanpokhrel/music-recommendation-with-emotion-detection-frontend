@@ -1,1 +1,0 @@
-### It is recommended to use one file for a CRUD (Create, Read, Update, Delete) of one model only.
