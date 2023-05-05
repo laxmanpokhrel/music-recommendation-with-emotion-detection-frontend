@@ -16,7 +16,7 @@ interface IAsynquerorProps {
  * This component will handle all the states that it is assigned to watch to. For example it can handle loading state by loading the default skeleton.
  * @param skeleton has to be provided by writing the skeleton component manually
  * @param watch the properties that is to watch
- *  @returns `JSX.Element`
+ * @returns `JSX.Element`
  */
 export default function Asynqueror({
   watch,

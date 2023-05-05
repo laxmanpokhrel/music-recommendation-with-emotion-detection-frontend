@@ -24,8 +24,8 @@ export default function Dashboardproject() {
 function DashboardprojectSkeleton() {
   return (
     <div className="naxatw-grid naxatw-grid-cols-2 naxatw-gap-2 naxatw-p-3">
-      {Array.from({ length: 8 }).map(() => (
-        <ProjectCardSkeleton />
+      {Array.from({ length: 8 }).map((item, index) => (
+        <ProjectCardSkeleton key={`skeleton-${index}`} />
       ))}
     </div>
   );
