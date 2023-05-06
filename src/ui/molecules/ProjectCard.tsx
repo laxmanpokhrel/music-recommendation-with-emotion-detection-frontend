@@ -27,4 +27,11 @@ export function ProjectCardSkeleton() {
       <Skeleton className="naxatw-h-4 naxatw-w-1/5 naxatw-bg-gray-300" />
     </div>
   );
+  // generateSkeleton(ProjectCard);
 }
+
+export function generatedProjectCardSkeleton() {
+  return generateSkeleton(ProjectCard);
+}
+
+

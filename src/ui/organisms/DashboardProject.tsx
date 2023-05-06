@@ -1,14 +1,13 @@
 import { useMemo } from 'react';
-import ApiQuery from '@Api/_lib_/ApiQuery';
+import ApiQuery from '@Api/_lib_/ApiFactory';
 import Project from '@Models/Project';
 import ProjectCard, { ProjectCardSkeleton } from '@Molecules/ProjectCard';
 import { v4 as uuid } from 'uuid';
 import Asynqueror from '@Molecules/Asynqueror';
 
 export default function Dashboardproject() {
-  // create an object of ApiQuery class
-  const projectApi = useMemo(() => new ApiQuery<Project>('/projects', 'projects'), []);
-  // execute the fetchData method to fetch the data from the server.
+  const apiFactory = new ApiQuery();
+  const projectApi = apiFactory.creteQuery<Project>('/projects', 'projects');
   const projects = projectApi.fetchData();
   return (
     <Asynqueror watch={projects} skeleton={<DashboardprojectSkeleton />}>
