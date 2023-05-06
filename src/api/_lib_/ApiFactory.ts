@@ -1,4 +1,3 @@
-import { api } from '@Api/config';
 import {
   getPaginatedService,
   getService,
@@ -9,31 +8,19 @@ import {
   softDeleteService,
 } from '@Api/services/lib';
 import { hasBinaryData, jsonToFormData, objectsEqual } from '@Utils/index';
-import {
-  MutationFunction,
-  MutationOptions,
-  QueryKey,
-  QueryObserverOptions,
-  QueryOptions,
-  useMutation,
-  UseMutationResult,
-  useQuery,
-  UseQueryResult,
-  QueryClient,
-  useQueryClient,
-} from 'react-query';
+import { useMutation, UseMutationResult, useQuery, UseQueryResult, QueryClient, useQueryClient } from 'react-query';
+import { QueryParamsType, MutationParamsType } from '@Types/index';
 
-declare type QueryParamsType<T> =
-  | QueryOptions<any, Error, any, QueryKey>
-  | QueryObserverOptions<T | T[], Error, T | T[], T | T[], QueryKey>;
-
-declare type MutationParamsType = MutationOptions<any, Error, any, any>;
+interface IFactoryProps {
+  url: string;
+  key: string;
+}
 
 /**
- * while initializing this class you can give it a key on which the data received from the server can be stored and specity the nodule that will be specific to.
+ * while initializing this class you can give it a key on which the data received from the server can be stored and specity the module that will be specific to.
  * NOTE: key you provided will be used by fetch methods without modifying them, but other methods will add the service name provided by the method as prefix Eg: `post-mutation_key`
  */
-class ApiQuery<T extends { id: string }> {
+class Query<T> {
   url = '';
   key = 'mutation_key';
 
@@ -144,7 +131,7 @@ class ApiQuery<T extends { id: string }> {
     return useMutation<T, Error, void, unknown>({
       mutationKey: [`delete-${this.key}-s`],
       onMutate: () => {
-        // !display postinf data notification
+        // !display posting data notification
       },
       mutationFn: () => hardDeleteService(this.url, id),
       onSuccess: () => {
@@ -200,11 +187,22 @@ class ApiQuery<T extends { id: string }> {
       keepPreviousData: true,
     });
   }
-
-  static getKeyData(key: string) {
-    const queryClient = useQueryClient();
-    return queryClient.getQueryData(key);
-  }
 }
 
-export default ApiQuery;
+// export default Query;
+
+//! this class insures that the objects of Query class will always have unique props
+class ApiFactory {
+  static cache: Map<string, Query<any>> = new Map();
+
+  creteQuery<T extends { id: string }>(url: string, key: string) {
+    const indentifier = `${url}-${key}`;
+    let query = ApiFactory.cache.get(indentifier);
+    if (!query) {
+      query = new Query<T>(url, key);
+      ApiFactory.cache.set(indentifier, query);
+    }
+    return query;
+  }
+}
+export default ApiFactory;

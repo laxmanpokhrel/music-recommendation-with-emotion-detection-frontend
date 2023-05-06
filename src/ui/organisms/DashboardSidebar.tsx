@@ -1,5 +1,5 @@
 import SidebarTab from '@Molecules/SidebarTab';
-import ApiQuery from '@Api/_lib_/ApiQuery';
+import ApiQuery from '@Api/_lib_/ApiFactory';
 import Project from '@Models/Project';
 export default function DashboardSidebar() {
   const projectsApi = new ApiQuery<Project>('/projects', 'projects');
