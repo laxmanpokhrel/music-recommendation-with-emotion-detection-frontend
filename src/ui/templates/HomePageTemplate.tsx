@@ -12,12 +12,12 @@ export default function HomePageTemplate(): JSX.Element {
           </p>
         </h1>
         <p className="naxatw-text-2xl naxatw-font-thin">Ready to dive deeper into my features?</p>
-        <p className="naxatw-text-[#FFDC1C] naxatw-font-light naxatw-text-xl naxatw-flex naxatw-justify-start naxatw-items-start naxatw-gap-4 naxatw-cursor-pointer">
-          Let's rock and roll!{' '}
-          <small className="naxatw-animate-pulse naxatw-text-3xl">
-            <NavLink to="/dashboard"> &rarr;</NavLink>
-          </small>
-        </p>
+        <NavLink
+          to="/dashboard"
+          className="naxatw-text-[#FFDC1C] naxatw-font-light naxatw-text-xl naxatw-flex naxatw-justify-start naxatw-items-start naxatw-gap-4 naxatw-cursor-pointer"
+        >
+          Let's rock and roll! <small className="naxatw-animate-pulse naxatw-text-3xl">&rarr;</small>
+        </NavLink>
       </div>
     </div>
   );
