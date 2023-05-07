@@ -1,2 +1,1 @@
 3. redix components
-5. Skeleton generator
