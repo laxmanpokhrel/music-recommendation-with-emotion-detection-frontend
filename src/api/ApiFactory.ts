@@ -6,15 +6,11 @@ import {
   patchService,
   postService,
   softDeleteService,
-} from '@Api/services/lib';
+} from '@Api/_lib_';
 import { hasBinaryData, jsonToFormData, objectsEqual } from '@Utils/index';
 import { useMutation, UseMutationResult, useQuery, UseQueryResult, QueryClient, useQueryClient } from 'react-query';
 import { QueryParamsType, MutationParamsType } from '@Types/index';
 
-interface IFactoryProps {
-  url: string;
-  key: string;
-}
 
 /**
  * while initializing this class you can give it a key on which the data received from the server can be stored and specity the module that will be specific to.
