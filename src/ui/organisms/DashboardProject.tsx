@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
-import ApiQuery from '@Api/_lib_/ApiFactory';
 import Project from '@Models/Project';
 import ProjectCard, { ProjectCardSkeleton } from '@Molecules/ProjectCard';
 import { v4 as uuid } from 'uuid';
 import Asynqueror from '@Molecules/Asynqueror';
+import ApiFactory from '@Api/_lib_/ApiFactory';
 
 export default function Dashboardproject() {
-  const apiFactory = new ApiQuery();
+  const apiFactory = new ApiFactory();
   const projectApi = apiFactory.creteQuery<Project>('/projects', 'projects');
   const projects = projectApi.fetchData();
   return (
