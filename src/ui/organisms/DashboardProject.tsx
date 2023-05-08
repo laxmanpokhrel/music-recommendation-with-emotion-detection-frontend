@@ -6,10 +6,10 @@ import ApiFactory from '@Api/ApiFactory';
 
 export default function Dashboardproject() {
   const apiFactory = new ApiFactory();
-  const projectApi = apiFactory.creteQuery<Project>('/projects', 'projects');
+  const projectApi = apiFactory.createQuery<Project>('/projects', 'projects');
   const projects = projectApi.fetchData();
   return (
-    <Asynqueror watch={projects} skeleton={<DashboardprojectSkeleton />}>
+    <Asynqueror watch={projects} skeleton={<DashboardProjectSkeleton />}>
       <div className="naxatw-grid naxatw-grid-cols-2 naxatw-gap-2">
         {((projects.data as Project[]) || []).map((project) => (
           <ProjectCard key={uuid()} data={project} />
@@ -19,7 +19,7 @@ export default function Dashboardproject() {
   );
 }
 
-function DashboardprojectSkeleton() {
+function DashboardProjectSkeleton() {
   return (
     <div className="naxatw-grid naxatw-grid-cols-2 naxatw-gap-2 naxatw-p-3">
       {Array.from({ length: 8 }).map((__, index) => (
