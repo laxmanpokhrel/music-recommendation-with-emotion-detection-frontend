@@ -1,14 +1,12 @@
-import { BlockList } from 'net';
-
 class Project {
   constructor(
     public id: string,
-    public category_title: string[],
-    public category_description: string[],
-    public focus_area: string[],
-    public photo: string,
-    public title: string,
-    public subtitle: string,
+    // public category_title: string[],
+    // public category_description: string[],
+    // public focus_area: string[],
+    // public photo: string,
+    // public title: string,
+    // public subtitle: string,
     public clients: string,
     public start_date: Date,
     public end_date: Date,

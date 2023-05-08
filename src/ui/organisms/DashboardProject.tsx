@@ -1,9 +1,8 @@
-import { useMemo } from 'react';
 import Project from '@Models/Project';
 import ProjectCard, { ProjectCardSkeleton } from '@Molecules/ProjectCard';
 import { v4 as uuid } from 'uuid';
 import Asynqueror from '@Molecules/Asynqueror';
-import ApiFactory from '@Api/_lib_/ApiFactory';
+import ApiFactory from '@Api/ApiFactory';
 
 export default function Dashboardproject() {
   const apiFactory = new ApiFactory();
@@ -23,7 +22,7 @@ export default function Dashboardproject() {
 function DashboardprojectSkeleton() {
   return (
     <div className="naxatw-grid naxatw-grid-cols-2 naxatw-gap-2 naxatw-p-3">
-      {Array.from({ length: 8 }).map((item, index) => (
+      {Array.from({ length: 8 }).map((__, index) => (
         <ProjectCardSkeleton key={`skeleton-${index}`} />
       ))}
     </div>

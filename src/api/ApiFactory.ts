@@ -6,21 +6,16 @@ import {
   patchService,
   postService,
   softDeleteService,
-} from '@Api/services/lib';
-import { hasBinaryData, jsonToFormData, objectsEqual } from '@Utils/index';
-import { useMutation, UseMutationResult, useQuery, UseQueryResult, QueryClient, useQueryClient } from 'react-query';
+} from '@Api/_lib_';
+import { objectsEqual } from '@Utils/index';
+import { useMutation, UseMutationResult, useQuery, UseQueryResult, useQueryClient } from 'react-query';
 import { QueryParamsType, MutationParamsType } from '@Types/index';
-
-interface IFactoryProps {
-  url: string;
-  key: string;
-}
 
 /**
  * while initializing this class you can give it a key on which the data received from the server can be stored and specity the module that will be specific to.
  * NOTE: key you provided will be used by fetch methods without modifying them, but other methods will add the service name provided by the method as prefix Eg: `post-mutation_key`
  */
-class Query<T> {
+class Query<T extends { id: string }> {
   url = '';
   key = 'mutation_key';
 
@@ -47,7 +42,7 @@ class Query<T> {
         // !display postinfo data notification
       },
       mutationFn: () => postService(this.url, payload),
-      onSuccess: (data, variables, context) => {
+      onSuccess: (data) => {
         // queryClient.invalidateQueries({ queryKey: [this.key] });
         const previousData: T[] | undefined = queryClient.getQueryData(this.key);
         if (previousData) queryClient.setQueryData(this.key, [data, ...previousData]);
@@ -75,7 +70,7 @@ class Query<T> {
         // !display patching data notification
       },
       mutationFn: () => patchService(this.url, payload),
-      onSuccess: (data, variables, context) => {
+      onSuccess: (data) => {
         // queryClient.invalidateQueries({ queryKey: [this.key] });
         const previousData: T[] | undefined = queryClient.getQueryData(this.key);
         if (previousData) {
@@ -103,7 +98,7 @@ class Query<T> {
         //! display deleting data notification
       },
       mutationFn: () => softDeleteService(this.url, id),
-      onSuccess: (data, variable, context) => {
+      onSuccess: () => {
         // queryClient.invalidateQueries({ queryKey: [this.key] });
         const previousData: T[] | undefined = queryClient.getQueryData(this.key);
         if (previousData) {
@@ -189,9 +184,10 @@ class Query<T> {
   }
 }
 
-// export default Query;
-
-//! this class insures that the objects of Query class will always have unique props
+/**
+ * This class insures that the query objects are not redundent. It provides createQuery method to create the query objects
+ * Note: It uses factory design pattern.
+ */
 class ApiFactory {
   static cache: Map<string, Query<any>> = new Map();
 

@@ -1,5 +1,5 @@
 // export {};
-import ApiFactory from '@Api/_lib_/ApiFactory';
+import ApiFactory from '@Api/ApiFactory';
 import Project from '@Models/Project';
 import TestProjectCard from '@Molecules/__tests__/index.test';
 import { generateTestSkeleton } from '@Utils/__tests__/index.test';
