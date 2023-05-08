@@ -2,6 +2,7 @@ import IRoute from '@Interface/IRoute';
 import DashboardHome from '@Organisms/DashboardHome';
 import Dashboardproject from '@Organisms/DashboardProject';
 import DashboardAbout from '@Organisms/DashboardAbout';
+import DashboardComponents from '@Organisms/DashboardComponents';
 
 const dashboardRoutes: IRoute[] = [
   {
@@ -20,6 +21,12 @@ const dashboardRoutes: IRoute[] = [
     path: '/about',
     name: 'About ',
     component: DashboardAbout,
+    authenticated: false,
+  },
+  {
+    path: '/components',
+    name: 'Components ',
+    component: DashboardComponents,
     authenticated: false,
   },
 ];

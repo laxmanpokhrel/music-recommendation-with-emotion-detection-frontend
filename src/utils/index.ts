@@ -1,23 +1,22 @@
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
 /**
  *
  * @param obj
  * @returns
  */
 export function hasBinaryData(obj: Record<string, any>): boolean {
-  if (typeof obj !== "object") {
+  if (typeof obj !== 'object') {
     return false;
   }
 
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
       const value = obj[key];
-      if (
-        value instanceof Blob ||
-        value instanceof File ||
-        value instanceof ArrayBuffer
-      ) {
+      if (value instanceof Blob || value instanceof File || value instanceof ArrayBuffer) {
         return true;
-      } else if (typeof value === "object" && hasBinaryData(value)) {
+      } else if (typeof value === 'object' && hasBinaryData(value)) {
         return true;
       }
     }
@@ -82,4 +81,8 @@ export function objectsEqual(obj1: any, obj2: any): boolean {
   }
 
   return true;
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
 }
