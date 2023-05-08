@@ -3,14 +3,12 @@ import { useDispatch } from 'react-redux';
 import { initDomToCode } from 'dom-to-code';
 import generateRoutes from '@Routes/_lib_/generateRoutes';
 import appRoutes from '@Routes/appRoutes';
-import { useQueryErrorResetBoundary } from 'react-query';
-import { ErrorBoundary } from 'react-error-boundary';
-import ErrorPage from '@Pages/ErrorPage';
+// import { useQueryErrorResetBoundary } from 'react-query';
 
 export default function App() {
   const dispatch = useDispatch();
   dispatch(templateActions.templateReducerOne({ key: 'value' }));
-  const { reset } = useQueryErrorResetBoundary();
+  // const { reset } = useQueryErrorResetBoundary();
 
   return (
     <>

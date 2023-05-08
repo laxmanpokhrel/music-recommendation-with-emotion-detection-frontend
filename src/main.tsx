@@ -1,11 +1,9 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { QueryClientProvider, QueryClient, useQueryErrorResetBoundary } from 'react-query';
+import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { ErrorBoundary } from 'react-error-boundary';
 import './index.css';
 import store from './store';
 
