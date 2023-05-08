@@ -1,14 +1,11 @@
-import { ReactNode } from 'react';
 import { ClipLoader } from 'react-spinners';
-import { createPortal } from 'react-dom';
 import Portal from '@Molecules/Portal';
 
 interface IFallbackProps {
-  overlayComponent: ReactNode;
+  overlayComponent?: any;
 }
 export default function Fallback({ overlayComponent }: IFallbackProps) {
-  const backdropNode = document.getElementById('backdrop-root');
-  const portalNode = document.getElementById('overlay-root');
+  
   return (
     <Portal
       overlayComponent={

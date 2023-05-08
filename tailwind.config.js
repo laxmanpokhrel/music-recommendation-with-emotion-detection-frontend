@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         primaryfont: ["product-sans", "sans-serif"],
       },
+      colors:{
+        primarycolor:"blue",
+      }
     },
   },
   plugins: [],
