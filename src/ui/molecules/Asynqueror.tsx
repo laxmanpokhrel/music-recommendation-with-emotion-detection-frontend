@@ -1,4 +1,3 @@
-import { IDivProps } from '@Interface/IButtonProps';
 import { ReactNode } from 'react';
 import { UseQueryResult, UseMutationResult } from 'react-query';
 import EmptyMolecule from './EmptyMolecule';

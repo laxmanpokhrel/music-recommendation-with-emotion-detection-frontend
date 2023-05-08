@@ -191,7 +191,7 @@ class Query<T extends { id: string }> {
 class ApiFactory {
   static cache: Map<string, Query<any>> = new Map();
 
-  creteQuery<T extends { id: string }>(url: string, key: string) {
+  createQuery<T extends { id: string }>(url: string, key: string) {
     const indentifier = `${url}-${key}`;
     let query = ApiFactory.cache.get(indentifier);
     if (!query) {
