@@ -34,6 +34,7 @@ export default defineConfig({
   define: {
     'process.env': {
       BASE_URL: process.env.BASE_URL,
+      ENV: process.env.ENV,
     },
   },
   server: {
