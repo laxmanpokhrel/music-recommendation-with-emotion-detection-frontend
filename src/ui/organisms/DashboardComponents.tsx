@@ -11,8 +11,6 @@ import {
   SelectValue,
 } from '@Atoms/common/select';
 
-const a;
-
 function DashboardComponents() {
   return (
     // eslint-disable-next-line react/react-in-jsx-scope
