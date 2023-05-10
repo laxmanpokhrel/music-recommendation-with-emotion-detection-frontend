@@ -11,13 +11,16 @@ import {
   SelectValue,
 } from '@Atoms/common/select';
 
+const a;
+
 function DashboardComponents() {
   return (
+    // eslint-disable-next-line react/react-in-jsx-scope
     <div className="naxatw-flex naxatw-flex-col">
       <div className="naxatw-p-10 naxatw-flex naxatw-gap-4">
         <Button>Button</Button>
-        <Button variant={'outline'}>Outline Button</Button>
-        <Button variant={'link'} size={'lg'}>
+        <Button variant="outline">Outline Button</Button>
+        <Button variant="link" size="lg">
           Link Button
         </Button>
       </div>

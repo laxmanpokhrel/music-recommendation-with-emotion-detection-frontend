@@ -1,11 +1,15 @@
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import App from './App';
 import './index.css';
 import store from './store';
+
+const hello = () = >{
+  return 'hello'
+}
 
 const queryClient = new QueryClient({
   defaultOptions: {
