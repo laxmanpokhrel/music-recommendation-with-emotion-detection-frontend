@@ -7,10 +7,6 @@ import App from './App';
 import './index.css';
 import store from './store';
 
-const hello = () = >{
-  return 'hello'
-}
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

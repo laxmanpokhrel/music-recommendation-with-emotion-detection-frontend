@@ -1,5 +1,3 @@
-// import React from 'react';
-
 import { Button } from '@Atoms/common/button';
 import {
   Select,
@@ -13,7 +11,6 @@ import {
 
 function DashboardComponents() {
   return (
-    // eslint-disable-next-line react/react-in-jsx-scope
     <div className="naxatw-flex naxatw-flex-col">
       <div className="naxatw-p-10 naxatw-flex naxatw-gap-4">
         <Button>Button</Button>
@@ -21,7 +18,6 @@ function DashboardComponents() {
         <Button variant="link" size="lg">
           Link Button
         </Button>
-        <div>hello</div>
       </div>
       <div className="naxatw-p-10 naxatw-flex naxatw-gap-4">
         <Select>
