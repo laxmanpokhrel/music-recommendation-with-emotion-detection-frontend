@@ -28,11 +28,5 @@ const appRoutes: IRoute[] = [
     component: DashboardPage,
     authenticated: false,
   },
-  {
-    path: '/test',
-    name: 'Test ',
-    component: TestPage,
-    authenticated: false,
-  },
 ];
 export default appRoutes;
