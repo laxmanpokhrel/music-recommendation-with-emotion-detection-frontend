@@ -39,9 +39,7 @@
       "@Constants/*": ["constants/*"],
       "@Hooks/*": ["hooks/*"],
       "@Api/*": ["api/*"],
-      "@Interface/*": ["schemas/interfaces/*"],
-      "@Types/*": ["schemas/types/*"],
-      "@Models/*": ["schemas/models/*"],
+      "@Schemas/*": ["schemas/*"],
       "@Services/*": ["api/services/*"],
       "@Queries/*": ["api/queries/*"],
       "@Routes/*": ["routes/*"]

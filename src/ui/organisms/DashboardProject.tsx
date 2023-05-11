@@ -1,4 +1,4 @@
-import Project from '@Models/Project';
+import Project from '@Schemas/models/Project';
 import ProjectCard, { ProjectCardSkeleton } from '@Molecules/ProjectCard';
 import { v4 as uuid } from 'uuid';
 import Asynqueror from '@Molecules/Asynqueror';
@@ -6,8 +6,9 @@ import ApiFactory from '@Api/ApiFactory';
 
 export default function Dashboardproject() {
   const apiFactory = new ApiFactory();
-  const projectApi = apiFactory.createQuery<Project>('/projects', 'projects');
+  const projectApi = apiFactory.createQuery('/projects', 'projects', Project);
   const projects = projectApi.fetchData();
+
   return (
     <Asynqueror watch={projects} skeleton={<DashboardProjectSkeleton />}>
       <div className="naxatw-grid naxatw-grid-cols-2 naxatw-gap-2">
