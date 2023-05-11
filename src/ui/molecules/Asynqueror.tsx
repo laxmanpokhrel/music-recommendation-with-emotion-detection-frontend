@@ -9,6 +9,7 @@ interface IAsynquerorProps {
   skeleton?: JSX.Element | JSX.IntrinsicElements;
   emptyMolecule?: JSX.Element;
   errorMolecule?: JSX.Element;
+  paginated?: boolean;
 }
 
 /**
