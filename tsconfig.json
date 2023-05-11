@@ -47,7 +47,7 @@
       "@Routes/*": ["routes/*"]
     }
   },
-  "include": ["src", "src/**/*.ts", ".eslintrc.cjs"],
+  "include": [".eslintrc.cjs", "src", "src/**/*.ts"],
   "exclude": ["node_modules", "dist"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
