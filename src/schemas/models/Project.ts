@@ -1,25 +1,33 @@
+import { intervalToDuration } from 'date-fns';
 class Project {
-  constructor(
-    public id: string,
-    // public category_title: string[],
-    // public category_description: string[],
-    // public focus_area: string[],
-    // public photo: string,
-    // public title: string,
-    // public subtitle: string,
-    public clients: string,
-    public start_date: Date,
-    public end_date: Date,
-    public thumbnail: string,
-    public is_key_highlight: boolean,
-    public description: string,
-    public project_order: number,
-    public created_at: Date,
-    public updated_at: Date,
-    public ongoing: boolean,
-    public project_url: string | null,
-    public is_international_projects: string,
-    public category: number[],
-  ) {}
+  id: any = '';
+  category_title: string[] = [];
+  category_description: string[] | null = null;
+  focus_area: string[] | null = null;
+  photo: string = '';
+  title: string = '';
+  subtitle: string = '';
+  clients: string = '';
+  start_date: Date = new Date();
+  end_date: Date = new Date();
+  thumbnail: string = '';
+  is_key_highlight: boolean = false;
+  description: string = '';
+  project_order: number | null = null;
+  created_at: Date = new Date();
+  updated_at: Date = new Date();
+  ongoing: boolean = false;
+  project_url: string = '';
+  is_international_projects: string = '';
+  category: number[] | null = null;
+
+  constructor(obj: any) {
+    Object.assign(this, obj);
+  }
+
+  projectDuration(): number | undefined {
+    const duration = intervalToDuration({ start: new Date(this.start_date), end: new Date(this.end_date) });
+    return duration.months;
+  }
 }
 export default Project;

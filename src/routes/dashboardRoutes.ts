@@ -1,4 +1,4 @@
-import IRoute from '@Interface/IRoute';
+import IRoute from '@Schemas/interfaces/IRoute';
 import DashboardHome from '@Organisms/DashboardHome';
 import Dashboardproject from '@Organisms/DashboardProject';
 import DashboardAbout from '@Organisms/DashboardAbout';

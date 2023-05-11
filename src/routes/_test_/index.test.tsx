@@ -1,13 +1,12 @@
-import React from 'react';
-import IRoute from '@Interface/IRoute';
+import IRoute from '@Schemas/interfaces/IRoute';
 import TestPage from '@Pages/__test__/index.test';
 
-const appRoutes: IRoute[] = [
+const testRoutes: IRoute[] = [
   {
     path: '/test',
-    name: 'Home ',
+    name: 'Test ',
     component: TestPage,
     authenticated: false,
   },
 ];
-export default appRoutes;
+export default testRoutes;
