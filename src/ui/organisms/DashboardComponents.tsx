@@ -9,6 +9,8 @@ import {
   SelectValue,
 } from '@Atoms/common/select';
 
+const a;
+
 function DashboardComponents() {
   return (
     <div className="naxatw-flex naxatw-flex-col">
