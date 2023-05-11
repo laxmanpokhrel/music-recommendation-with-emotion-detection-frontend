@@ -7,7 +7,7 @@ import {
   patchService,
   postService,
   softDeleteService,
-} from '@Api/_lib_';
+} from '@Api/services/apiProxyServices';
 import { QueryParamsType, MutationParamsType } from '@Schemas/types/index';
 // import { objectsEqual } from '@Utils/index';
 
