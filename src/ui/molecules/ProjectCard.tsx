@@ -15,7 +15,6 @@ export default function ProjectCard({ data }: IProjectCardProps): JSX.Element {
         <Image src={data.photo} alt={data?.title} aspectRation="auto" />
         <div className="title naxatw-flex naxatw-flex-col naxatw-gap-2">
           <span className="naxatw-font-bold naxatw-text-sm">{data.title}</span>
-          { rama}
           <small>Duration: {data.projectDuration()} months</small>
         </div>
         <Icon iconName="map" />
