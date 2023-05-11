@@ -10,6 +10,7 @@ import {
 } from '@Atoms/common/select';
 
 const a;
+const b;
 
 function DashboardComponents() {
   return (
