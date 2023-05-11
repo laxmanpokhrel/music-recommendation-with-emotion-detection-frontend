@@ -10,8 +10,7 @@ import {
 } from '@Atoms/common/select';
 
 function DashboardComponents() {
-  consta;
-  const a;
+  const ad;
   return (
     <div className="naxatw-flex naxatw-flex-col">
       <div className="naxatw-p-10 naxatw-flex naxatw-gap-4">
