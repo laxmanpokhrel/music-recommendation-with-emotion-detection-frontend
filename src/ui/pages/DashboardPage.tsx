@@ -1,6 +1,6 @@
 import DashboardPageTemplate from '@Templates/DashboardPageTemplate';
 
 export default function DashboardPage() {
-  const testVar = null;
+  const testVars = null;
   return <DashboardPageTemplate />;
 }
