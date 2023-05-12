@@ -1,6 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+
 const templateSlice = createSlice({
-  name: "template",
+  name: 'template',
   initialState: {
     templateContent: null,
   },

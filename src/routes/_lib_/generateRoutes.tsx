@@ -1,4 +1,4 @@
-import IRoute from '@Interface/IRoute';
+import IRoute from '@Schemas/interfaces/IRoute';
 import { Route, Routes } from 'react-router-dom';
 import { ReactNode, Suspense } from 'react';
 import Fallback from '@CustomComponents/Falback';

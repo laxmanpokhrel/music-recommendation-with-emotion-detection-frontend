@@ -1,5 +1,5 @@
 import React from 'react';
-import IRoute from '@Interface/IRoute';
+import IRoute from '@Schemas/interfaces/IRoute';
 
 // Lazy loading
 //*  Please consider to rethink before implementing lazy loading

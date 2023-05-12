@@ -16,7 +16,8 @@ export function hasBinaryData(obj: Record<string, any>): boolean {
       const value = obj[key];
       if (value instanceof Blob || value instanceof File || value instanceof ArrayBuffer) {
         return true;
-      } else if (typeof value === 'object' && hasBinaryData(value)) {
+      }
+      if (typeof value === 'object' && hasBinaryData(value)) {
         return true;
       }
     }

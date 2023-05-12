@@ -26,5 +26,6 @@ module.exports = {
     'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 0,
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    
   },
 };
