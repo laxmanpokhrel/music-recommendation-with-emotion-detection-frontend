@@ -1,6 +1,3 @@
-import Image from '@Atoms/Image';
-import errorImage from '@Assets/image.png';
-
 export default function ErrorPage() {
   return (
     <div className="naxatw-w-screen naxatw-h-screen  naxatw-flex naxatw-justify-center naxatw-items-center naxatw-cursor-not-allowed">

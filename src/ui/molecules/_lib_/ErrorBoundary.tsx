@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/state-in-constructor */
+/* eslint-disable react/destructuring-assignment */
 import Icon from '@Atoms/Icon';
 import { Component, ReactNode } from 'react';
 
@@ -25,12 +28,9 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     }
   }
 
-  componentDidCatch = (error: Error, info: object) => {
+  componentDidCatch(error: any, info: any) {
     this.setState({ error, errorInfo: info });
-    const splittedMessage = (info as any).componentStack.split('\n ')[1].trim().split(' (');
-    console.log('info', splittedMessage[0]);
-    console.log('info stack', (info as any).componentStack.toString());
-  };
+  }
 
   render() {
     if (this.state.errorInfo) {
@@ -40,17 +40,21 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       return (
         <div className=" naxatw-flex naxatw-bg-pink-200 naxatw-flex-col naxatw-items-center naxatw-justify-center naxatw-gap-1 naxatw-p-4">
           <div className="title  naxatw-flex naxatw-flex-col naxatw-justify-center naxatw-items-center">
-            <Icon iconName="running_with_errors" style="naxatw-text-red-600 naxatw-text-4xl" />
+            <Icon iconName="running_with_errors" iconStyle="naxatw-text-red-600 naxatw-text-4xl" />
             <p className="naxatw-text-gray-800 naxatw-text-lg naxatw-font-bold"> An Error Occurred !</p>
           </div>
-          <a href={errorLocation} target="_blank" rel="noopener noreferrer" className="naxatw-text-red-600 naxatw-underline naxatw-text-sm">
+          <a
+            href={errorLocation}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="naxatw-text-red-600 naxatw-underline naxatw-text-sm"
+          >
             {fileName}
           </a>
         </div>
       );
-    } else {
-      return this.props.children;
     }
+    return this.props.children;
   }
 }
 
