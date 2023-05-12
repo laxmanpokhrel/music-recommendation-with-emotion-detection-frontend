@@ -1,4 +1,3 @@
-import { FC } from 'react';
 interface IErrorMolecule {
   errorMessage?: string;
 }

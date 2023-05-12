@@ -1,7 +1,7 @@
 import Project from '@Schemas/models/Project';
 import ProjectCard, { ProjectCardSkeleton } from '@Molecules/ProjectCard';
 import { v4 as uuid } from 'uuid';
-import Asynqueror from '@Molecules/Asynqueror';
+import Asynqueror from '@Molecules/_lib_/Asynqueror';
 import ApiFactory from '@Api/ApiFactory';
 
 export default function Dashboardproject() {
