@@ -1,5 +1,3 @@
-// import React from 'react';
-
 import { Button } from '@Atoms/common/button';
 import {
   Select,
@@ -16,8 +14,8 @@ function DashboardComponents() {
     <div className="naxatw-flex naxatw-flex-col">
       <div className="naxatw-p-10 naxatw-flex naxatw-gap-4">
         <Button>Button</Button>
-        <Button variant={'outline'}>Outline Button</Button>
-        <Button variant={'link'} size={'lg'}>
+        <Button variant="outline">Outline Button</Button>
+        <Button variant="link" size="lg">
           Link Button
         </Button>
       </div>

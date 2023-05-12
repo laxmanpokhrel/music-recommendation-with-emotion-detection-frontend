@@ -12,10 +12,13 @@ interface ErrorBoundaryState {
 }
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  state: ErrorBoundaryState = {
+    error: null,
+    errorInfo: null,
+  };
+
   constructor(props: ErrorBoundaryProps) {
     super(props);
-    this.state = { error: null, errorInfo: null };
-
     if (this.props.showError === false) {
       this.state.error = null;
       this.state.errorInfo = null;
@@ -40,12 +43,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
             <Icon iconName="running_with_errors" style="naxatw-text-red-600 naxatw-text-4xl" />
             <p className="naxatw-text-gray-800 naxatw-text-lg naxatw-font-bold"> An Error Occurred !</p>
           </div>
-          <a
-            href={errorLocation}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="naxatw-text-red-600 naxatw-underline naxatw-text-sm"
-          >
+          <a href={errorLocation} target="_blank" rel="noopener noreferrer" className="naxatw-text-red-600 naxatw-underline naxatw-text-sm">
             {fileName}
           </a>
         </div>
