@@ -42,7 +42,7 @@ module.exports = {
     'react/jsx-no-useless-fragment': 0,
     'import/extensions': 0,
     'no-plusplus': 0,
-    'no-unused-vars': 'warn',
+    'no-unused-vars': 'error',
     'class-methods-use-this': 'warn',
   },
 };
