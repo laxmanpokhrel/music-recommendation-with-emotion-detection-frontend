@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable class-methods-use-this */
 import Query from './_lib_/Query';
 
 class ApiFactory {
