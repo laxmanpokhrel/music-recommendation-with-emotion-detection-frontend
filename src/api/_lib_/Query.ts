@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useMutation, UseMutationResult, useQuery, UseQueryResult, useQueryClient } from 'react-query';
 import {
   getPaginatedService,

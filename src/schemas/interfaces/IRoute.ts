@@ -1,4 +1,5 @@
 import Permission from '@Constants/Permission';
+// eslint-disable-next-line no-unused-vars
 import { ComponentType, LazyExoticComponent, ReactNode } from 'react';
 
 export default interface IRoute {
