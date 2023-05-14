@@ -1,6 +1,7 @@
+import hasErrorBoundary from '@Molecules/_lib_/hasErrorBoundary';
 import DashboardPageTemplate from '@Templates/DashboardPageTemplate';
 
-export default function DashboardPage() {
-  // const testVar = null;
+function DashboardPage() {
   return <DashboardPageTemplate />;
 }
+export default hasErrorBoundary(DashboardPage);

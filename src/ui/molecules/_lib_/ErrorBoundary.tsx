@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react/state-in-constructor */
-/* eslint-disable react/destructuring-assignment */
 import Icon from '@Atoms/Icon';
 import { Component, ReactNode } from 'react';
 
