@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useMutation, UseMutationResult, useQuery, UseQueryResult, useQueryClient } from 'react-query';
 import {
   getPaginatedService,
@@ -22,12 +20,12 @@ class Query<T> {
 
   key = 'mutation_key';
 
-  ClassModule: T;
+  ClassModule?: T;
 
-  constructor(url: string, key: string, ClassModule: T) {
+  constructor(url: string, key: string, ClassModule?: T) {
     this.url = url;
     this.key = key;
-    this.ClassModule = ClassModule;
+    this.ClassModule = ClassModule || undefined;
   }
 
   /**
@@ -38,7 +36,7 @@ class Query<T> {
   public fetchData(queryParams?: QueryParamsType<T>): UseQueryResult<T | T[], Error> {
     return useQuery<T | T[], Error>({
       queryKey: [this.key],
-      queryFn: () => getService(this.url, this.ClassModule),
+      queryFn: () => (this.ClassModule ? getService(this.url, this.ClassModule) : getService(this.url)),
       ...queryParams,
     });
   }
@@ -103,7 +101,7 @@ class Query<T> {
 
   public patchData(
     mutationParams: MutationParamsType,
-    payload: Record<string, any>,
+    params: Record<string, any>,
   ): UseMutationResult<T, Error, void, unknown> {
     const queryClient = useQueryClient();
     return useMutation<T, Error, void, unknown>({
@@ -111,7 +109,7 @@ class Query<T> {
       onMutate: () => {
         //* display patching data notification
       },
-      mutationFn: () => patchService(this.url, payload),
+      mutationFn: () => patchService(this.url, params),
       onSuccess: () => {
         // const previousData: T[] | undefined = queryClient.getQueryData(this.key);
         // if (previousData) {
