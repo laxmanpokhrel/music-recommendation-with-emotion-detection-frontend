@@ -3,7 +3,6 @@ import ProjectCard, { ProjectCardSkeleton } from '@Molecules/ProjectCard';
 import { v4 as uuid } from 'uuid';
 import Asynqueror from '@Molecules/_lib_/Asynqueror';
 import ApiFactory from '@Api/ApiFactory';
-import hasErrorBoundary from '@Molecules/_lib_/hasErrorBoundary';
 
 function DashboardProjectSkeleton() {
   return (
@@ -30,4 +29,4 @@ function Dashboardproject() {
     </Asynqueror>
   );
 }
-export default hasErrorBoundary(Dashboardproject);
+export default Dashboardproject;

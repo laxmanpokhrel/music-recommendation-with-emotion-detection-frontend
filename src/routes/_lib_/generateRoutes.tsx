@@ -1,6 +1,6 @@
-import IRoute from '@Schemas/interfaces/IRoute';
 import { Route, Routes } from 'react-router-dom';
-import { ReactNode, Suspense } from 'react';
+import { ReactNode, Suspense, useEffect } from 'react';
+import IRoute from '@Schemas/interfaces/IRoute';
 import Fallback from '@CustomComponents/Falback';
 
 interface IGenerateRouteParams {
@@ -12,7 +12,7 @@ export default function generateRoutes({ routes, fallback = <Fallback /> }: IGen
     <Suspense fallback={fallback}>
       <Routes>
         {routes?.map((route) => (
-          <Route key={JSON.stringify(route)} path={route.path} element={<route.component />} />
+          <Route key={route.name} path={route.path} element={<route.component />} />
         ))}
       </Routes>
     </Suspense>

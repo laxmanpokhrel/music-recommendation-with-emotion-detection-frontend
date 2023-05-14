@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+// import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react-swc';
+
 dotenv.config();
 export default defineConfig({
   plugins: [react()],
@@ -32,6 +34,7 @@ export default defineConfig({
   define: {
     'process.env': {
       BASE_URL: process.env.BASE_URL,
+      SITE_NAME: process.env.SITE_NAME,
     },
   },
   server: {
