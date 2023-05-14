@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable class-methods-use-this */
 import Query from './_lib_/Query';
 
 class ApiFactory {
@@ -13,7 +11,7 @@ class ApiFactory {
    * @returns Unique `Query` object
    */
   createQuery<T>(url: string, key: string, ClassModule?: T) {
-    const indentifier = `${url}-${key}`;
+    const indentifier = `${url}-${key}-${ClassModule ? 'with-class-module' : 'without-class-module'}`;
     let query = ApiFactory.cache.get(indentifier);
     if (!query) {
       query = ClassModule ? new Query<T>(url, key, ClassModule) : new Query<T>(url, key);
