@@ -9,7 +9,7 @@ const templateSlice = createSlice({
     templateReducerOne(state, action) {
       state.templateContent = action.payload;
     },
-    templateReducerTwo(state, action) {
+    templateReducerTwo(state) {
       state.templateContent = null;
     },
   },
