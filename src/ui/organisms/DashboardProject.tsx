@@ -15,8 +15,7 @@ function DashboardProjectSkeleton() {
 }
 
 function Dashboardproject() {
-  const apiFactory = new ApiFactory();
-  const projectApi = apiFactory.createQuery({
+  const projectApi = ApiFactory.createQuery({
     key: 'project',
     url: '/projects',
     ClassModule: Project,
