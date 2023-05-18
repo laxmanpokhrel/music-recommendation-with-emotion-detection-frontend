@@ -1,7 +1,7 @@
 interface IErrorMolecule {
   errorMessage?: string;
 }
-export default function ErrorMolecule({ errorMessage = 'Something went wrong!' }: IErrorMolecule) {
+export default function DefaultErrorMolecule({ errorMessage = 'Something went wrong!' }: IErrorMolecule) {
   return (
     <div className="naxatw-w-full naxatw-h-full naxatw-flex naxatw-justify-center naxatw-items-center naxatw-bg-blend-color-burn naxatw-bg-[#F6F8FB]">
       <div className="content-cover naxatw-flex  naxatw-w-fit naxatw-h-fit naxatw-items-center naxatw-justify-center naxatw-gap-4 naxatw-bg-gray-200 naxatw-px-3 naxatw-py-1 naxatw-rounded-lg  naxatw-bg-opacity-50">

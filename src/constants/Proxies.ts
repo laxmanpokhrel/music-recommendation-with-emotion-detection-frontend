@@ -1,5 +1,6 @@
 enum Proxies {
-  api='/api',
+  api = '/api',
+  fastapi = '/fastapi',
 }
 
 export default Proxies;

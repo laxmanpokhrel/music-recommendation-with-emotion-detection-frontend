@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import { ReactNode, Suspense, useEffect } from 'react';
-import IRoute from '@Schemas/interfaces/IRoute';
+import { ReactNode, Suspense } from 'react';
+import IRoute from '@Schemas/interfaces';
 import Fallback from '@CustomComponents/Falback';
 
 interface IGenerateRouteParams {

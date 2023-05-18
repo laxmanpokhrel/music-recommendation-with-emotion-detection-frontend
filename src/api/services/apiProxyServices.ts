@@ -6,8 +6,8 @@ import { api } from '@Api/config';
  * @returns the object instances of the data received from the server
  */
 
-export const getService = async (proxy: string, path: string, ClassModule?: any) => {
-  const response = await api.get(`${proxy}${path}`);
+export const getService = async (proxy: string, path: string, ClassModule?: any, params?: Record<string, any>) => {
+  const response = await api.get(`${proxy}${path}`, params);
   const instances = ClassModule
     ? response.data.map((item: any) => {
         return new ClassModule(item);
@@ -41,10 +41,17 @@ export const hardDeleteService = async (proxy: string, path: string, id: string)
   return response.data;
 };
 
-export const getPaginatedService = async (proxy: string, path: string, pageNumber: string, ClassModule: any) => {
-  const response = await api.get(`${proxy}${path}`, { params: { page: pageNumber } });
-  const instances = response.data.map((item: any) => {
-    return new ClassModule(item);
-  });
+export const getPaginatedService = async (
+  proxy: string,
+  path: string,
+  ClassModule?: any,
+  params?: Record<string, any>,
+) => {
+  const response = await api.get(`${proxy}${path}`, params);
+  const instances = ClassModule
+    ? response.data.results.map((item: any) => {
+        return new ClassModule(item);
+      })
+    : response.data.results;
   return instances;
 };

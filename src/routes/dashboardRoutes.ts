@@ -1,8 +1,8 @@
-import IRoute from '@Schemas/interfaces/IRoute';
+import IRoute from '@Schemas/interfaces';
 import DashboardHome from '@Organisms/DashboardHome';
 import Dashboardproject from '@Organisms/DashboardProject';
-import DashboardAbout from '@Organisms/DashboardAbout';
 import DashboardComponents from '@Organisms/DashboardComponents';
+import DashboardProxyTest from '@Organisms/DashboardProxyTest';
 
 const dashboardRoutes: IRoute[] = [
   {
@@ -18,9 +18,9 @@ const dashboardRoutes: IRoute[] = [
     authenticated: false,
   },
   {
-    path: '/about',
-    name: 'About ',
-    component: DashboardAbout,
+    path: '/proxy-test',
+    name: 'Proxy Test',
+    component: DashboardProxyTest,
     authenticated: false,
   },
   {
