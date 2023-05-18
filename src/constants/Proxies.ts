@@ -1,5 +1,5 @@
 enum Proxies {
-  '/api',
+  api='/api',
 }
 
 export default Proxies;

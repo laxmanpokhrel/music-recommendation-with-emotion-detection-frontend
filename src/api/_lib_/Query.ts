@@ -22,9 +22,12 @@ class Query<T> {
 
   ClassModule?: T;
 
-  constructor(url: string, key: string, ClassModule?: T) {
+  proxy: string;
+
+  constructor(url: string, key: string, proxy: string, ClassModule?: T) {
     this.url = url;
     this.key = key;
+    this.proxy = proxy;
     this.ClassModule = ClassModule || undefined;
   }
 
@@ -36,7 +39,8 @@ class Query<T> {
   public fetchData(queryParams?: QueryParamsType<T>): UseQueryResult<T | T[], Error> {
     return useQuery<T | T[], Error>({
       queryKey: [this.key],
-      queryFn: () => (this.ClassModule ? getService(this.url, this.ClassModule) : getService(this.url)),
+      queryFn: () =>
+        this.ClassModule ? getService(this.proxy, this.url, this.ClassModule) : getService(this.proxy, this.url),
       ...queryParams,
     });
   }
@@ -50,7 +54,7 @@ class Query<T> {
   public fetchSingleData(id: string, queryParams?: QueryParamsType<T>): UseQueryResult<T | T[], Error> {
     return useQuery<T | T[], Error>({
       queryKey: [`singular-${this.key}`],
-      queryFn: () => getSingleService(this.url, id, this.ClassModule),
+      queryFn: () => getSingleService(this.proxy, this.url, id, this.ClassModule),
       ...queryParams,
     });
   }
@@ -58,7 +62,7 @@ class Query<T> {
   public fetchPaginatedleData(id: string, queryParams?: QueryParamsType<T>): UseQueryResult<T | T[], Error> {
     return useQuery<T | T[], Error>({
       queryKey: [`paginated-${this.key}`],
-      queryFn: () => getPaginatedService(this.url, id, this.ClassModule),
+      queryFn: () => getPaginatedService(this.proxy, this.url, id, this.ClassModule),
       ...queryParams,
       keepPreviousData: true,
     });
@@ -70,7 +74,7 @@ class Query<T> {
    * @param payload Payload to deliver to the server.
    * @returns
    */
-
+ 
   public postData(
     mutationParams: MutationParamsType,
     payload: Record<string, any>,
@@ -81,7 +85,7 @@ class Query<T> {
       onMutate: () => {
         //* display postinfo data notification
       },
-      mutationFn: () => postService(this.url, payload),
+      mutationFn: () => postService(this.proxy, this.url, payload),
       onSuccess: () => {
         // const previousData: T[] | undefined = queryClient.getQueryData(this.key);
         // if (previousData) queryClient.setQueryData(this.key, [data, ...previousData]);
@@ -109,7 +113,7 @@ class Query<T> {
       onMutate: () => {
         //* display patching data notification
       },
-      mutationFn: () => patchService(this.url, params),
+      mutationFn: () => patchService(this.proxy, this.url, params),
       onSuccess: () => {
         // const previousData: T[] | undefined = queryClient.getQueryData(this.key);
         // if (previousData) {
@@ -137,7 +141,7 @@ class Query<T> {
       onMutate: () => {
         //* display deleting data notification
       },
-      mutationFn: () => softDeleteService(this.url, id),
+      mutationFn: () => softDeleteService(this.proxy, this.url, id),
       onSuccess: () => {
         // const previousData: T[] | undefined = queryClient.getQueryData(this.key);
         // if (previousData) {
@@ -168,7 +172,7 @@ class Query<T> {
       onMutate: () => {
         // * display posting data notification
       },
-      mutationFn: () => hardDeleteService(this.url, id),
+      mutationFn: () => hardDeleteService(this.proxy, this.url, id),
       onSuccess: () => {
         // * Here we can follow two approach for updating the list
         // * 1. We can manually search the data and remove it, which is done as:
