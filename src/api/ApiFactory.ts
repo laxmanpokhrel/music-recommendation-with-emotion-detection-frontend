@@ -5,6 +5,7 @@ interface ICreateQueryProps<T> {
   key: string;
   proxy?: Proxies;
   ClassModule?: T;
+  authenticated?: boolean;
 }
 
 class ApiFactory {
@@ -18,13 +19,15 @@ class ApiFactory {
    * @param ClassModule The class model to which the response data belongs to so that data is received along with the methods specified on that model class.
    * @returns Unique `Query` object
    */
-  static createQuery<T>({ url, key, ClassModule, proxy = Proxies.api }: ICreateQueryProps<T>) {
+  static createQuery<T>({ url, key, ClassModule, proxy = Proxies.api, authenticated = false }: ICreateQueryProps<T>) {
     const indentifier = `${key}-${proxy}-${url}-${
-      ClassModule ? `with-class-module ${ClassModule.toString()}` : 'without-class-module'
+      ClassModule ? `with-class-module-${ClassModule.toString()}` : 'without-class-module'
     }`;
     let query = ApiFactory.cache.get(indentifier);
     if (!query) {
-      query = ClassModule ? new Query<T>(url, key, proxy, ClassModule) : new Query<T>(url, key, proxy);
+      query = ClassModule
+        ? new Query<T>(authenticated, url, key, proxy, ClassModule)
+        : new Query<T>(authenticated, url, key, proxy);
       ApiFactory.cache.set(indentifier, query);
     }
     return query;

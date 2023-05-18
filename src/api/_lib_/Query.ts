@@ -17,18 +17,21 @@ import { IFetchDataProps, IFetchPaginatedDataProps } from '@Schemas/interfaces';
  * NOTE: key you provided will be used by fetch methods without modifying them, but other methods will add the service name provided by the method as prefix Eg: `post-mutation_key`
  */
 class Query<T> {
-  url = '';
+  url: string;
 
   key = 'mutation_key';
 
-  ClassModule?: T;
-
   proxy: string;
 
-  constructor(url: string, key: string, proxy: string, ClassModule?: T) {
+  authenticated: boolean;
+
+  ClassModule?: T;
+
+  constructor(authenticated: boolean, url: string, key: string, proxy: string, ClassModule?: T) {
     this.url = url;
     this.key = key;
     this.proxy = proxy;
+    this.authenticated = authenticated;
     this.ClassModule = ClassModule || undefined;
   }
 
@@ -42,8 +45,8 @@ class Query<T> {
       queryKey: [this.proxy, this.key],
       queryFn: () =>
         this.ClassModule
-          ? getService(this.proxy, this.url, this.ClassModule, props.params)
-          : getService(this.proxy, this.url, props.params),
+          ? getService(this.authenticated, this.proxy, this.url, this.ClassModule, props.params)
+          : getService(this.authenticated, this.proxy, this.url, props.params),
       ...props.queryParams,
     });
   }
@@ -57,7 +60,7 @@ class Query<T> {
   public fetchSingleData(id: string, queryParams?: QueryParamsType<T>): UseQueryResult<T | T[], Error> {
     return useQuery<T | T[], Error>({
       queryKey: [this.proxy, `singular-${this.key}`],
-      queryFn: () => getSingleService(this.proxy, this.url, id, this.ClassModule),
+      queryFn: () => getSingleService(this.authenticated, this.proxy, this.url, id, this.ClassModule),
       ...queryParams,
     });
   }
@@ -65,7 +68,7 @@ class Query<T> {
   public fetchPaginatedleData(props: IFetchPaginatedDataProps<T> = { params: {} }): UseQueryResult<T | T[], Error> {
     return useQuery<T | T[], Error>({
       queryKey: [this.proxy, `paginated-${this.key}`],
-      queryFn: () => getPaginatedService(this.proxy, this.url, this.ClassModule),
+      queryFn: () => getPaginatedService(this.authenticated, this.proxy, this.url, this.ClassModule, props.params),
       ...props.queryParams,
       keepPreviousData: true,
     });
@@ -88,7 +91,7 @@ class Query<T> {
       onMutate: () => {
         //* display postinfo data notification
       },
-      mutationFn: () => postService(this.proxy, this.url, payload),
+      mutationFn: () => postService(this.authenticated, this.proxy, this.url, payload),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: [this.key] });
         //* show notification here
@@ -112,7 +115,7 @@ class Query<T> {
     return useMutation<T, Error, void, unknown>({
       mutationKey: [this.proxy, `patch-${this.key}`],
       onMutate: () => {},
-      mutationFn: () => patchService(this.proxy, this.url, params),
+      mutationFn: () => patchService(this.authenticated, this.proxy, this.url, params),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: [this.key] });
       },
@@ -131,7 +134,7 @@ class Query<T> {
     return useMutation<T, Error, void, unknown>({
       mutationKey: [this.proxy, `delete-${this.key}-s`],
       onMutate: () => {},
-      mutationFn: () => softDeleteService(this.proxy, this.url, id),
+      mutationFn: () => softDeleteService(this.authenticated, this.proxy, this.url, id),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: [this.key] });
       },
@@ -152,7 +155,7 @@ class Query<T> {
       onMutate: () => {
         // * display posting data notification
       },
-      mutationFn: () => hardDeleteService(this.proxy, this.url, id),
+      mutationFn: () => hardDeleteService(this.authenticated, this.proxy, this.url, id),
       onSuccess: () => {
         // * Here we can follow two approach for updating the list
         // * 1. We can manually search the data and remove it, which is done as:

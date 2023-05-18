@@ -11,7 +11,6 @@ export const api = axios.create({
 });
 
 export const authenticatedApi = axios.create({
-  baseURL: process.env.BASE_URL,
   timeout: 50000,
   headers: {
     Accept: 'application/json',

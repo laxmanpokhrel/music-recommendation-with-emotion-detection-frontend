@@ -1,22 +1,23 @@
-import ApiFactory from '@Api/ApiFactory';
-import Proxies from '@Constants/Proxies';
+// import ApiFactory from '@Api/ApiFactory';
+// import Proxies from '@Constants/Proxies';
 import Asynqueror from '@Molecules/_lib_/Asynqueror';
 import Project from '@Schemas/models/Project';
+import useDashboardProxyTestFetchers from '@Hooks/useDashboardProxyTest';
 
 function DashboardProxyTest() {
-  const proxyOne = ApiFactory.createQuery({
-    key: 'proxy-one',
-    url: '/projects',
-    ClassModule: Project,
-  });
-  const proxyTwo = ApiFactory.createQuery({
-    key: 'proxy-two',
-    url: '/project',
-    proxy: Proxies.fastapi,
-  });
-
+  // const proxyOne = ApiFactory.createQuery({
+  //   key: 'proxy-one',
+  //   url: '/projects',
+  //   ClassModule: Project,
+  // });
+  // const proxyTwo = ApiFactory.createQuery({
+  //   key: 'proxy-two',
+  //   url: '/project',
+  //   proxy: Proxies.fastapi,
+  // });
+  const { proxyOne, proxyTwo } = useDashboardProxyTestFetchers();
   const proxyOneData = proxyOne.fetchData();
-  const proxyTwoData = proxyTwo.fetchPaginatedleData({ params: { page: 2, limit: 10 } });
+  const proxyTwoData = proxyTwo.fetchPaginatedleData({ params: { page: 2, limit: 4 } });
 
   return (
     <div className="naxatw-flex naxatw-gap-1">

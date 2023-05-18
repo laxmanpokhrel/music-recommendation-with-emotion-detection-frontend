@@ -1,1 +1,4 @@
-3. redix components
+[1]. Logic for authenticated server urls
+[2]. Asyncquerer for paginated data
+[3]. Form state management
+[4]. CRUD model
