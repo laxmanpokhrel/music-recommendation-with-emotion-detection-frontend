@@ -11,7 +11,7 @@ export default function useDashboardProxyTestFetchers() {
   });
   const proxyTwo = ApiFactory.createQuery({
     key: 'proxy-two',
-    url: '/project',
+    url: '/project/',
     proxy: Proxies.fastapi,
   });
 
