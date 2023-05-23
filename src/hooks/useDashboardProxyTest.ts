@@ -13,6 +13,7 @@ export default function useDashboardProxyTestFetchers() {
     key: 'proxy-two',
     url: '/project/',
     proxy: Proxies.fastapi,
+    authenticated: true,
   });
 
   return { proxyOne, proxyTwo };

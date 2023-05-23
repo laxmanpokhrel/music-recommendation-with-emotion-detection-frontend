@@ -13,6 +13,7 @@ export default function DashboardPageTemplate() {
         <SidebarTab navigateTo="/dashboard/nav3" title="NAV 3" />
         <SidebarTab navigateTo="/dashboard/nav4" title="NAV 4" />
         <SidebarTab navigateTo="/dashboard/components" title="Components" />
+        <SidebarTab navigateTo="/dashboard/use-form" title="Use Form" />
         <div className="collapse-btn naxatw-absolute naxatw-right-0 naxatw-translate-x-1/2 naxatw-top-0 naxatw-translate-y-1/2 ">
           <CollapseButton />
         </div>
