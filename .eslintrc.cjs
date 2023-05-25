@@ -46,5 +46,6 @@ module.exports = {
     'class-methods-use-this': 'warn',
     'react/state-in-constructor': 0,
     'react/destructuring-assignment': 0,
+    'no-param-reassign': 'warn',
   },
 };

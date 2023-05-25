@@ -7,16 +7,19 @@ import ApiFactory from '@Api/ApiFactory';
 function DashboardProjectSkeleton() {
   return (
     <div className="naxatw-grid naxatw-grid-cols-2 naxatw-gap-2 naxatw-p-3">
-      {Array.from({ length: 8 }).map((__, index) => (
-        <ProjectCardSkeleton key={`skeleton-${index}`} />
+      {Array.from({ length: 8 }).map(() => (
+        <ProjectCardSkeleton key={uuid()} />
       ))}
     </div>
   );
 }
 
-export default function Dashboardproject() {
-  const apiFactory = new ApiFactory();
-  const projectApi = apiFactory.createQuery('/projects', 'projects', Project);
+function Dashboardproject() {
+  const projectApi = ApiFactory.createQuery({
+    key: 'project',
+    url: '/projects',
+    ClassModule: Project,
+  });
   const projects = projectApi.fetchData();
 
   return (
@@ -29,3 +32,5 @@ export default function Dashboardproject() {
     </Asynqueror>
   );
 }
+
+export default Dashboardproject;

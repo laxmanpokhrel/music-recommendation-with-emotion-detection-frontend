@@ -1,1 +1,4 @@
-3. redix components
+[2]. Asyncquerer for paginated data
+[3]. Form state management
+[4]. CRUD model
+[5]. Loading status multiple components

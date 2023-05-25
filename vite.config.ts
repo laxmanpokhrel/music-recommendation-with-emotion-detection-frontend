@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 import { defineConfig } from 'vite';
+// import react from '@vitejs/plugin-react';
 import react from '@vitejs/plugin-react';
+
 dotenv.config();
 export default defineConfig({
   plugins: [react()],
@@ -32,15 +34,23 @@ export default defineConfig({
   define: {
     'process.env': {
       BASE_URL: process.env.BASE_URL,
+      SITE_NAME: process.env.SITE_NAME,
+      FAST_API: process.env.FAST_API,
     },
   },
   server: {
+    open: true,
     port: 3030,
     proxy: {
       '/api': {
         target: process.env.BASE_URL,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+      '/fastapi': {
+        target: process.env.FAST_API,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/fastapi/, ''),
       },
     },
   },
