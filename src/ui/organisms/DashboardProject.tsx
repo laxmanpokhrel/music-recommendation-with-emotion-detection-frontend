@@ -15,8 +15,11 @@ function DashboardProjectSkeleton() {
 }
 
 function Dashboardproject() {
-  const apiFactory = new ApiFactory();
-  const projectApi = apiFactory.createQuery('/projects', 'projects', Project);
+  const projectApi = ApiFactory.createQuery({
+    key: 'project',
+    url: '/projects',
+    ClassModule: Project,
+  });
   const projects = projectApi.fetchData();
 
   return (
@@ -29,4 +32,5 @@ function Dashboardproject() {
     </Asynqueror>
   );
 }
+
 export default Dashboardproject;

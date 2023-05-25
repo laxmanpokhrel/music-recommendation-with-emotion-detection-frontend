@@ -1,5 +1,5 @@
 import React from 'react';
-import ErrorBoundary from './ErrorBoundary';
+import ErrorBoundary from './DefaultErrorBoundary';
 
 function hasErrorBoundary<T extends { [key: string]: any }>(WrappedComponent: React.FC<T> | React.ComponentClass<T>) {
   return function ErrorBoundaryWrapper(props: T) {

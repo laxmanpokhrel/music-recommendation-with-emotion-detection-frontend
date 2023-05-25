@@ -1,4 +1,4 @@
-import { templateActions } from '@Store/actions';
+import { templateActions } from '@Store/actions/templateAction';
 import { useDispatch } from 'react-redux';
 import { initDomToCode } from 'dom-to-code';
 import generateRoutes from '@Routes/_lib_/generateRoutes';

@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 import { UseQueryResult, UseMutationResult } from 'react-query';
-import EmptyMolecule from '../EmptyMolecule';
-import ErrorMolecule from '../ErrorMolecule';
+import DefaultEmptyMolecule from './DefaultEmptyMolecule';
+import DefaultErrorMolecule from './DefaultErrorMolecule';
+import DefaultSkeleton from './DefaultSkeleton';
 
 interface IAsynquerorProps {
   children?: ReactNode;
@@ -9,7 +10,7 @@ interface IAsynquerorProps {
   skeleton?: JSX.Element | JSX.IntrinsicElements;
   emptyMolecule?: JSX.Element;
   errorMolecule?: JSX.Element;
-  paginated?: boolean;
+  // paginated?: boolean;
 }
 
 /**
@@ -21,14 +22,14 @@ interface IAsynquerorProps {
 export default function Asynqueror({
   watch,
   children,
-  skeleton,
-  emptyMolecule = <EmptyMolecule />,
+  skeleton = <DefaultSkeleton />,
+  emptyMolecule = <DefaultEmptyMolecule />,
   errorMolecule,
 }: IAsynquerorProps) {
   const { data, isLoading, isError, error } = watch;
   if (isError) {
     if (errorMolecule) return errorMolecule;
-    return <ErrorMolecule errorMessage={error?.message} />;
+    return <DefaultErrorMolecule errorMessage={error?.message} />;
   }
   if (isLoading) return <>{skeleton}</>;
   if (!data || !data.length) return emptyMolecule;
