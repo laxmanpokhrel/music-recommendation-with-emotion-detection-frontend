@@ -1,3 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable no-restricted-syntax */
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -16,7 +19,8 @@ export function hasBinaryData(obj: Record<string, any>): boolean {
       const value = obj[key];
       if (value instanceof Blob || value instanceof File || value instanceof ArrayBuffer) {
         return true;
-      } else if (typeof value === 'object' && hasBinaryData(value)) {
+      }
+      if (typeof value === 'object' && hasBinaryData(value)) {
         return true;
       }
     }

@@ -16,8 +16,8 @@ const isPureHtmlTag = (child: ReactNode): child is ReactElement<keyof HTMLElemen
 /**
  ** This Component is not in use for now!
  */
-const AtomTemplate = ({ children }: IAtom) => {
+function AtomTemplate({ children }: IAtom) {
   const pureHtmlTags = Children.toArray(children).filter(isPureHtmlTag);
   return <>{pureHtmlTags}</>;
-};
+}
 export default AtomTemplate;

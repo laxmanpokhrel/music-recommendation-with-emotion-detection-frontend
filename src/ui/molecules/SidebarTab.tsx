@@ -16,7 +16,7 @@ export default function SidebarTab({ navigateTo, title = 'No Title', iconName = 
       to={navigateTo}
       className="sidebar-tab naxatw-flex naxatw-gap-2 naxatw-items-center naxatw-justify-start naxatw-border naxatw-border-gray-100 naxatw-px-2 naxatw-py-1"
     >
-      <Icon iconName={iconName} style="naxatw-text-lg" />
+      <Icon iconName={iconName} iconStyle="naxatw-text-lg" />
       <p className="sidebar-name">{title}</p>
     </NavLink>
   );

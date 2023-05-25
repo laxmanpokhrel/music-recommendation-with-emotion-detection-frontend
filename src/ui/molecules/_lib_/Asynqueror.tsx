@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { UseQueryResult, UseMutationResult } from 'react-query';
-import EmptyMolecule from './EmptyMolecule';
-import ErrorMolecule from './ErrorMolecule';
+import EmptyMolecule from '../EmptyMolecule';
+import ErrorMolecule from '../ErrorMolecule';
 
 interface IAsynquerorProps {
   children?: ReactNode;

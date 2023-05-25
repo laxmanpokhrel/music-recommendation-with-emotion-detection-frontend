@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement } from 'react';
 
 // type HTMLTags = keyof ReactHTML;
 // type HTMLTags = "p" | "span" | "div";
