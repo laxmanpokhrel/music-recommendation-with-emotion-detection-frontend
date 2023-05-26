@@ -22,7 +22,8 @@ export default function useForm(useFormProps: IUseFormProps = { defaultValues: {
     values,
     onChange: (e: any) => {
       const isEvent = e instanceof Event || !!e.target;
-      isEvent ? handleChange(fieldName, e.target.value) : handleChange(fieldName, e);
+      if (isEvent) handleChange(fieldName, e.target.value);
+      else handleChange(fieldName, e);
     },
     required: props.required,
   });

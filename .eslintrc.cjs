@@ -22,6 +22,7 @@ module.exports = {
   plugins: ['react-hooks', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
+    'no-console': 'error',
     'react/react-in-jsx-scope': 0,
     // '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     'react/jsx-props-no-spreading': ['warn', { custom: 'ignore' }],
@@ -46,5 +47,6 @@ module.exports = {
     'class-methods-use-this': 'warn',
     'react/state-in-constructor': 0,
     'react/destructuring-assignment': 0,
+    'no-param-reassign': 'warn',
   },
 };

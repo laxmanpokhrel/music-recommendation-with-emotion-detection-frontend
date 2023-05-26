@@ -1,6 +1,6 @@
-import { ButtonHTMLAttributes, HTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, HTMLAttributes, LazyExoticComponent } from 'react';
 import Permission from '@Constants/Permission';
-import { LazyExoticComponent } from 'react';
+
 import { QueryParamsType } from '@Schemas/types';
 
 export default interface IRoute {

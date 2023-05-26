@@ -1,5 +1,6 @@
-import Proxies from '@Constants/Proxies';
+import { Proxies } from '@Constants/Proxies';
 import Query from './_lib_/Query';
+
 interface ICreateQueryProps<T> {
   url: string;
   key: string;

@@ -1,5 +1,5 @@
 import ApiFactory from '@Api/ApiFactory';
-import Proxies from '@Constants/Proxies';
+import { Proxies } from '@Constants/Proxies';
 import Project from '@Schemas/models/Project';
 
 export default function useDashboardProxyTestFetchers() {
