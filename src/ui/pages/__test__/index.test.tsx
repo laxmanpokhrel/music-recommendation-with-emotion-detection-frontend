@@ -1,12 +1,12 @@
 import { Button } from '@Atoms/radixComponents/Button';
-import { comboboxTestData } from '@Constants/_test_/index.test';
+// import { comboboxTestData } from '@Constants/_test_/index.test';
 import RoundedContainer from '@Molecules/RoundedContainer';
-import Dropdown from '@Atoms/radixComponents/Dropdown';
+// import Dropdown from '@Atoms/radixComponents/Dropdown';
 import DatePicker from '@Atoms/radixComponents/DatePicker';
 import { Input } from '@Atoms/radixComponents/Input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@Atoms/radixComponents/TabList';
-import Combobox from '@Atoms/radixComponents/ComboBox';
-import SearchCommand from '@Atoms/radixComponents/SearchCommand';
+// import Combobox from '@Atoms/radixComponents/ComboBox';
+// import SearchCommand from '@Atoms/radixComponents/SearchCommand';
 import Upload from '@Molecules/Upload';
 
 export default function TestPage() {
@@ -93,7 +93,7 @@ export default function TestPage() {
 
       <h2>Radix components </h2>
 
-      <h5>Combo box with search on dropdown single select</h5>
+      {/* <h5>Combo box with search on dropdown single select</h5>
       <Combobox options={comboboxTestData} />
 
       <h5>Combo box with search on dropdown single select</h5>
@@ -103,7 +103,7 @@ export default function TestPage() {
       <Dropdown options={comboboxTestData} bindvalue="" />
 
       <h5>Multiselect select dropdown</h5>
-      <Dropdown options={comboboxTestData} multiple bindvalue={[]} />
+      <Dropdown options={comboboxTestData} multiple bindvalue={[]} /> */}
 
       <h5>Date Picker</h5>
       <DatePicker canType />
@@ -178,7 +178,7 @@ export default function TestPage() {
       <h3>Heading 3</h3>
       <h4>Heading 4</h4>
       <h5>Heading 5</h5>
-      <SearchCommand choose="id" options={comboboxTestData} />
+      {/* <SearchCommand choose="id" options={comboboxTestData} /> */}
     </div>
   );
 }
