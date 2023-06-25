@@ -13,12 +13,12 @@ class ApiFactory {
   static cache: Map<string, Query<any>> = new Map();
 
   /**
-   *
-   * @param url path name from where the data has to be fetched
+   * The function creates a query object based on provided parameters and caches it for future use.
+   * @param url the URL of the API endpoint to query
    * @param key Unique key that will be used to identify the requests
    * @param proxy which proxy to use? By default it will use "/api" proxy
    * @param ClassModule The class model to which the response data belongs to so that data is received along with the methods specified on that model class.
-   * @returns Unique `Query` object
+   * @returns The function `createQuery` is returning an instance of the `Query` class.
    */
   static createQuery<T>({ url, key, ClassModule, proxy = Proxies.api, authenticated = false }: ICreateQueryProps<T>) {
     const indentifier = `${key}-${proxy}-${url}-${

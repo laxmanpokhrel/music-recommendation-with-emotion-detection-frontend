@@ -32,12 +32,10 @@ class DefaultErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   render() {
     if (this.state.errorInfo) {
       const [fileName, errorLocation] = (this.state.errorInfo as any).componentStack.split('\n ')[1].trim().split(' (');
-      // console.log('😎 - file: ErrorBoundary.tsx:24 - x:', x.length);
-
       return (
         <div className=" naxatw-flex naxatw-bg-pink-200 naxatw-flex-col naxatw-items-center naxatw-justify-center naxatw-gap-1 naxatw-p-4">
           <div className="title  naxatw-flex naxatw-flex-col naxatw-justify-center naxatw-items-center">
-            <Icon iconName="running_with_errors" iconStyle="naxatw-text-red-600 naxatw-text-4xl" />
+            <Icon iconName="running_with_errors" className="naxatw-text-red-600 naxatw-text-4xl" />
             <p className="naxatw-text-gray-800 naxatw-text-lg naxatw-font-bold"> An Error Occurred !</p>
           </div>
           <a

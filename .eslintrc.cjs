@@ -48,5 +48,6 @@ module.exports = {
     'react/state-in-constructor': 0,
     'react/destructuring-assignment': 0,
     'no-param-reassign': 'warn',
+    'no-nested-ternary': 'warn',
   },
 };

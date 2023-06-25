@@ -42,7 +42,9 @@
       "@Schemas/*": ["schemas/*"],
       "@Services/*": ["api/services/*"],
       "@Queries/*": ["api/queries/*"],
-      "@Routes/*": ["routes/*"]
+      "@Routes/*": ["routes/*"],
+      "@Animations/*": ["animations/*"],
+      "@Validation/*": ["validation/*"]
     }
   },
   "include": [".eslintrc.cjs", "src", "src/**/*.ts"],

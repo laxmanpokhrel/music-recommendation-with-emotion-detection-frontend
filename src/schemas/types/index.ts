@@ -12,3 +12,4 @@ export declare type QueryParamsType<T> =
   | QueryObserverOptions<T | T[], Error, T | T[], T | T[], QueryKey>;
 
 export declare type MutationParamsType = MutationOptions<any, Error, any, any>;
+export type FormControlTypes = 'dropDown' | 'combobox' | 'input' | 'upload';

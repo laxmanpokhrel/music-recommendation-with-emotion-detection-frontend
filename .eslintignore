@@ -4,3 +4,6 @@ vite.config.ts
 src/vite-env.d.ts
 src/schemas/types/vite-env.d.ts
 src/constants/Proxies.ts
+src/assets/tailwind.css
+src/assets
+tailwind.config.js

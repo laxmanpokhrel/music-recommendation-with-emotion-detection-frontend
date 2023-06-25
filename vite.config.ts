@@ -1,35 +1,42 @@
-import dotenv from 'dotenv';
 import { defineConfig } from 'vite';
-// import react from '@vitejs/plugin-react';
+import dotenv from 'dotenv';
+// import reactRefresh from '@vitejs/plugin-react-refresh';
+import { domToCodePlugin } from 'dom-to-code/vite';
 import react from '@vitejs/plugin-react';
-
 dotenv.config();
 export default defineConfig({
-  plugins: [react()],
+  base: '/',
+  plugins: [
+    react(),
+    process.env.NODE_ENV !== 'production'
+      ? domToCodePlugin({
+          mode: 'react',
+        })
+      : undefined,
+  ],
   resolve: {
-    extensions: ['.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
-      '@': new URL('./src/', import.meta.url).pathname,
-      '@Assets': new URL('./src/assets/', import.meta.url).pathname,
-      '@Atoms': new URL('./src/ui/atoms/', import.meta.url).pathname,
-      '@Molecules': new URL('./src/ui/molecules/', import.meta.url).pathname,
-      '@Organisms': new URL('./src/ui/organisms/', import.meta.url).pathname,
-      '@Templates': new URL('./src/ui/templates/', import.meta.url).pathname,
-      '@Pages': new URL('./src/ui/pages/', import.meta.url).pathname,
-      '@CustomComponents': new URL('./src/ui/customComponents/', import.meta.url).pathname,
-      '@Utils': new URL('./src/utils/', import.meta.url).pathname,
-      '@Store': new URL('./src/store/', import.meta.url).pathname,
-      '@Schemas': new URL('./src/schemas/', import.meta.url).pathname,
-      '@Hooks': new URL('./src/hooks/', import.meta.url).pathname,
-      '@Api': new URL('./src/api/', import.meta.url).pathname,
-      '@Services': new URL('./src/api/services/', import.meta.url).pathname,
-      '@Constants': new URL('./src/constants/', import.meta.url).pathname,
-      '@Queries': new URL('./src/api/queries/', import.meta.url).pathname,
-      '@Routes': new URL('./src/routes/', import.meta.url).pathname,
+      '@': '/src',
+      '@Assets': '/src/assets',
+      '@Atoms': '/src/ui/atoms',
+      '@Molecules': '/src/ui/molecules',
+      '@Organisms': '/src/ui/organisms',
+      '@Templates': '/src/ui/templates',
+      '@Pages': '/src/ui/pages',
+      '@CustomComponents': '/src/ui/customComponents',
+      '@Utils': '/src/utils',
+      '@Store': '/src/store',
+      '@Schemas': '/src/schemas',
+      '@Hooks': '/src/hooks',
+      '@Api': '/src/api',
+      '@Services': '/src/api/services',
+      '@Constants': '/src/constants',
+      '@Queries': '/src/api/queries',
+      '@Routes': '/src/routes',
+      '@Animations': '/src/animations',
+      '@Validation': '/src/validation',
     },
-  },
-  build: {
-    sourcemap: true,
   },
   define: {
     'process.env': {
@@ -40,7 +47,7 @@ export default defineConfig({
   },
   server: {
     open: true,
-    port: 3030,
+    port: 3040,
     proxy: {
       '/api': {
         target: process.env.BASE_URL,

@@ -3,8 +3,9 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { AnimatePresence } from 'framer-motion';
 import App from './App';
-import './index.css';
+import './assets/css/index.css';
 import store from './store';
 
 const queryClient = new QueryClient({
@@ -19,12 +20,14 @@ const queryClient = new QueryClient({
 });
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <QueryClientProvider client={queryClient}>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-    <ReactQueryDevtools initialIsOpen={false} />
-  </QueryClientProvider>,
+  <AnimatePresence>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  </AnimatePresence>,
 );

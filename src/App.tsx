@@ -4,6 +4,8 @@ import { initDomToCode } from 'dom-to-code';
 import generateRoutes from '@Routes/_lib_/generateRoutes';
 import appRoutes from '@Routes/appRoutes';
 import testRoutes from '@Routes/_test_/index.test';
+import 'react-day-picker/dist/style.css';
+import './assets/css/tailwind.css';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -12,10 +14,14 @@ export default function App() {
   return (
     <>
       {process.env.NODE_ENV !== 'production' && initDomToCode()}
-      <div className="App">
-        {process.env.NODE_ENV !== 'production'
-          ? generateRoutes({ routes: [...testRoutes, ...appRoutes] })
-          : generateRoutes({ routes: appRoutes })}
+      <div className="naxatw-m-auto naxatw-bg-white naxatw-h-fit">
+        <div className="App">
+          <div className="app-playground">
+            {process.env.NODE_ENV !== 'production'
+              ? generateRoutes({ routes: [...testRoutes, ...appRoutes] })
+              : generateRoutes({ routes: appRoutes })}
+          </div>
+        </div>
       </div>
     </>
   );

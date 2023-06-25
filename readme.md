@@ -51,3 +51,5 @@ give path as
 - replace classes with color variables with project color variables
 - add missing dependencies ( if npx failed to install dependencies automatically e.g: @radix-ui/react-select )
 
+
+## We are using base pixel as 10px, so that it is easier for us to convert pixels to rem. For Example; now 1rem = 10px similarly, 34px = 3.4rem 

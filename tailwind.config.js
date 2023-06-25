@@ -1,16 +1,66 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
-        primaryfont: ["product-sans", "sans-serif"],
+        primary: ['product sans', 'sans-serif'],
+        // primaryBold: ['product sans medium;', 'sans-serif'],
+        // primaryItalic: ['Product-Sans-Italic', 'sans-serif'],
+        // primaryItalicBold: ['Product-Sans-Bold-Italic', 'sans-serif'],
       },
-      colors:{
-        primarycolor:"blue",
-      }
+      colors: {
+        blue: {
+          50: '#E3F2FF',
+          100: '#BADFFF',
+          200: '#5BB6FF',
+          300: '#0097FF',
+          400: '#0088F8',
+          500: '#0077E4',
+          600: '#0664D2',
+          700: '#0A45B3',
+          800: '#003675',
+          900: '#0F204C',
+        },
+        'teal-green': {
+          50: '#DFF2EF',
+          100: '#AFDED6',
+          200: '#7ACABC',
+          300: '#42B4A2',
+          400: '#05A48E',
+          500: '#00947C',
+          600: '#008770',
+          700: '#007760',
+          800: '#006752',
+          900: '#004B37',
+        },
+        gray: {
+          50: '#FAFAFA',
+          100: '#F2F2F2',
+          200: '#E6E6E6',
+          300: '#D7D7D7',
+          400: '#BDBDBD',
+          500: '#989898',
+          600: '#757575',
+          700: '#616161',
+          800: '#484848',
+          900: '#212121',
+        },
+        other: {
+          green: '#009061',
+          red: '#D33A38',
+          yellow: '#F6C644',
+          blue: '#0076FF',
+          purple: '#AB47BC',
+          'green-light': '#E7F3E8',
+          'red-light': '#FBE2E2',
+          'yellow-light': '#FBF3E1',
+          'blue-light': '#E1EDFB',
+          'purple-light': '#F2E8F4',
+        },
+      },
     },
   },
   plugins: [],
-  prefix: "naxatw-",
+  prefix: 'naxatw-',
 };

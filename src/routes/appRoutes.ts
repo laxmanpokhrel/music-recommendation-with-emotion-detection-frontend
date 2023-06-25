@@ -2,10 +2,12 @@ import React from 'react';
 import IRoute from '@Schemas/interfaces';
 
 // Lazy loading
-//*  Please consider to rethink before implementing lazy loading
+//*  Please consider rethinking before implementing lazy loading
 const HomePage = React.lazy(() => import('@Pages/HomePage'));
-const DashboardPage = React.lazy(() => import('@Pages/DashboardPage'));
-const AboutPage = React.lazy(() => import('@Pages/AboutPage'));
+const MusicProfile = React.lazy(() => import('@Pages/MusicProfile'));
+const MoodDetector = React.lazy(() => import('@Pages/MoodDetector'));
+const ExploreMoreMusicWithMood = React.lazy(() => import('@Pages/ExploreMoreMusicWithMood'));
+const UploadMusic = React.lazy(() => import('@Pages/UploadMusic'));
 
 const appRoutes: IRoute[] = [
   {
@@ -15,15 +17,33 @@ const appRoutes: IRoute[] = [
     authenticated: false,
   },
   {
-    path: '/about',
-    name: 'About ',
-    component: AboutPage,
+    path: '/music/:musicId',
+    name: 'Music Profile ',
+    component: MusicProfile,
     authenticated: false,
   },
   {
-    path: '/dashboard/*',
-    name: 'Dashboard ',
-    component: DashboardPage,
+    path: '/detect-mood',
+    name: 'Detect Mood ',
+    component: MoodDetector,
+    authenticated: false,
+  },
+  {
+    path: '/explore-more',
+    name: 'Explore More Music',
+    component: ExploreMoreMusicWithMood,
+    authenticated: false,
+  },
+  {
+    path: '/upload-music',
+    name: 'Upload Music',
+    component: UploadMusic,
+    authenticated: false,
+  },
+  {
+    path: '/your-music',
+    name: 'Your Music',
+    component: HomePage,
     authenticated: false,
   },
 ];
