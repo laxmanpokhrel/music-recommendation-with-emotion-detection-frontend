@@ -6,32 +6,32 @@ import { VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@Utils/index';
 
 const buttonVariants = cva(
-  'naxatw-inline-flex naxatw-items-center naxatw-justify-center naxatw-rounded-md naxatw-text-sm naxatw-font-medium naxatw-transition-all focus-visible:naxatw-outline-none focus-visible:naxatw-ring-2 focus-visible:ring-ring focus-visible:naxatw-ring-offset-2 disabled:naxatw-opacity-50 disabled:naxatw-pointer-events-none ring-offset-background',
+  'laxutw-inline-flex laxutw-items-center laxutw-justify-center laxutw-rounded-md laxutw-text-sm laxutw-font-medium laxutw-transition-all focus-visible:laxutw-outline-none focus-visible:laxutw-ring-2 focus-visible:ring-ring focus-visible:laxutw-ring-offset-2 disabled:laxutw-opacity-50 disabled:laxutw-pointer-events-none ring-offset-background',
   {
     variants: {
       variant: {
         primary:
-          ' naxatw-bg-teal-green-400 hover:naxatw-bg-teal-green-600 naxatw-rounded-[8px] naxatw-font-[700] naxatw-text-white naxatw-text-[14px]',
+          ' laxutw-bg-teal-green-400 hover:laxutw-bg-teal-green-600 laxutw-rounded-[8px] laxutw-font-[700] laxutw-text-white laxutw-text-[14px]',
         secondary:
-          ' naxatw-border naxatw-border-teal-green-400 hover:naxatw-bg-teal-green-50 naxatw-rounded-[8px] naxatw-text-teal-green-400 naxatw-font-[700] naxatw-text-[14px]',
-        link: 'naxatw-rounded-[8px] naxatw-outline-none naxatw-text-teal-green-400 hover:naxatw-text-teal-600 naxatw-text-[14px]',
+          ' laxutw-border laxutw-border-teal-green-400 hover:laxutw-bg-teal-green-50 laxutw-rounded-[8px] laxutw-text-teal-green-400 laxutw-font-[700] laxutw-text-[14px]',
+        link: 'laxutw-rounded-[8px] laxutw-outline-none laxutw-text-teal-green-400 hover:laxutw-text-teal-600 laxutw-text-[14px]',
         'primary-disabled':
-          'naxatw-bg-gray-400 naxatw-cursor-default naxatw-font-[700] naxatw-text-white naxatw-text-[14px]',
+          'laxutw-bg-gray-400 laxutw-cursor-default laxutw-font-[700] laxutw-text-white laxutw-text-[14px]',
         'secondary-disabled':
-          'naxatw-cursor-default naxatw-border naxatw-border-gray-400 naxatw-text-gray-400 naxatw-font-[700] naxatw-text-[14px]',
-        'link-disabled': 'naxatw-cursor-default naxatw-text-gray-400 naxatw-font-[700] naxatw-text-[14px]',
-        drop: 'naxatw-bg-white naxatw-text-gray-900 naxatw-font-[400] naxatw-text-[14px] naxatw-border naxatw-border-gray-400 hover:naxatw-bg-teal-green-50 focus:naxatw-border-gray-900',
-        outline: 'naxatw-border naxatw-border-input',
-        ghost: 'naxatw-border naxatw-border-gray-400 naxatw-text-gray-600 naxatw-opacity-60 naxatw-pointer-events-none',
-        'icon-primary': 'naxatw-border-none naxatw-bg-white hover:naxatw-bg-teal-green-50',
-        'icon-secondary': 'naxatw-border-none naxatw-border-2 naxatw-border-[#D7D7D7]',
+          'laxutw-cursor-default laxutw-border laxutw-border-gray-400 laxutw-text-gray-400 laxutw-font-[700] laxutw-text-[14px]',
+        'link-disabled': 'laxutw-cursor-default laxutw-text-gray-400 laxutw-font-[700] laxutw-text-[14px]',
+        drop: 'laxutw-bg-white laxutw-text-gray-900 laxutw-font-[400] laxutw-text-[14px] laxutw-border laxutw-border-gray-400 hover:laxutw-bg-teal-green-50 focus:laxutw-border-gray-900',
+        outline: 'laxutw-border laxutw-border-input',
+        ghost: 'laxutw-border laxutw-border-gray-400 laxutw-text-gray-600 laxutw-opacity-60 laxutw-pointer-events-none',
+        'icon-primary': 'laxutw-border-none laxutw-bg-white hover:laxutw-bg-teal-green-50',
+        'icon-secondary': 'laxutw-border-none laxutw-border-2 laxutw-border-[#D7D7D7]',
       },
       size: {
-        lg: 'naxatw-h-[44px] naxatw-px-8 naxatw-rounded-md',
-        sm: 'naxatw-h-[36px] naxatw-px-[16px] naxatw-py-[18px] naxatw-rounded-md',
-        'lg-icon': 'naxatw-p-[0.625rem] naxatw-h-fit',
-        'sm-icon': 'naxatw-p-[0.375rem] naxatw-h-fit',
-        'drop-lg': 'naxatw-h-[44px] naxatw-px-[0.75rem] naxatw-rounded-md',
+        lg: 'laxutw-h-[44px] laxutw-px-8 laxutw-rounded-md',
+        sm: 'laxutw-h-[36px] laxutw-px-[16px] laxutw-py-[18px] laxutw-rounded-md',
+        'lg-icon': 'laxutw-p-[0.625rem] laxutw-h-fit',
+        'sm-icon': 'laxutw-p-[0.375rem] laxutw-h-fit',
+        'drop-lg': 'laxutw-h-[44px] laxutw-px-[0.75rem] laxutw-rounded-md',
       },
     },
     defaultVariants: {

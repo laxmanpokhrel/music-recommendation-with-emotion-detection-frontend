@@ -5,7 +5,7 @@
   /* outline: 1px solid red; */
 }
 /* body {
-  @apply naxatw-bg-red-200;
+  @apply laxutw-bg-red-200;
 } */
 
 .no-scrollbar::-webkit-scrollbar {
@@ -57,5 +57,5 @@
 
 .half-bg-gray::before {
   content: '';
-  @apply naxatw-w-full naxatw-h-[65%] naxatw-absolute naxatw-top-0 naxatw-left-0 naxatw-bg-gray-200 naxatw-z-[-1];
+  @apply laxutw-w-full laxutw-h-[65%] laxutw-absolute laxutw-top-0 laxutw-left-0 laxutw-bg-gray-200 laxutw-z-[-1];
 }

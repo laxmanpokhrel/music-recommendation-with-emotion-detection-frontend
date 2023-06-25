@@ -1,5 +1,5 @@
 export const overlayAnimation = {
-  initial: { translateX: '100%', opacity: 0 },
+  initial: { translateX: '-100%', opacity: 0 },
   animate: { translateX: 0, opacity: 1, scale: 1 },
   transition: { duration: 0.2, ease: 'linear' },
 };

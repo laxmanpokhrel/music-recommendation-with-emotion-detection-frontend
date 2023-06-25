@@ -3,6 +3,6 @@ import { cn } from '@Utils/index';
 
 export default function FormRow({ children, className }: IDivProps) {
   return (
-    <div className={cn('naxatw-flex naxatw-items-start naxatw-gap-[0.75rem] naxatw-w-full', className)}>{children}</div>
+    <div className={cn('laxutw-flex laxutw-items-start laxutw-gap-[0.75rem] laxutw-w-full', className)}>{children}</div>
   );
 }

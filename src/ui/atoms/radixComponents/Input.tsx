@@ -3,7 +3,7 @@ import React from 'react';
 import { cn } from '@Utils/index';
 import Icon from '@Atoms/Icon';
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   hasIcon?: boolean;
   iconName?: string;
   iconPosition?: 'left' | 'right';
@@ -12,7 +12,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   disabled?: boolean;
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Input = React.forwardRef<HTMLInputElement, IInputProps>(
   (
     {
       className,
@@ -28,25 +28,25 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ref,
   ) => {
     const sizeVarient = {
-      sm: 'naxatw-h-[2.25rem]',
-      lg: 'naxatw-h-[2.75rem]',
+      sm: 'laxutw-h-[2.25rem]',
+      lg: 'laxutw-h-[2.75rem]',
     };
     if (hasIcon)
       return (
         <div
           className={cn(
-            `naxatw-bg-white naxatw-flex naxatw-gap-[2px] naxatw-w-full naxatw-items-center naxatw-justify-center naxatw-rounded-md naxatw-border naxatw--[12px] file:naxatw-border-0 file:naxatw-bg-transparent file:naxatw-text-sm file:naxatw-font-medium placeholder:naxatw-text-gray-400 focus-visible:naxatw-outline-none focus-visible:naxatw-ring-2 focus-visible:naxatw-ring-ring focus-visible:naxatw-ring-offset-2 disabled:naxatw-cursor-not-allowed disabled:naxatw-opacity-5 disabled:naxatw-border-b-gray-600`,
+            `laxutw-bg-white laxutw-flex laxutw-gap-[2px] laxutw-w-full laxutw-items-center laxutw-justify-center laxutw-rounded-md laxutw-border laxutw--[12px] file:laxutw-border-0 file:laxutw-bg-transparent file:laxutw-text-sm file:laxutw-font-medium placeholder:laxutw-text-gray-400 focus-visible:laxutw-outline-none focus-visible:laxutw-ring-2 focus-visible:laxutw-ring-ring focus-visible:laxutw-ring-offset-2 disabled:laxutw-cursor-not-allowed disabled:laxutw-opacity-5 disabled:laxutw-border-b-gray-600`,
             className,
             sizeVarient[varientSize],
           )}
         >
           {iconPosition === 'left' && (
-            <Icon iconName={iconName} className={cn('naxatw-text-2xl ', iconStyle)} onClick={onClick} />
+            <Icon iconName={iconName} className={cn('laxutw-text-2xl ', iconStyle)} onClick={onClick} />
           )}
           <input
             type={type}
             className={cn(
-              'naxatw-flex naxatw-pl-[8px] naxatw-h-full naxatw-w-full  naxatw-border-input naxatw-bg-transparent naxatw-text-sm naxatw-ring-offset-background file:naxatw-border-0 file:naxatw-bg-transparent file:naxatw-text-sm file:naxatw-font-medium placeholder:naxatw-text-gray-400  disabled:naxatw-cursor-not-allowed disabled:naxatw-opacity-50 focus:naxatw-border-none focus:naxatw-outline-none hover:naxatw-bg-teal-green-50 naxatw-transition-all naxatw-duration-200',
+              'laxutw-flex laxutw-pl-[8px] laxutw-h-full laxutw-w-full  laxutw-border-input laxutw-bg-transparent laxutw-text-sm laxutw-ring-offset-background file:laxutw-border-0 file:laxutw-bg-transparent file:laxutw-text-sm file:laxutw-font-medium placeholder:laxutw-text-gray-400  disabled:laxutw-cursor-not-allowed disabled:laxutw-opacity-50 focus:laxutw-border-none focus:laxutw-outline-none hover:laxutw-bg-teal-green-50 laxutw-transition-all laxutw-duration-200',
             )}
             ref={ref}
             onClick={onClick}
@@ -55,7 +55,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {iconPosition === 'right' && (
             <Icon
               iconName={iconName}
-              className={cn('naxatw-text-2xl  naxatw-px-[12px]', iconStyle)}
+              className={cn('laxutw-text-2xl  laxutw-px-[12px]', iconStyle)}
               onClick={onClick}
             />
           )}
@@ -66,7 +66,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         type={type}
         className={cn(
-          'naxatw-bg-white naxatw-flex naxatw-h-10 naxatw-w-full naxatw-rounded-md naxatw-border naxatw-border-gray-400 naxatw-bg-transparent naxatw-px-3 naxatw-py-2 naxatw-text-sm naxatw-ring-offset-background file:naxatw-border-0 file:naxatw-bg-transparent file:naxatw-text-sm file:naxatw-font-medium placeholder:naxatw-text-gray-400 focus-visible:naxatw-outline-none focus-visible:naxatw-ring-2 focus-visible:naxatw-ring-ring focus-visible:naxatw-ring-offset-2 disabled:naxatw-cursor-not-allowed disabled:naxatw-opacity-50 hover:naxatw-bg-teal-green-50 naxatw-transition-all naxatw-duration-200',
+          'laxutw-bg-white laxutw-flex laxutw-h-10 laxutw-w-full laxutw-rounded-md laxutw-border laxutw-border-gray-400 laxutw-bg-transparent laxutw-px-3 laxutw-py-2 laxutw-text-sm laxutw-ring-offset-background file:laxutw-border-0 file:laxutw-bg-transparent file:laxutw-text-sm file:laxutw-font-medium placeholder:laxutw-text-gray-400 focus-visible:laxutw-outline-none focus-visible:laxutw-ring-2 focus-visible:laxutw-ring-ring focus-visible:laxutw-ring-offset-2 disabled:laxutw-cursor-not-allowed disabled:laxutw-opacity-50 hover:laxutw-bg-teal-green-50 laxutw-transition-all laxutw-duration-200',
           className,
           sizeVarient[varientSize],
         )}

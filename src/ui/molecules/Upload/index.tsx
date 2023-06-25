@@ -39,15 +39,15 @@ export default function Upload({
   return (
     <div
       className={cn(
-        'naxatw-w-full naxatw-flex naxatw-flex-col naxatw-transition-all naxatw-duration-100 naxatw-ease-in-out ',
+        'laxutw-w-full laxutw-flex laxutw-flex-col laxutw-transition-all laxutw-duration-100 laxutw-ease-in-out ',
         className,
       )}
     >
       <label
         htmlFor={id}
         className={`${
-          files?.length ? 'naxatw-text-teal-green-400 ' : 'naxatw-text-gray-400 '
-        } naxatw-flex naxatw-gap-1 naxatw-font-bold naxatw-cursor-pointer naxatw-p-2`}
+          files?.length ? 'laxutw-text-teal-green-400 ' : 'laxutw-text-gray-400 '
+        } laxutw-flex laxutw-gap-1 laxutw-font-bold laxutw-cursor-pointer laxutw-p-2`}
       >
         <Icon iconName="upload" />
         <p>Upload</p>
@@ -55,7 +55,7 @@ export default function Upload({
           key={uuidv4()}
           type="file"
           id={id}
-          className="naxatw-hidden"
+          className="laxutw-hidden"
           name={name}
           onChange={handleFileChange}
           multiple={multiple}

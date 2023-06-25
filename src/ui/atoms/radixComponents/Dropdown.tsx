@@ -58,17 +58,17 @@ function Dropdown({
           role="combobox"
           aria-expanded={open}
           className={cn(
-            'naxatw-flex naxatw-justify-between naxatw-gap-1 naxatw-bg-white naxatw-items-center',
+            'laxutw-flex laxutw-justify-between laxutw-gap-1 laxutw-bg-white laxutw-items-center',
             className,
           )}
           onClick={() => setOpen(true)}
         >
           {multiple ? (
-            <div className="naxatw-flex naxatw-flex-wrap">
+            <div className="laxutw-flex laxutw-flex-wrap">
               {Array.isArray(value) && value.length > 0 ? (
                 <p>{value.length} items selected</p>
               ) : (
-                <p className="naxatw-body-md naxatw-text-black naxatw-px-0">{placeholder || 'Select options...'}</p>
+                <p className="laxutw-body-md laxutw-text-black laxutw-px-0">{placeholder || 'Select options...'}</p>
               )}
             </div>
           ) : (
@@ -76,21 +76,21 @@ function Dropdown({
               {value ? (
                 options.find((option: IDropDownData) => option[choose] === value)?.label
               ) : (
-                <p className="naxatw-body-md naxatw-text-black naxatw-px-0">{placeholder || 'Select options...'}</p>
+                <p className="laxutw-body-md laxutw-text-black laxutw-px-0">{placeholder || 'Select options...'}</p>
               )}
             </>
           )}
           <Icon
             iconName="arrow_drop_down"
-            className="naxatw-h-4 naxatw-text-black naxatw-w-4 naxatw-flex naxatw-justify-center naxatw-items-center naxatw-shrink-0 naxatw-opacity-50"
+            className="laxutw-h-4 laxutw-text-black laxutw-w-4 laxutw-flex laxutw-justify-center laxutw-items-center laxutw-shrink-0 laxutw-opacity-50"
           />
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="naxatw-p-[0px] naxatw-bg-white naxatw-min-w-full naxatw-block"
+        className="laxutw-p-[0px] laxutw-bg-white laxutw-min-w-full laxutw-block"
         style={{ minWidth: '100%' }}
       >
-        <Command className="naxatw-p-0 naxatw-m-0">
+        <Command className="laxutw-p-0 laxutw-m-0">
           {options.length === 0 && <CommandEmpty>No match found.</CommandEmpty>}
           <CommandGroup className="">
             {options.map((option: IDropDownData) => (
@@ -102,31 +102,31 @@ function Dropdown({
                         ? 'check_box'
                         : 'check_box_outline_blank'
                     }`}
-                    className={`naxatw-mr-[1px] naxatw-text-[20px]
+                    className={`laxutw-mr-[1px] laxutw-text-[20px]
                     ${
                       Array.isArray(value) && value.includes(option[choose] as T)
-                        ? 'naxatw-text-green-600'
-                        : 'naxatw-text-gray-600'
+                        ? 'laxutw-text-green-600'
+                        : 'laxutw-text-gray-600'
                     } `}
                   />
                 ) : (
                   <Icon
                     iconName="done"
-                    className={`naxatw-mr-[1px] naxatw-text-[20px] ${
-                      value === option[choose] ? 'naxatw-opacity-100' : 'naxatw-opacity-0'
+                    className={`laxutw-mr-[1px] laxutw-text-[20px] ${
+                      value === option[choose] ? 'laxutw-opacity-100' : 'laxutw-opacity-0'
                     }`}
                   />
                 )} */}
                 <Icon
                   iconName="done"
-                  className={`naxatw-mr-[1px] naxatw-text-[20px] ${
+                  className={`laxutw-mr-[1px] laxutw-text-[20px] ${
                     !multiple
                       ? value === option[choose]
-                        ? 'naxatw-opacity-100'
-                        : 'naxatw-opacity-0'
+                        ? 'laxutw-opacity-100'
+                        : 'laxutw-opacity-0'
                       : Array.isArray(value) && value.includes(option[choose])
-                      ? 'naxatw-opacity-100'
-                      : 'naxatw-opacity-0'
+                      ? 'laxutw-opacity-100'
+                      : 'laxutw-opacity-0'
                   }`}
                 />
                 {option.label}

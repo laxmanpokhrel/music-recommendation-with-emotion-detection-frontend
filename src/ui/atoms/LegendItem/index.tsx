@@ -7,20 +7,20 @@ export default function LegendItem({ color, name, onLegendClick }: ILegendItemPr
   return (
     <button
       type="button"
-      className="naxatw-flex naxatw-items-center naxatw-justify-center naxatw-gap-2"
+      className="laxutw-flex laxutw-items-center laxutw-justify-center laxutw-gap-2"
       onClick={() => {
         setLegendIsDisabled((prev) => !prev);
         onLegendClick(name);
       }}
     >
       <span
-        className="naxatw-w-[16px] naxatw-h-[16px] naxatw-rounded "
+        className="laxutw-w-[16px] laxutw-h-[16px] laxutw-rounded "
         style={{
           background: legendIsDisabled ? '#D7D7D7' : color,
           border: legendIsDisabled ? '1px solid #D7D7D7' : '',
         }}
       />
-      <p className={`naxatw-text-sm ${legendIsDisabled ? 'naxatw-text-gray-300' : ''}`}>{name}</p>
+      <p className={`laxutw-text-sm ${legendIsDisabled ? 'laxutw-text-gray-300' : ''}`}>{name}</p>
     </button>
   );
 }

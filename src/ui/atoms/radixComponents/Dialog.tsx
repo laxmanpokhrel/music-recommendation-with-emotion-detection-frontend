@@ -10,7 +10,7 @@ const DialogTrigger = DialogPrimitive.Trigger;
 
 const DialogPortal = ({ className, children, ...props }: DialogPrimitive.DialogPortalProps) => (
   <DialogPrimitive.Portal className={cn(className)} {...props}>
-    <div className="naxatw-fixed naxatw-inset-0 naxatw-z-50 naxatw-flex naxatw-items-start naxatw-justify-center sm:naxatw-items-center">
+    <div className="laxutw-fixed laxutw-inset-0 laxutw-z-50 laxutw-flex laxutw-items-start laxutw-justify-center sm:laxutw-items-center">
       {children}
     </div>
   </DialogPrimitive.Portal>
@@ -24,7 +24,7 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      'naxatw-fixed naxatw-inset-0 naxatw-z-50 naxatw-bg-background/80 naxatw-backdrop-blur-sm naxatw-transition-all naxatw-duration-100 data-[state=closed]:naxatw-animate-out data-[state=closed]:naxatw-fade-out data-[state=open]:naxatw-fade-in',
+      'laxutw-fixed laxutw-inset-0 laxutw-z-50 laxutw-bg-background/80 laxutw-backdrop-blur-sm laxutw-transition-all laxutw-duration-100 data-[state=closed]:laxutw-animate-out data-[state=closed]:laxutw-fade-out data-[state=open]:laxutw-fade-in',
       className,
     )}
     {...props}
@@ -41,14 +41,14 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        'naxatw-fixed naxatw-z-50 naxatw-grid naxatw-w-full naxatw-gap-4 naxatw-rounded-b-lg naxatw-border naxatw-bg-background naxatw-p-6 naxatw-shadow-lg naxatw-animate-in data-[state=open]:naxatw-fade-in-90 data-[state=open]:naxatw-slide-in-from-bottom-10 sm:naxatw-max-w-lg sm:naxatw-rounded-lg sm:naxatw-zoom-in-90 data-[state=open]:sm:naxatw-slide-in-from-bottom-0',
+        'laxutw-fixed laxutw-z-50 laxutw-grid laxutw-w-full laxutw-gap-4 laxutw-rounded-b-lg laxutw-border laxutw-bg-background laxutw-p-6 laxutw-shadow-lg laxutw-animate-in data-[state=open]:laxutw-fade-in-90 data-[state=open]:laxutw-slide-in-from-bottom-10 sm:laxutw-max-w-lg sm:laxutw-rounded-lg sm:laxutw-zoom-in-90 data-[state=open]:sm:laxutw-slide-in-from-bottom-0',
         className,
       )}
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="naxatw-absolute naxatw-right-4 naxatw-top-4 naxatw-rounded-sm naxatw-opacity-70 naxatw-ring-offset-background naxatw-transition-opacity hover:naxatw-opacity-100 focus:naxatw-outline-none focus:naxatw-ring-2 focus:naxatw-ring-ring focus:naxatw-ring-offset-2 disabled:naxatw-pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-        <X className="naxatw-h-4 naxatw-w-4" />
+      <DialogPrimitive.Close className="laxutw-absolute laxutw-right-4 laxutw-top-4 laxutw-rounded-sm laxutw-opacity-70 laxutw-ring-offset-background laxutw-transition-opacity hover:laxutw-opacity-100 focus:laxutw-outline-none focus:laxutw-ring-2 focus:laxutw-ring-ring focus:laxutw-ring-offset-2 disabled:laxutw-pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+        <X className="laxutw-h-4 laxutw-w-4" />
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
@@ -58,7 +58,7 @@ DialogContent.displayName = DialogPrimitive.Content.displayName;
 
 const DialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn('naxatw-flex naxatw-flex-col naxatw-space-y-1.5 naxatw-text-center sm:naxatw-text-left', className)}
+    className={cn('laxutw-flex laxutw-flex-col laxutw-space-y-1.5 laxutw-text-center sm:laxutw-text-left', className)}
     {...props}
   />
 );
@@ -67,7 +67,7 @@ DialogHeader.displayName = 'DialogHeader';
 const DialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      'naxatw-flex naxatw-flex-col-reverse sm:naxatw-flex-row sm:naxatw-justify-end sm:naxatw-space-x-2',
+      'laxutw-flex laxutw-flex-col-reverse sm:laxutw-flex-row sm:laxutw-justify-end sm:laxutw-space-x-2',
       className,
     )}
     {...props}
@@ -81,7 +81,7 @@ const DialogTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn('naxatw-text-lg naxatw-font-semibold naxatw-leading-none naxatw-tracking-tight', className)}
+    className={cn('laxutw-text-lg laxutw-font-semibold laxutw-leading-none laxutw-tracking-tight', className)}
     {...props}
   />
 ));
@@ -91,7 +91,7 @@ const DialogDescription = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
 >(({ className, ...props }, ref) => (
-  <DialogPrimitive.Description ref={ref} className={cn('naxatw-text-sm text-muted-foreground', className)} {...props} />
+  <DialogPrimitive.Description ref={ref} className={cn('laxutw-text-sm text-muted-foreground', className)} {...props} />
 ));
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
 

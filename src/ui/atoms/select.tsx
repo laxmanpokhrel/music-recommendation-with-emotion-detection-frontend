@@ -17,14 +17,14 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      'naxatw-flex naxatw-h-10 naxatw-w-full naxatw-items-center naxatw-justify-between naxatw-rounded-md naxatw-border border-input naxatw-bg-transparent naxatw-px-3 naxatw-py-2 naxatw-text-sm ring-offset-background placeholder:text-muted-foreground focus:naxatw-outline-none focus:naxatw-ring-2 focus:ring-ring focus:naxatw-ring-offset-2 disabled:naxatw-cursor-not-allowed disabled:naxatw-opacity-50',
+      'laxutw-flex laxutw-h-10 laxutw-w-full laxutw-items-center laxutw-justify-between laxutw-rounded-md laxutw-border border-input laxutw-bg-transparent laxutw-px-3 laxutw-py-2 laxutw-text-sm ring-offset-background placeholder:text-muted-foreground focus:laxutw-outline-none focus:laxutw-ring-2 focus:ring-ring focus:laxutw-ring-offset-2 disabled:laxutw-cursor-not-allowed disabled:laxutw-opacity-50',
       className,
     )}
     {...props}
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <ChevronDown className="naxatw-h-4 naxatw-w-4 naxatw-opacity-50" />
+      <ChevronDown className="laxutw-h-4 laxutw-w-4 laxutw-opacity-50" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ));
@@ -38,7 +38,7 @@ const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        'naxatw-relative naxatw-z-50 min-w-[8rem] naxatw-overflow-hidden naxatw-rounded-md naxatw-border bg-popover text-popover-foreground naxatw-shadow-md animate-in fade-in-80',
+        'laxutw-relative laxutw-z-50 min-w-[8rem] laxutw-overflow-hidden laxutw-rounded-md laxutw-border bg-popover text-popover-foreground laxutw-shadow-md animate-in fade-in-80',
         position === 'popper' && 'translate-y-1',
         className,
       )}
@@ -47,9 +47,9 @@ const SelectContent = React.forwardRef<
     >
       <SelectPrimitive.Viewport
         className={cn(
-          'naxatw-p-1',
+          'laxutw-p-1',
           position === 'popper' &&
-            'naxatw-h-[var(--radix-select-trigger-height)] naxatw-w-full naxatw-min-w-[var(--radix-select-trigger-width)]',
+            'laxutw-h-[var(--radix-select-trigger-height)] laxutw-w-full laxutw-min-w-[var(--radix-select-trigger-width)]',
         )}
       >
         {children}
@@ -65,7 +65,7 @@ const SelectLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={cn('naxatw-py-1.5 naxatw-pl-8 naxatw-pr-2 naxatw-text-sm naxatw-font-semibold', className)}
+    className={cn('laxutw-py-1.5 laxutw-pl-8 laxutw-pr-2 laxutw-text-sm laxutw-font-semibold', className)}
     {...props}
   />
 ));
@@ -78,13 +78,13 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      'naxatw-relative naxatw-flex naxatw-w-full naxatw-cursor-default naxatw-select-none naxatw-items-center naxatw-rounded-sm naxatw-py-1.5 naxatw-pl-8 naxatw-pr-2 naxatw-text-sm naxatw-outline-none focus:naxatw-bg-primarycolor focus:text-accent-foreground data-[disabled]:naxatw-pointer-events-none data-[disabled]:naxatw-opacity-50',
+      'laxutw-relative laxutw-flex laxutw-w-full laxutw-cursor-default laxutw-select-none laxutw-items-center laxutw-rounded-sm laxutw-py-1.5 laxutw-pl-8 laxutw-pr-2 laxutw-text-sm laxutw-outline-none focus:laxutw-bg-primarycolor focus:text-accent-foreground data-[disabled]:laxutw-pointer-events-none data-[disabled]:laxutw-opacity-50',
     )}
     {...props}
   >
-    <span className="naxatw-absolute naxatw-left-2 naxatw-flex naxatw-h-3.5 naxatw-w-3.5 naxatw-items-center naxatw-justify-center">
+    <span className="laxutw-absolute laxutw-left-2 laxutw-flex laxutw-h-3.5 laxutw-w-3.5 laxutw-items-center laxutw-justify-center">
       <SelectPrimitive.ItemIndicator>
-        <Check className="naxatw-h-4 naxatw-w-4" />
+        <Check className="laxutw-h-4 laxutw-w-4" />
       </SelectPrimitive.ItemIndicator>
     </span>
 
@@ -99,7 +99,7 @@ const SelectSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}
-    className={cn('naxatw--mx-1 naxatw-my-1 naxatw-h-px naxatw-bg-muted', className)}
+    className={cn('laxutw--mx-1 laxutw-my-1 laxutw-h-px laxutw-bg-muted', className)}
     {...props}
   />
 ));

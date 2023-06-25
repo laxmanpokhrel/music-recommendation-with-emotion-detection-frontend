@@ -66,14 +66,14 @@ function Combobox({
           size="drop-lg"
           role="combobox"
           aria-expanded={open}
-          className="naxatw-flex naxatw-justify-between naxatw-pr-3 naxatw-items-center"
+          className="laxutw-flex laxutw-justify-between laxutw-pr-3 laxutw-items-center"
         >
           {multiple ? (
-            <div className="naxatw-flex naxatw-flex-wrap">
+            <div className="laxutw-flex laxutw-flex-wrap">
               {Array.isArray(value) && value.length > 0 ? (
                 <span>{value.length} items selected</span>
               ) : (
-                <span className="naxatw-opacity-50">Select options...</span>
+                <span className="laxutw-opacity-50">Select options...</span>
               )}
             </div>
           ) : (
@@ -81,18 +81,18 @@ function Combobox({
               {value ? (
                 options.find((option: IDropDownData) => option[choose] === value)?.label
               ) : (
-                <span className="naxatw-opacity-50">Select options...</span>
+                <span className="laxutw-opacity-50">Select options...</span>
               )}
             </>
           )}
           <Icon
             iconName="arrow_drop_down"
-            className=" naxatw-h-4 naxatw-w-4 naxatw-flex naxatw-justify-center naxatw-items-center naxatw-shrink-0 naxatw-opacity-50"
+            className=" laxutw-h-4 laxutw-w-4 laxutw-flex laxutw-justify-center laxutw-items-center laxutw-shrink-0 laxutw-opacity-50"
           />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="naxatw-p-[0px] naxatw-bg-white naxatw-w-full" style={{ width: 'inherit' }}>
-        <Command className="naxatw-p-0 naxatw-m-0">
+      <PopoverContent className="laxutw-p-[0px] laxutw-bg-white laxutw-w-full" style={{ width: 'inherit' }}>
+        <Command className="laxutw-p-0 laxutw-m-0">
           <CommandInput
             placeholder="Search data..."
             value={searchQuery}
@@ -101,7 +101,7 @@ function Combobox({
             }}
           />
           {/* {!filteredData.length && (
-            <div className="naxatw-px-2 naxatw-py-1 naxatw-text-gray-500 naxatw-font-extralight">No match found!</div>
+            <div className="laxutw-px-2 laxutw-py-1 laxutw-text-gray-500 laxutw-font-extralight">No match found!</div>
           )} */}
           <CommandEmpty>No match found.</CommandEmpty>
           <CommandGroup>
@@ -109,14 +109,14 @@ function Combobox({
               <CommandItem key={option.label} onSelect={() => handleSelect(option[choose])}>
                 <Icon
                   iconName="done"
-                  className={`naxatw-mr-[1px] naxatw-text-[20px] ${
+                  className={`laxutw-mr-[1px] laxutw-text-[20px] ${
                     !multiple
                       ? value === option[choose]
-                        ? 'naxatw-opacity-100'
-                        : 'naxatw-opacity-0'
+                        ? 'laxutw-opacity-100'
+                        : 'laxutw-opacity-0'
                       : Array.isArray(value) && value.includes(option[choose])
-                      ? 'naxatw-opacity-100'
-                      : 'naxatw-opacity-0'
+                      ? 'laxutw-opacity-100'
+                      : 'laxutw-opacity-0'
                   }`}
                 />
                 {option.label}

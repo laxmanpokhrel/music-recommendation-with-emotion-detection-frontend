@@ -20,18 +20,18 @@ export default function TestPage() {
   // });
 
   return (
-    <div className="naxatw-flex naxatw-flex-col naxatw-gap-4 naxatw-p-6">
+    <div className="laxutw-flex laxutw-flex-col laxutw-gap-4 laxutw-p-6">
       <h1>Testing Page</h1>
       <h6>This page will not appear in production</h6>
 
       <h2>Upload</h2>
-      <Upload className="naxatw-w-[11rem]" placeholder="Type Sth..." type="file" />
+      <Upload className="laxutw-w-[11rem]" placeholder="Type Sth..." type="file" />
       {/* <h2>Form Demo</h2>
-      <RoundedContainer className="naxatw-bg-gray-300 naxatw-p-2 naxatw-w-[50vw] naxatw-flex naxatw-flex-col naxatw-gap-2">
+      <RoundedContainer className="laxutw-bg-gray-300 laxutw-p-2 laxutw-w-[50vw] laxutw-flex laxutw-flex-col laxutw-gap-2">
         <h5>This is a template form</h5>
-        <div className="cover naxatw-flex naxatw-flex-col naxatw-gap-4">
-          <div className="form naxatw-flex naxatw-gap-2 naxatw-w-full naxatw-justify-around">
-            <div className="form-controls naxatw-flex-1 naxatw-flex naxatw-flex-col naxatw-gap-2">
+        <div className="cover laxutw-flex laxutw-flex-col laxutw-gap-4">
+          <div className="form laxutw-flex laxutw-gap-2 laxutw-w-full laxutw-justify-around">
+            <div className="form-controls laxutw-flex-1 laxutw-flex laxutw-flex-col laxutw-gap-2">
               <FormControl
                 type="combobox"
                 label="Test Form Control"
@@ -79,11 +79,11 @@ export default function TestPage() {
               </div>
             </div>
           </div>
-          <div className="form-values naxatw-flex-1">
+          <div className="form-values laxutw-flex-1">
             {Object.keys(values).map((key) => (
-              <div key={key} className=" naxatw-flex naxatw-gap-2 naxatw-mb-1">
+              <div key={key} className=" laxutw-flex laxutw-gap-2 laxutw-mb-1">
                 <p>{key}: </p>
-                <p className="naxatw-bg-green-300 naxatw-p-1 naxatw-rounded-r-xl">{values[key].toString()}</p>
+                <p className="laxutw-bg-green-300 laxutw-p-1 laxutw-rounded-r-xl">{values[key].toString()}</p>
               </div>
             ))}
             <p>Errors: {JSON.stringify(errors)}</p>
@@ -121,18 +121,18 @@ export default function TestPage() {
       </Tabs>
 
       <h5>Input field With icon</h5>
-      <RoundedContainer className="naxatw-flex naxatw-gap-1 naxatw-bg-gray-100 naxatw-p-5">
-        <Input className="naxatw-w-[11rem]" hasIcon iconName="circle" placeholder="Type Sth..." varientSize="lg" />
-        <Input className="naxatw-w-[11rem]" hasIcon iconName="circle" placeholder="Type Sth..." />
+      <RoundedContainer className="laxutw-flex laxutw-gap-1 laxutw-bg-gray-100 laxutw-p-5">
+        <Input className="laxutw-w-[11rem]" hasIcon iconName="circle" placeholder="Type Sth..." varientSize="lg" />
+        <Input className="laxutw-w-[11rem]" hasIcon iconName="circle" placeholder="Type Sth..." />
       </RoundedContainer>
 
       <h5>Input field</h5>
-      <RoundedContainer className="naxatw-flex naxatw-gap-1 naxatw-bg-gray-100 naxatw-p-5">
-        <Input className="naxatw-w-[11rem]" />
-        <Input className="naxatw-w-[11rem]" varientSize="sm" />
+      <RoundedContainer className="laxutw-flex laxutw-gap-1 laxutw-bg-gray-100 laxutw-p-5">
+        <Input className="laxutw-w-[11rem]" />
+        <Input className="laxutw-w-[11rem]" varientSize="sm" />
       </RoundedContainer>
 
-      <RoundedContainer className="naxatw-h-24 naxatw-bg-[#F2F2F2] naxatw-w-2/5 naxatw-p-4 ">
+      <RoundedContainer className="laxutw-h-24 laxutw-bg-[#F2F2F2] laxutw-w-2/5 laxutw-p-4 ">
         <h3>Rounded Container</h3>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet obcaecati ipsum numquam. Accusamus

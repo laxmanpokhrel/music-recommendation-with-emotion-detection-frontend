@@ -12,10 +12,10 @@ export default function ToolTip({ iconName, message }: ToolTipProps) {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger>
-            <Icon iconName={iconName} className=" naxatw-text-gray-600  naxatw-font-light naxatw-text-xl " />
+            <Icon iconName={iconName} className=" laxutw-text-gray-600  laxutw-font-light laxutw-text-xl " />
           </TooltipTrigger>
           <TooltipContent sideOffset={5}>
-            <div className="message naxatw-bg-white naxatw-p-1 naxatw-rounded-lg naxatw-text-sm">{message}</div>
+            <div className="message laxutw-bg-white laxutw-p-1 laxutw-rounded-lg laxutw-text-sm">{message}</div>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>

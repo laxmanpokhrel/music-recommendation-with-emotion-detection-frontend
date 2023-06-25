@@ -16,15 +16,15 @@ export default function NavDropdownMenu({ name, subLink }: NavDropdownMenuProps)
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <div className="naxatw-flex naxatw-gap-0 naxatw-items-center hover:naxatw-text-teal-600">
-          <p className="naxatw-button  naxatw-font-bold"> {name} </p>
+        <div className="laxutw-flex laxutw-gap-0 laxutw-items-center hover:laxutw-text-teal-600">
+          <p className="laxutw-button  laxutw-font-bold"> {name} </p>
           <Icon iconName="arrow_drop_down" className="" />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="">
         {subLink.map((option) => (
           <DropdownMenuItem key={option.name}>
-            <NavLink to={option.link} className="naxatw-body-lg">
+            <NavLink to={option.link} className="laxutw-body-lg">
               <p>{option.name}</p>
             </NavLink>
           </DropdownMenuItem>

@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { IDivProps } from '@Schemas/interfaces';
+import { cn } from '@Utils/index';
 
 interface IProps extends IDivProps {
   aspectRation?: string;
@@ -12,7 +13,7 @@ export default function Image({ aspectRation, className, src, alt, onClick }: IP
   return (
     // eslint-disable-next-line jsx-a11y/interactive-supports-focus
     <div
-      className={`image-cover naxatw-aspect-${aspectRation} ${className}}`}
+      className={cn(`image-cover laxutw-aspect-${aspectRation}`, className)}
       style={{ aspectRatio: aspectRation }}
       onClick={onClick}
     >

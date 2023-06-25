@@ -20,7 +20,7 @@ const RoundedContainer = forwardRef<HTMLDivElement, IRoundedContainerProps>(
     return (
       <div
         ref={ref}
-        className={`naxatw-rounded-[1.25rem]  naxatw-w-fit naxatw-h-fit naxatw-transition-all naxatw-duration-200 ${className}`}
+        className={`laxutw-rounded-[1.25rem]  laxutw-w-fit laxutw-h-fit laxutw-transition-all laxutw-duration-200 ${className}`}
         {...restProps}
       >
         {children}

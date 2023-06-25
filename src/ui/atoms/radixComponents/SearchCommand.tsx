@@ -45,7 +45,7 @@ const SearchCommand = ({ options, choose = 'id', className, onChange, onFocus }:
   };
 
   return (
-    <Command className={`naxatw-p-0 naxatw-m-0 naxatw-border ${className}`}>
+    <Command className={`laxutw-p-0 laxutw-m-0 laxutw-border ${className}`}>
       <CommandInput
         placeholder="Search..."
         value={searchQuery}
@@ -58,7 +58,7 @@ const SearchCommand = ({ options, choose = 'id', className, onChange, onFocus }:
       {open && (
         <>
           {!filteredData.length && (
-            <div className="naxatw-px-2 naxatw-py-1 naxatw-text-gray-500 naxatw-font-extralight">No match found!</div>
+            <div className="laxutw-px-2 laxutw-py-1 laxutw-text-gray-500 laxutw-font-extralight">No match found!</div>
           )}
 
           <CommandGroup>
@@ -66,8 +66,8 @@ const SearchCommand = ({ options, choose = 'id', className, onChange, onFocus }:
               <CommandItem key={option.label} onSelect={() => handleSelect(option[choose])}>
                 <Icon
                   iconName="done"
-                  className={`naxatw-mr-[1px] naxatw-text-[20px] ${
-                    Array.isArray(value) && value.includes(option[choose]) ? 'naxatw-opacity-100' : 'naxatw-opacity-0'
+                  className={`laxutw-mr-[1px] laxutw-text-[20px] ${
+                    Array.isArray(value) && value.includes(option[choose]) ? 'laxutw-opacity-100' : 'laxutw-opacity-0'
                   }`}
                 />
                 {option.label}

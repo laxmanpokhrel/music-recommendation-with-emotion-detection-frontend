@@ -17,14 +17,14 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      'naxatw-flex naxatw-h-10 naxatw-w-full naxatw-items-center naxatw-justify-between naxatw-rounded-md naxatw-border naxatw-border-input naxatw-bg-transparent naxatw-px-3 naxatw-py-2 naxatw-text-sm placeholder:text-muted-foreground focus:naxatw-outline-none focus:naxatw-ring-2 focus:ring-ring focus:naxatw-ring-offset-2 disabled:naxatw-cursor-not-allowed disabled:naxatw-opacity-50',
+      'laxutw-flex laxutw-h-10 laxutw-w-full laxutw-items-center laxutw-justify-between laxutw-rounded-md laxutw-border laxutw-border-input laxutw-bg-transparent laxutw-px-3 laxutw-py-2 laxutw-text-sm placeholder:text-muted-foreground focus:laxutw-outline-none focus:laxutw-ring-2 focus:ring-ring focus:laxutw-ring-offset-2 disabled:laxutw-cursor-not-allowed disabled:laxutw-opacity-50',
       className,
     )}
     {...props}
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <ChevronDown className="naxatw-h-4 naxatw-w-4 naxatw-opacity-50" />
+      <ChevronDown className="laxutw-h-4 laxutw-w-4 laxutw-opacity-50" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ));
@@ -38,8 +38,8 @@ const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        'naxatw-relative naxatw-z-50 naxatw-min-w-[8rem] naxatw-overflow-hidden naxatw-rounded-md naxatw-border bg-popover text-popover-foreground naxatw-shadow-md animate-in fade-in-80',
-        position === 'popper' && 'naxatw-translate-y-1',
+        'laxutw-relative laxutw-z-50 laxutw-min-w-[8rem] laxutw-overflow-hidden laxutw-rounded-md laxutw-border bg-popover text-popover-foreground laxutw-shadow-md animate-in fade-in-80',
+        position === 'popper' && 'laxutw-translate-y-1',
         className,
       )}
       position={position}
@@ -47,7 +47,7 @@ const SelectContent = React.forwardRef<
     >
       <SelectPrimitive.Viewport
         className={cn(
-          'naxatw-p-1',
+          'laxutw-p-1',
           position === 'popper' &&
             'h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]',
         )}

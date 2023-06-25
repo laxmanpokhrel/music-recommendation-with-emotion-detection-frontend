@@ -5,7 +5,7 @@ interface IProps extends React.HTMLAttributes<HTMLElement> {
 
 export default function Chip({ label, className, style }: IProps) {
   return (
-    <div className={`naxatw-p-2 naxatw-bg-slate-200 naxatw-rounded-lg naxatw-body-md ${className}`} style={style}>
+    <div className={`laxutw-p-2 laxutw-bg-slate-200 laxutw-rounded-lg laxutw-body-md ${className}`} style={style}>
       {label}
     </div>
   );

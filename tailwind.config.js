@@ -62,5 +62,5 @@ export default {
     },
   },
   plugins: [],
-  prefix: 'naxatw-',
+  prefix: 'laxutw-',
 };

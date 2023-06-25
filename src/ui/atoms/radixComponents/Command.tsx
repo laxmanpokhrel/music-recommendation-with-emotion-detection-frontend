@@ -14,7 +14,7 @@ const Command = React.forwardRef<
   <CommandPrimitive
     ref={ref}
     className={cn(
-      'naxatw-flex naxatw-h-full naxatw-w-full naxatw-flex-col naxatw-overflow-hidden naxatw-rounded-md bg-popover',
+      'laxutw-flex laxutw-h-full laxutw-w-full laxutw-flex-col laxutw-overflow-hidden laxutw-rounded-md bg-popover',
       className,
     )}
     {...props}
@@ -27,8 +27,8 @@ interface CommandDialogProps extends DialogProps {}
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   return (
     <Dialog {...props}>
-      <DialogContent className="naxatw-overflow-hidden naxatw-p-0 naxatw-shadow-2xl">
-        <Command className="[&_[cmdk-group-heading]]:naxatw-px-2 [&_[cmdk-group-heading]]:naxatw-font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:naxatw-pt-0 [&_[cmdk-group]]:naxatw-px-2 [&_[cmdk-input-wrapper]_svg]:naxatw-h-5 [&_[cmdk-input-wrapper]_svg]:naxatw-w-5 [&_[cmdk-input]]:naxatw-h-12 [&_[cmdk-item]]:naxatw-px-2 [&_[cmdk-item]]:naxatw-py-3 [&_[cmdk-item]_svg]:naxatw-h-5 [&_[cmdk-item]_svg]:naxatw-w-5">
+      <DialogContent className="laxutw-overflow-hidden laxutw-p-0 laxutw-shadow-2xl">
+        <Command className="[&_[cmdk-group-heading]]:laxutw-px-2 [&_[cmdk-group-heading]]:laxutw-font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:laxutw-pt-0 [&_[cmdk-group]]:laxutw-px-2 [&_[cmdk-input-wrapper]_svg]:laxutw-h-5 [&_[cmdk-input-wrapper]_svg]:laxutw-w-5 [&_[cmdk-input]]:laxutw-h-12 [&_[cmdk-item]]:laxutw-px-2 [&_[cmdk-item]]:laxutw-py-3 [&_[cmdk-item]_svg]:laxutw-h-5 [&_[cmdk-item]_svg]:laxutw-w-5">
           {children}
         </Command>
       </DialogContent>
@@ -40,18 +40,18 @@ const CommandInput = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Input>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
 >(({ className, ...props }, ref) => (
-  <div className="naxatw-flex naxatw-items-center naxatw-border-b naxatw-px-3" cmdk-input-wrapper="">
-    <Search className="naxatw-mr-2 naxatw-h-4 naxatw-w-4 naxatw-shrink-0 naxatw-opacity-50" />
+  <div className="laxutw-flex laxutw-items-center laxutw-border-b laxutw-px-3" cmdk-input-wrapper="">
+    <Search className="laxutw-mr-2 laxutw-h-4 laxutw-w-4 laxutw-shrink-0 laxutw-opacity-50" />
     <CommandPrimitive.Input
       ref={ref}
       className={cn(
-        'naxatw-flex naxatw-h-11 naxatw-w-full naxatw-rounded-md naxatw-bg-transparent naxatw-py-3 naxatw-text-sm naxatw-outline-none placeholder:text-muted-foreground disabled:naxatw-cursor-not-allowed disabled:naxatw-opacity-50',
+        'laxutw-flex laxutw-h-11 laxutw-w-full laxutw-rounded-md laxutw-bg-transparent laxutw-py-3 laxutw-text-sm laxutw-outline-none placeholder:text-muted-foreground disabled:laxutw-cursor-not-allowed disabled:laxutw-opacity-50',
         className,
       )}
       {...props}
     />
-    <span className="naxatw-flex naxatw-justify-center naxatw-items-center">
-      <i className="material-symbols-outlined naxatw-font-thin hover:naxatw-bg-teal-50 naxatw-cursor-pointer naxatw-rounded ">
+    <span className="laxutw-flex laxutw-justify-center laxutw-items-center">
+      <i className="material-symbols-outlined laxutw-font-thin hover:laxutw-bg-teal-50 laxutw-cursor-pointer laxutw-rounded ">
         close
       </i>
     </span>
@@ -66,7 +66,7 @@ const CommandList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <CommandPrimitive.List
     ref={ref}
-    className={cn('naxatw-max-h-[300px] naxatw-overflow-y-auto naxatw-overflow-x-hidden', className)}
+    className={cn('laxutw-max-h-[300px] laxutw-overflow-y-auto laxutw-overflow-x-hidden', className)}
     {...props}
   />
 ));
@@ -77,7 +77,7 @@ const CommandEmpty = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Empty>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>
 >((props, ref) => (
-  <CommandPrimitive.Empty ref={ref} className="naxatw-py-6 naxatw-text-center naxatw-text-sm" {...props} />
+  <CommandPrimitive.Empty ref={ref} className="laxutw-py-6 laxutw-text-center laxutw-text-sm" {...props} />
 ));
 
 CommandEmpty.displayName = CommandPrimitive.Empty.displayName;
@@ -89,7 +89,7 @@ const CommandGroup = React.forwardRef<
   <CommandPrimitive.Group
     ref={ref}
     className={cn(
-      'naxatw-overflow-hidden naxatw-p-1 text-foreground [&_[cmdk-group-heading]]:naxatw-px-2 [&_[cmdk-group-heading]]:naxatw-py-1.5 [&_[cmdk-group-heading]]:naxatw-text-xs [&_[cmdk-group-heading]]:naxatw-font-medium [&_[cmdk-group-heading]]:text-muted-foreground',
+      'laxutw-overflow-hidden laxutw-p-1 text-foreground [&_[cmdk-group-heading]]:laxutw-px-2 [&_[cmdk-group-heading]]:laxutw-py-1.5 [&_[cmdk-group-heading]]:laxutw-text-xs [&_[cmdk-group-heading]]:laxutw-font-medium [&_[cmdk-group-heading]]:text-muted-foreground',
       className,
     )}
     {...props}
@@ -104,7 +104,7 @@ const CommandSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <CommandPrimitive.Separator
     ref={ref}
-    className={cn('-naxatw-mx-1 naxatw-h-px naxatw-bg-border', className)}
+    className={cn('-laxutw-mx-1 laxutw-h-px laxutw-bg-border', className)}
     {...props}
   />
 ));
@@ -117,7 +117,7 @@ const CommandItem = React.forwardRef<
   <CommandPrimitive.Item
     ref={ref}
     className={cn(
-      'naxatw-relative naxatw-flex naxatw-cursor-default naxatw-select-none naxatw-items-center naxatw-rounded-sm naxatw-px-2 naxatw-py-1.5 naxatw-text-sm naxatw-outline-none aria-selected:bg-accent aria-selected:text-accent-foreground data-[disabled]:naxatw-pointer-events-none data-[disabled]:naxatw-opacity-50 hover:naxatw-bg-blue-50',
+      'laxutw-relative laxutw-flex laxutw-cursor-default laxutw-select-none laxutw-items-center laxutw-rounded-sm laxutw-px-2 laxutw-py-1.5 laxutw-text-sm laxutw-outline-none aria-selected:bg-accent aria-selected:text-accent-foreground data-[disabled]:laxutw-pointer-events-none data-[disabled]:laxutw-opacity-50 hover:laxutw-bg-blue-50',
       className,
     )}
     {...props}
@@ -129,7 +129,7 @@ CommandItem.displayName = CommandPrimitive.Item.displayName;
 const CommandShortcut = ({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
     <span
-      className={cn('naxatw-ml-auto naxatw-text-xs naxatw-tracking-widest text-muted-foreground', className)}
+      className={cn('laxutw-ml-auto laxutw-text-xs laxutw-tracking-widest text-muted-foreground', className)}
       {...props}
     />
   );

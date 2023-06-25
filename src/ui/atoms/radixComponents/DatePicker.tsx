@@ -42,16 +42,16 @@ export default function DatePicker({ canType = false }: IDatePickerProps) {
           <Button
             variant="secondary"
             className={cn(
-              'naxatw-w-[280px] naxatw-text-left naxatw-font-normal naxatw-flex naxatw-gap-2 naxatw-items-center naxatw-justify-center',
-              !date && 'naxatw-bg-gray-400',
+              'laxutw-w-[280px] laxutw-text-left laxutw-font-normal laxutw-flex laxutw-gap-2 laxutw-items-center laxutw-justify-center',
+              !date && 'laxutw-bg-gray-400',
             )}
           >
             {date ? format(date, 'yyyy-MM-dd') : <span>Pick a date</span>}
-            <CalendarIcon className="naxatw-mr-2 naxatw-h-4 naxatw-w-4" />
+            <CalendarIcon className="laxutw-mr-2 laxutw-h-4 laxutw-w-4" />
           </Button>
         )}
       </PopoverTrigger>
-      <PopoverContent className="naxatw-w-full !naxatw-p-[0px] naxatw-bg-white">
+      <PopoverContent className="laxutw-w-full !laxutw-p-[0px] laxutw-bg-white">
         <Calendar mode="single" selected={date} onSelect={handleCalendarSelect} initialFocus />
       </PopoverContent>
     </Popover>

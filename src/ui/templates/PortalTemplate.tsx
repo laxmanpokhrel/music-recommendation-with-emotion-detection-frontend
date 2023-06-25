@@ -1,31 +1,24 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import hasErrorBoundary from '@Molecules/_lib_/hasErrorBoundary';
 import { IDivProps } from '@Schemas/interfaces';
 import { createPortal } from 'react-dom';
-import { useEffect, useLayoutEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useLayoutEffect } from 'react';
 import { backDropAnimation } from '@Animations/index';
+import { motion } from 'framer-motion';
+
+interface IPortalTemplateProps extends Omit<IDivProps, 'onClick'> {
+  onClose?: () => void;
+}
 
 /**
  * This is a functional component called `PortalTemplate` that takes in a prop called `children` of
  * type `IDivProps`. It creates two variables `backdropNode` and `portalNode` by getting the elements
  * with ids `backdrop-root` and `overlay-root` respectively. */
-
-function PortalTemplate({ children }: IDivProps) {
+function PortalTemplate({ children, onClose }: IPortalTemplateProps) {
   const backdropNode = document.getElementById('backdrop-root');
   const portalNode = document.getElementById('overlay-root');
   useLayoutEffect(() => {});
-
-  useEffect(() => {
-    const { body } = document;
-    body.style.overflow = 'hidden';
-    body.style.paddingRight = '17px';
-
-    return () => {
-      document.body.style.overflow = 'auto';
-      body.style.paddingRight = '0px';
-    };
-  }, []);
 
   return (
     <>
@@ -33,15 +26,18 @@ function PortalTemplate({ children }: IDivProps) {
         ? createPortal(
             <motion.div
               {...backDropAnimation}
-              className="naxatw-w-screen naxatw-h-screen naxatw-bg-black naxatw-bg-opacity-50 naxatw-z-10  naxatw-fixed naxatw-top-0 naxatw-left-0"
+              className="laxutw-w-screen laxutw-h-screen laxutw-bg-gray-800 laxutw-bg-opacity-20 laxutw-z-10  laxutw-fixed laxutw-top-0 laxutw-left-0"
             />,
             backdropNode,
           )
         : null}
       {portalNode
         ? createPortal(
-            <div className="naxatw-fixed naxatw-top-0 naxatw-left-0 naxatw-w-screen naxatw-h-screen naxatw-bg-opacity-0 naxatw-z-20">
-              <div className="overlay-container naxatw-relative naxatw-w-full naxatw-h-full ">{children}</div>
+            <div
+              onClick={() => (onClose ? onClose() : null)}
+              className="laxutw-fixed laxutw-top-0 laxutw-left-0 laxutw-w-screen laxutw-h-screen laxutw-bg-opacity-0 laxutw-z-20"
+            >
+              <div className="overlay-container laxutw-relative laxutw-w-full laxutw-h-full ">{children}</div>
             </div>,
             portalNode,
           )

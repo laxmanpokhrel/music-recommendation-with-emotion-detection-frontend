@@ -12,7 +12,7 @@ const TabsList = React.forwardRef<
   <TabsPrimitive.List
     ref={ref}
     className={cn(
-      'naxatw-inline-flex naxatw-h-10 naxatw-items-center naxatw-justify-center naxatw-gap-1 naxatw-rounded-lg naxatw-bg-gray-200 naxatw-p-1 naxatw-text-gray-600',
+      'laxutw-inline-flex laxutw-h-10 laxutw-items-center laxutw-justify-center laxutw-gap-1 laxutw-rounded-lg laxutw-bg-gray-200 laxutw-p-1 laxutw-text-gray-600',
       className,
     )}
     {...props}
@@ -27,7 +27,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      'naxatw-inline-flex naxatw-items-center naxatw-justify-center naxatw-whitespace-nowrap naxatw-rounded-lg hover:naxatw-bg-teal-50 naxatw-px-3 naxatw-py-1.5 naxatw-text-sm naxatw-font-medium naxatw-ring-offset-white naxatw-transition-all focus-visible:naxatw-outline-none focus-visible:naxatw-ring-2 focus-visible:naxatw-ring-ring focus-visible:naxatw-ring-offset-2 disabled:naxatw-pointer-events-none disabled:naxatw-opacity-50 data-[state=active]:naxatw-bg-white data-[state=active]:naxatw-text-black data-[state=active]:naxatw-shadow-sm',
+      'laxutw-inline-flex laxutw-items-center laxutw-justify-center laxutw-whitespace-nowrap laxutw-rounded-lg hover:laxutw-bg-teal-50 laxutw-px-3 laxutw-py-1.5 laxutw-text-sm laxutw-font-medium laxutw-ring-offset-white laxutw-transition-all focus-visible:laxutw-outline-none focus-visible:laxutw-ring-2 focus-visible:laxutw-ring-ring focus-visible:laxutw-ring-offset-2 disabled:laxutw-pointer-events-none disabled:laxutw-opacity-50 data-[state=active]:laxutw-bg-white data-[state=active]:laxutw-text-black data-[state=active]:laxutw-shadow-sm',
       className,
     )}
     {...props}
@@ -42,7 +42,7 @@ const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      'naxatw-mt-2 naxatw-ring-offset-background focus-visible:naxatw-outline-none focus-visible:naxatw-ring-2 focus-visible:naxatw-ring-ring focus-visible:naxatw-ring-offset-2',
+      'laxutw-mt-2 laxutw-ring-offset-background focus-visible:laxutw-outline-none focus-visible:laxutw-ring-2 focus-visible:laxutw-ring-ring focus-visible:laxutw-ring-offset-2',
       className,
     )}
     {...props}

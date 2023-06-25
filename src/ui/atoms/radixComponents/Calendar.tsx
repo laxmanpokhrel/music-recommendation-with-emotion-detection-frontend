@@ -18,23 +18,23 @@ function Calendar({ selected, className, classNames, onSelect, ...props }: any) 
       selected={selected}
       showOutsideDays
       onSelect={onSelect}
-      className="naxatw-p-[2px] naxatw-w-fit naxatw-m-0 naxatw-rounded-lg"
+      className="laxutw-p-[2px] laxutw-w-fit laxutw-m-0 laxutw-rounded-lg"
       classNames={{
         months:
-          'naxatw-flex naxatw-flex-col sm:naxatw-flex-row naxatw-space-y-4 sm:naxatw-space-x-4 sm:naxatw-space-y-0 naxatw-mx-[0px] naxatw-my-[0px]',
-        month: 'naxatw-m-[0px]',
-        caption: 'naxatw-flex naxatw-justify-between naxatw-pt-1 naxatw-px-2 naxatw-relative naxatw-items-center',
-        caption_label: 'naxatw-text-sm naxatw-font-medium',
-        nav: 'naxatw-space-x-1 naxatw-flex naxatw-items-center',
-        // nav_button_previous: 'naxatw-absolute naxatw-left-1',
-        // nav_button_next: 'naxatw-absolute naxatw-right-1',
-        table: 'naxatw-w-full naxatw-p-2',
-        cell: 'naxatw-rounded-lg hover:naxatw-bg-gray-200 naxatw-overflow-hidden naxatw-m-1',
-        day: 'naxatw-w-full naxatw-px-[4px] naxatw-py-[2px] naxatw-font-semibold',
-        selected: '!naxatw-bg-blue-500',
-        day_selected: 'hover:naxatw-blue-400 !naxatw-bg-blue-500 naxatw-b-2 !naxatw-text-white',
-        day_today: 'naxatw-bg-orange-300 naxatw-text-white naxatw-font-bold',
-        day_outside: 'naxatw-text-gray-400 !naxatw-font-light',
+          'laxutw-flex laxutw-flex-col sm:laxutw-flex-row laxutw-space-y-4 sm:laxutw-space-x-4 sm:laxutw-space-y-0 laxutw-mx-[0px] laxutw-my-[0px]',
+        month: 'laxutw-m-[0px]',
+        caption: 'laxutw-flex laxutw-justify-between laxutw-pt-1 laxutw-px-2 laxutw-relative laxutw-items-center',
+        caption_label: 'laxutw-text-sm laxutw-font-medium',
+        nav: 'laxutw-space-x-1 laxutw-flex laxutw-items-center',
+        // nav_button_previous: 'laxutw-absolute laxutw-left-1',
+        // nav_button_next: 'laxutw-absolute laxutw-right-1',
+        table: 'laxutw-w-full laxutw-p-2',
+        cell: 'laxutw-rounded-lg hover:laxutw-bg-gray-200 laxutw-overflow-hidden laxutw-m-1',
+        day: 'laxutw-w-full laxutw-px-[4px] laxutw-py-[2px] laxutw-font-semibold',
+        selected: '!laxutw-bg-blue-500',
+        day_selected: 'hover:laxutw-blue-400 !laxutw-bg-blue-500 laxutw-b-2 !laxutw-text-white',
+        day_today: 'laxutw-bg-orange-300 laxutw-text-white laxutw-font-bold',
+        day_outside: 'laxutw-text-gray-400 !laxutw-font-light',
       }}
       {...props}
     />
