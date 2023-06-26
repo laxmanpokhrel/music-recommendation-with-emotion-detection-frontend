@@ -7,6 +7,7 @@ import testRoutes from '@Routes/_test_/index.test';
 import 'react-day-picker/dist/style.css';
 import './assets/css/tailwind.css';
 import Header from '@Organisms/Header';
+import MusicPlayer from '@Organisms/MusicPlayer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function App() {
   return (
     <>
       {process.env.NODE_ENV !== 'production' && initDomToCode()}
-      <div className="laxutw-m-auto laxutw-bg-white laxutw-h-fit">
+      <div className="laxutw-m-auto laxutw-bg-white laxutw-h-fit laxutw-relative">
         <Header />
         <div className="App">
           <div className="app-playground">
@@ -25,6 +26,7 @@ export default function App() {
           </div>
         </div>
       </div>
+      <MusicPlayer />
     </>
   );
 }
