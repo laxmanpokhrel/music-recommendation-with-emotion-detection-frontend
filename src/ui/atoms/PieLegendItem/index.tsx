@@ -11,29 +11,21 @@ export default function PieLegendItem({ color, name, value, percentage, onLegend
         setLegendIsDisabled((prev) => !prev);
         onLegendClick(name);
       }}
-      className="laxutw-flex laxutw-justify-between laxutw-items-start"
+      className="flex justify-between items-start"
     >
-      <div className="legend-box-name laxutw-flex laxutw-justify-items-start laxutw-items-start laxutw-gap-2 laxutw-flex-1">
+      <div className="legend-box-name flex justify-items-start items-start gap-2 flex-1">
         <div
-          className="laxutw-w-[16px] laxutw-h-[16px] laxutw-rounded laxutw-my-[2px]"
+          className="w-[16px] h-[16px] rounded my-[2px]"
           style={{
             backgroundColor: legendIsDisabled ? '#D7D7D7' : color,
             border: legendIsDisabled ? '1px solid #D7D7D7' : '',
           }}
         />
-        <div
-          className={`name laxutw-button laxutw-font-normal laxutw-text-start ${
-            legendIsDisabled ? 'laxutw-text-gray-300' : ''
-          }`}
-        >
-          {name}
-        </div>
+        <div className={`name button font-normal text-start ${legendIsDisabled ? 'text-gray-300' : ''}`}>{name}</div>
       </div>
-      <div className="value-percentage laxutw-flex laxutw-gap-2  laxutw-justify-end laxutw-items-center laxutw-min-w-[2rem] laxutw-flex-1">
-        <div className={`laxutw-button ${legendIsDisabled ? 'laxutw-text-gray-300' : ''}`}>{value}</div>
-        <div className={`laxutw-button laxutw-whitespace-nowrap ${legendIsDisabled ? 'laxutw-text-gray-300' : ''}`}>
-          {percentage} %
-        </div>
+      <div className="value-percentage flex gap-2  justify-end items-center min-w-[2rem] flex-1">
+        <div className={`button ${legendIsDisabled ? 'text-gray-300' : ''}`}>{value}</div>
+        <div className={`button whitespace-nowrap ${legendIsDisabled ? 'text-gray-300' : ''}`}>{percentage} %</div>
       </div>
     </button>
   );

@@ -8,6 +8,8 @@ const MusicProfile = React.lazy(() => import('@Pages/MusicProfile'));
 const MoodDetector = React.lazy(() => import('@Pages/MoodDetector'));
 const ExploreMoreMusicWithMood = React.lazy(() => import('@Pages/ExploreMoreMusicWithMood'));
 const UploadMusic = React.lazy(() => import('@Pages/UploadMusic'));
+const Login = React.lazy(() => import('@Pages/Login'));
+const Signup = React.lazy(() => import('@Pages/Signup'));
 
 const appRoutes: IRoute[] = [
   {
@@ -20,6 +22,18 @@ const appRoutes: IRoute[] = [
     path: '/music/:musicId',
     name: 'Music Profile ',
     component: MusicProfile,
+    authenticated: false,
+  },
+  {
+    path: '/login',
+    name: 'Login ',
+    component: Login,
+    authenticated: false,
+  },
+  {
+    path: '/signup',
+    name: 'Signup ',
+    component: Signup,
     authenticated: false,
   },
   {

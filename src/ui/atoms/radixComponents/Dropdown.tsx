@@ -57,18 +57,15 @@ function Dropdown({
           size="drop-lg"
           role="combobox"
           aria-expanded={open}
-          className={cn(
-            'laxutw-flex laxutw-justify-between laxutw-gap-1 laxutw-bg-white laxutw-items-center',
-            className,
-          )}
+          className={cn('flex justify-between gap-1 bg-white items-center', className)}
           onClick={() => setOpen(true)}
         >
           {multiple ? (
-            <div className="laxutw-flex laxutw-flex-wrap">
+            <div className="flex flex-wrap">
               {Array.isArray(value) && value.length > 0 ? (
                 <p>{value.length} items selected</p>
               ) : (
-                <p className="laxutw-body-md laxutw-text-black laxutw-px-0">{placeholder || 'Select options...'}</p>
+                <p className="body-md text-black px-0">{placeholder || 'Select options...'}</p>
               )}
             </div>
           ) : (
@@ -76,21 +73,18 @@ function Dropdown({
               {value ? (
                 options.find((option: IDropDownData) => option[choose] === value)?.label
               ) : (
-                <p className="laxutw-body-md laxutw-text-black laxutw-px-0">{placeholder || 'Select options...'}</p>
+                <p className="body-md text-black px-0">{placeholder || 'Select options...'}</p>
               )}
             </>
           )}
           <Icon
             iconName="arrow_drop_down"
-            className="laxutw-h-4 laxutw-text-black laxutw-w-4 laxutw-flex laxutw-justify-center laxutw-items-center laxutw-shrink-0 laxutw-opacity-50"
+            className="h-4 text-black w-4 flex justify-center items-center shrink-0 opacity-50"
           />
         </Button>
       </PopoverTrigger>
-      <PopoverContent
-        className="laxutw-p-[0px] laxutw-bg-white laxutw-min-w-full laxutw-block"
-        style={{ minWidth: '100%' }}
-      >
-        <Command className="laxutw-p-0 laxutw-m-0">
+      <PopoverContent className="p-[0px] bg-white min-w-full block" style={{ minWidth: '100%' }}>
+        <Command className="p-0 m-0">
           {options.length === 0 && <CommandEmpty>No match found.</CommandEmpty>}
           <CommandGroup className="">
             {options.map((option: IDropDownData) => (
@@ -102,31 +96,31 @@ function Dropdown({
                         ? 'check_box'
                         : 'check_box_outline_blank'
                     }`}
-                    className={`laxutw-mr-[1px] laxutw-text-[20px]
+                    className={`mr-[1px] text-[20px]
                     ${
                       Array.isArray(value) && value.includes(option[choose] as T)
-                        ? 'laxutw-text-green-600'
-                        : 'laxutw-text-gray-600'
+                        ? 'text-green-600'
+                        : 'text-gray-600'
                     } `}
                   />
                 ) : (
                   <Icon
                     iconName="done"
-                    className={`laxutw-mr-[1px] laxutw-text-[20px] ${
-                      value === option[choose] ? 'laxutw-opacity-100' : 'laxutw-opacity-0'
+                    className={`mr-[1px] text-[20px] ${
+                      value === option[choose] ? 'opacity-100' : 'opacity-0'
                     }`}
                   />
                 )} */}
                 <Icon
                   iconName="done"
-                  className={`laxutw-mr-[1px] laxutw-text-[20px] ${
+                  className={`mr-[1px] text-[20px] ${
                     !multiple
                       ? value === option[choose]
-                        ? 'laxutw-opacity-100'
-                        : 'laxutw-opacity-0'
+                        ? 'opacity-100'
+                        : 'opacity-0'
                       : Array.isArray(value) && value.includes(option[choose])
-                      ? 'laxutw-opacity-100'
-                      : 'laxutw-opacity-0'
+                      ? 'opacity-100'
+                      : 'opacity-0'
                   }`}
                 />
                 {option.label}

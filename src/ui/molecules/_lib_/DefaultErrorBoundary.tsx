@@ -33,17 +33,12 @@ class DefaultErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
     if (this.state.errorInfo) {
       const [fileName, errorLocation] = (this.state.errorInfo as any).componentStack.split('\n ')[1].trim().split(' (');
       return (
-        <div className=" laxutw-flex laxutw-bg-pink-200 laxutw-flex-col laxutw-items-center laxutw-justify-center laxutw-gap-1 laxutw-p-4">
-          <div className="title  laxutw-flex laxutw-flex-col laxutw-justify-center laxutw-items-center">
-            <Icon iconName="running_with_errors" className="laxutw-text-red-600 laxutw-text-4xl" />
-            <p className="laxutw-text-gray-800 laxutw-text-lg laxutw-font-bold"> An Error Occurred !</p>
+        <div className=" flex bg-pink-200 flex-col items-center justify-center gap-1 p-4">
+          <div className="title  flex flex-col justify-center items-center">
+            <Icon iconName="running_with_errors" className="text-red-600 text-4xl" />
+            <p className="text-gray-800 text-lg font-bold"> An Error Occurred !</p>
           </div>
-          <a
-            href={errorLocation}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="laxutw-text-red-600 laxutw-underline laxutw-text-sm"
-          >
+          <a href={errorLocation} target="_blank" rel="noopener noreferrer" className="text-red-600 underline text-sm">
             {fileName}
           </a>
         </div>

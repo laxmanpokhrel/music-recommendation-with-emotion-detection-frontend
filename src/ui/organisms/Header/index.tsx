@@ -13,28 +13,31 @@ export default function Header() {
   const [menuIsVisible, setMenuIsVisible] = useState<boolean>(false);
   return (
     <>
-      <div className="laxutw-w-full laxutw-px-4 laxutw-py-2">
-        <div className="cover laxutw-w-full laxutw-flex laxutw-gap-2">
-          <div className="left laxutw-flex laxutw-gap-8 laxutw-items-center laxutw-justify-center laxutw-flex-1 ">
+      <div className="w-full px-4 py-2">
+        <div className="cover w-full flex gap-2">
+          <div className="left flex gap-8 items-center justify-center flex-1 ">
             <Button type="button" variant="icon-primary" size="sm-icon" onClick={() => setMenuIsVisible(true)}>
-              <Icon iconName="menu" className="naxatw-p-0 naxatw-m-0 naxatw-text-gray-600 laxutw-text-3xl" />
+              <Icon iconName="menu" className="naxatw-p-0 naxatw-m-0 naxatw-text-gray-600 text-3xl" />
             </Button>
-            <Image src={logo} className="laxutw-h-[1.5rem]" onClick={() => navigate('/')} />
+            <Image src={logo} className="h-[1.5rem]" onClick={() => navigate('/')} />
             <Input
               type="text"
               hasIcon
               iconName="search"
               iconPosition="left"
               placeholder="Search Music"
-              className="laxutw-flex-1"
+              className="flex-1"
             />
           </div>
           <Button
             type="button"
-            variant="primary"
-            className="laxutw-flex laxutw-gap-4"
-            onClick={() => navigate('/detect-mood')}
+            variant="secondary"
+            className="flex !px-2 !py-1 gap-4"
+            onClick={() => navigate('/login')}
           >
+            Login
+          </Button>
+          <Button type="button" variant="primary" className="flex gap-4" onClick={() => navigate('/detect-mood')}>
             <h5>Detect Mood</h5> <Icon iconName="detection_and_zone" />
           </Button>
         </div>

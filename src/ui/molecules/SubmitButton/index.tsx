@@ -36,12 +36,12 @@ export default function SubmitButton({
     return () => clearTimeout(timeoutInstance);
   }, [isSuccess]);
   return (
-    <div className="laxutw-flex laxutw-flex-col laxutw-items-center laxutw-justify-center ">
+    <div className="flex flex-col items-center justify-center ">
       <Button
         {...props}
         type="submit"
         variant={state.formHasError ? 'ghost' : 'primary'}
-        className="laxutw-min-w-[4.75rem] laxutw-flex laxutw-gap-3"
+        className="min-w-[4.75rem] flex gap-3"
       >
         {children}&nbsp;
         {isSubmitting ? (
