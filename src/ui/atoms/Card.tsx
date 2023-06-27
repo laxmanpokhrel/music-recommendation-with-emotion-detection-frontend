@@ -8,10 +8,10 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 const Card = ({ children, className }: CardProps) => {
   return (
-    <section className={cn('laxutw-rounded-xl laxutw-shadow-xl', className)}>
+    <section className={cn('rounded-xl shadow-xl', className)}>
       {children}
-      <div className="laxutw-flex laxutw-justify-end laxutw-w-full laxutw-px-4 laxutw-pb-3   laxutw-transition-all laxutw-duration-300">
-        <Icon iconName="play_circle" className="laxutw-text-6xl laxutw-text-orange-400 hover:laxutw-text-[#ffffff]" />
+      <div className="flex justify-end w-full px-4 pb-3   transition-all duration-300">
+        <Icon iconName="play_circle" className="text-6xl text-orange-400 hover:text-[#ffffff]" />
       </div>
     </section>
   );

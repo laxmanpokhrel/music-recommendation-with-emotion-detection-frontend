@@ -17,14 +17,14 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      'laxutw-flex laxutw-h-10 laxutw-w-full laxutw-items-center laxutw-justify-between laxutw-rounded-md laxutw-border laxutw-border-input laxutw-bg-transparent laxutw-px-3 laxutw-py-2 laxutw-text-sm placeholder:text-muted-foreground focus:laxutw-outline-none focus:laxutw-ring-2 focus:ring-ring focus:laxutw-ring-offset-2 disabled:laxutw-cursor-not-allowed disabled:laxutw-opacity-50',
+      'flex h-10 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
       className,
     )}
     {...props}
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <ChevronDown className="laxutw-h-4 laxutw-w-4 laxutw-opacity-50" />
+      <ChevronDown className="h-4 w-4 opacity-50" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ));
@@ -38,8 +38,8 @@ const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        'laxutw-relative laxutw-z-50 laxutw-min-w-[8rem] laxutw-overflow-hidden laxutw-rounded-md laxutw-border bg-popover text-popover-foreground laxutw-shadow-md animate-in fade-in-80',
-        position === 'popper' && 'laxutw-translate-y-1',
+        'relative z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md animate-in fade-in-80',
+        position === 'popper' && 'translate-y-1',
         className,
       )}
       position={position}
@@ -47,7 +47,7 @@ const SelectContent = React.forwardRef<
     >
       <SelectPrimitive.Viewport
         className={cn(
-          'laxutw-p-1',
+          'p-1',
           position === 'popper' &&
             'h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]',
         )}

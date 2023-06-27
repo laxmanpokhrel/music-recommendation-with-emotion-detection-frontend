@@ -16,10 +16,10 @@ export default function App() {
   return (
     <>
       {process.env.NODE_ENV !== 'production' && initDomToCode()}
-      <div className="laxutw-m-auto laxutw-bg-white laxutw-h-fit laxutw-relative">
+      <div className="m-auto  h-fit relative">
         <Header />
-        <div className="App">
-          <div className="app-playground">
+        <div className="App h-full">
+          <div className="app-playground h-full">
             {process.env.NODE_ENV !== 'production'
               ? generateRoutes({ routes: [...testRoutes, ...appRoutes] })
               : generateRoutes({ routes: appRoutes })}

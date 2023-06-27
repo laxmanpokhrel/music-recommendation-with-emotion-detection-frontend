@@ -315,7 +315,7 @@ export function setZeroValueForObjectsWithKeyValues(
 //         const [prefix, suffix] = item.split(':');
 //         return `${prefix}:${addPrefix(suffix)}`;
 //       }
-//       return `laxutw-${item}`;
+//       return `${item}`;
 //     });
 // }
 

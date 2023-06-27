@@ -18,23 +18,22 @@ function Calendar({ selected, className, classNames, onSelect, ...props }: any) 
       selected={selected}
       showOutsideDays
       onSelect={onSelect}
-      className="laxutw-p-[2px] laxutw-w-fit laxutw-m-0 laxutw-rounded-lg"
+      className="p-[2px] w-fit m-0 rounded-lg"
       classNames={{
-        months:
-          'laxutw-flex laxutw-flex-col sm:laxutw-flex-row laxutw-space-y-4 sm:laxutw-space-x-4 sm:laxutw-space-y-0 laxutw-mx-[0px] laxutw-my-[0px]',
-        month: 'laxutw-m-[0px]',
-        caption: 'laxutw-flex laxutw-justify-between laxutw-pt-1 laxutw-px-2 laxutw-relative laxutw-items-center',
-        caption_label: 'laxutw-text-sm laxutw-font-medium',
-        nav: 'laxutw-space-x-1 laxutw-flex laxutw-items-center',
-        // nav_button_previous: 'laxutw-absolute laxutw-left-1',
-        // nav_button_next: 'laxutw-absolute laxutw-right-1',
-        table: 'laxutw-w-full laxutw-p-2',
-        cell: 'laxutw-rounded-lg hover:laxutw-bg-gray-200 laxutw-overflow-hidden laxutw-m-1',
-        day: 'laxutw-w-full laxutw-px-[4px] laxutw-py-[2px] laxutw-font-semibold',
-        selected: '!laxutw-bg-blue-500',
-        day_selected: 'hover:laxutw-blue-400 !laxutw-bg-blue-500 laxutw-b-2 !laxutw-text-white',
-        day_today: 'laxutw-bg-orange-300 laxutw-text-white laxutw-font-bold',
-        day_outside: 'laxutw-text-gray-400 !laxutw-font-light',
+        months: 'flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 mx-[0px] my-[0px]',
+        month: 'm-[0px]',
+        caption: 'flex justify-between pt-1 px-2 relative items-center',
+        caption_label: 'text-sm font-medium',
+        nav: 'space-x-1 flex items-center',
+        // nav_button_previous: 'absolute left-1',
+        // nav_button_next: 'absolute right-1',
+        table: 'w-full p-2',
+        cell: 'rounded-lg hover:bg-gray-200 overflow-hidden m-1',
+        day: 'w-full px-[4px] py-[2px] font-semibold',
+        selected: '!bg-blue-500',
+        day_selected: 'hover:blue-400 !bg-blue-500 b-2 !text-white',
+        day_today: 'bg-orange-300 text-white font-bold',
+        day_outside: 'text-gray-400 !font-light',
       }}
       {...props}
     />
