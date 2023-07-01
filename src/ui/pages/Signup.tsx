@@ -10,16 +10,37 @@ import { LoginFormValidation } from '@Validation/index';
 import ApiFactory from '@Api/ApiFactory';
 import SubmitButton from '@Molecules/SubmitButton';
 import FormRow from '@Atoms/FormRow';
+import { useEffect } from 'react';
 
 export default function Signup() {
   const SignupService = ApiFactory.createQuery({ key: '/login', url: '/auth/user/register' });
-  const { isLoading, error, isError, isSuccess, mutate: signup } = SignupService.postData();
+  const { isLoading, error, isError, isSuccess, mutate: signup, data } = SignupService.postData();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (data) {
+      navigate('/login');
+      // localStorage.setItem('token', data?.tokens?.accessToken);
+    }
+  }, [data]);
+
   const { register, formState, handleSubmit } = useForm({
     initialValues: { email: '', password: '' },
     validationSchema: LoginFormValidation,
     service: signup,
+    postDataInterceptor: (interceptorData) => {
+      const { firstName, lastName, dateOfBirth, gender, ...rest } = interceptorData;
+      return {
+        ...rest,
+        detail: {
+          firstName,
+          lastName,
+          dateOfBirth: new Date(dateOfBirth).toISOString(),
+          gender,
+        },
+      };
+    },
   });
-  const navigate = useNavigate();
   return (
     <main className="w-full h-full flex flex-col items-center justify-center bg-gray-50 sm:px-4 pt-8">
       <div className="w-full space-y-6 text-gray-600 sm:max-w-md">

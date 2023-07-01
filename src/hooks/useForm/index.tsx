@@ -1,8 +1,11 @@
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-lonely-if */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable prefer-destructuring */
 import { IFormState, IRegisterProps } from '@Schemas/interfaces';
-import { scrollToComponent } from '@Utils/index';
+import { convertObject, scrollToComponent } from '@Utils/index';
 import { useState, useEffect } from 'react';
 import { Schema } from 'yup';
 
@@ -22,7 +25,10 @@ interface IUseFormProps {
   formName?: string;
   onChangeDataInterceptor?: (props: IOnChangeInterceptorProps) => Record<string, any>;
   service?: (data: any) => any;
-  postDataInterceptor?: (data: Record<string, any>) => void;
+  postDataInterceptor?: (data: Record<string, any>) => Record<string, any>;
+  postInterceptor?: (data: Record<string, any>, callBackFunc?: (params: any) => void) => Promise<boolean>;
+  isNestedForm?: boolean;
+  callback: (params: any) => void;
 }
 
 interface IYupError {
@@ -45,7 +51,10 @@ export default function useForm({
   validationSchema,
   service,
   postDataInterceptor,
+  postInterceptor,
   onChangeDataInterceptor,
+  isNestedForm,
+  callback,
 }: IUseFormProps) {
   const [values, setValues] = useState<typeof initialValues>(initialValues);
   const [errors, setErrors] = useState<typeof initialValues>({});
@@ -69,7 +78,8 @@ export default function useForm({
         err.inner.forEach(({ path, message }: IYupError) => {
           tempError[path] = message;
         });
-        setErrors(tempError);
+
+        setErrors(() => convertObject(tempError));
         setFormState({ formIsValid: false, formHasError: true });
       }
     }, 200);
@@ -96,27 +106,53 @@ export default function useForm({
    * errors and the control is scrolled to the first error. If there are no errors and a service is
    * provided, it will call the service with the form values.
    */
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    // *-------------------------------------
+    //! DO NOT execute this block of code if the form is nested inside another form
+    if (isNestedForm) return;
+    // *-------------------------------------
+
     e.preventDefault();
     const errorKeys = Object.keys(errors);
     const controlId = `-${formName}-form-field-${errorKeys[0]}}`;
     const tempTouched = touched;
-    errorKeys.map((key) => {
+    errorKeys.forEach((key) => {
       tempTouched[key] = true;
       return 0;
     });
+
     setTouched({ ...tempTouched });
     if (errorKeys.length) {
       scrollToComponent(controlId);
       return;
     }
+
+    // if there is post intercepptor and postDataInterceptor we provide the intercepted data to the postInterceptor and rest is handled by postInterceptor
+    if (postInterceptor && postDataInterceptor) {
+      if (callback) await postInterceptor(postDataInterceptor(values), () => callback(values));
+      else await postInterceptor(postDataInterceptor(values));
+      return;
+    }
+
+    // if there is postInterceptor we pass the values to the interceprot and rest is handled by postInterceptor
+    if (postInterceptor) {
+      if (service) service(postInterceptor(values, () => callback(values)));
+      return;
+    }
+
+    //* to cast the values with validation schema
     // const castedObject = validationSchema.cast(values);
     if (postDataInterceptor && service) {
       const interceptedValues = postDataInterceptor(values);
       service(interceptedValues);
+      callback(values);
       return;
     }
+
     if (service) service(values);
+    callback(values);
   };
 
   /**
@@ -139,7 +175,7 @@ export default function useForm({
     return {
       id: formFieldId,
       name: fieldName,
-      required: props.required,
+      // required: props.required,
 
       // ! why `value` and `bindvalue` for same value ?
       // * it is because in some cases `value` can be already used to bind the state change of custom form controls,
@@ -151,29 +187,16 @@ export default function useForm({
 
       touched: touched && touched[fieldName] ? touched[fieldName] : false,
       error: errors && errors[fieldName] ? errors[fieldName] : '',
+      // error: errors && convertObject(errors)[fieldName] ? convertObject(errors)[fieldName] : '',
 
       onFocus: (e?: any) => {
         const isEvent = e instanceof Event;
         if (isEvent) e.stopPropagation();
         // setTouched((prev) => ({ ...prev, [fieldName]: true }));
       },
-      /**
-       *  This `onChange` function is responsible for handling changes in the form fields. It first sets
-       *  the `touched` state for the current field to `true`. Then, it checks if the event is an
-       * instance of `Event` or if it has a `target` property, which indicates that it is a native HTML
-       * input event. If it is, it stops the event propagation and checks if there is an
-       * `onChangeDataInterceptor` function provided. If there is, it intercepts the current form
-       * values, errors, and touched controls and sets the new values using the `setValues` function.
-       * If there is no `onChangeDataInterceptor` function, it calls the `handleChange` function with
-       * the field name and the new value. If the event is not an instance of `Event` or if it does not
-       * have a `target` property, it checks if there is a `setCustomValue` function provided in the
-       * `props` parameter. If there is, it calls the `handleChange` function with the field name and
-       * the custom value returned by the `setCustomValue` function. If there is no `setCustomValue`
-       * function, it calls the `handleChange` function with the field
-       */
+
       onChange: (e: any) => {
         const isEvent = e instanceof Event || !!e.target;
-
         if (isEvent) {
           e.stopPropagation();
           if (onChangeDataInterceptor) {
@@ -183,19 +206,35 @@ export default function useForm({
               currentTouchedControls: touched,
             });
             setValues({ ...onChangeInterceptedValues });
-            return;
+          } else {
+            handleChange(fieldName, e.target.value);
           }
-          handleChange(fieldName, e.target.value);
-        } else {
-          if (props.setCustomValue) {
+        } else if (props.setCustomValue) {
+          if (onChangeDataInterceptor) {
+            const onChangeInterceptedValues: Record<string, any> = onChangeDataInterceptor({
+              currentValues: { ...values, [fieldName]: props.setCustomValue(e) },
+              errors,
+              currentTouchedControls: touched,
+            });
+            setValues({ ...onChangeInterceptedValues });
+          } else {
             handleChange(fieldName, props.setCustomValue(e));
-            return;
           }
-          handleChange(fieldName, e);
+        } else {
+          if (onChangeDataInterceptor) {
+            const onChangeInterceptedValues: Record<string, any> = onChangeDataInterceptor({
+              currentValues: { ...values, [fieldName]: e },
+              errors,
+              currentTouchedControls: touched,
+            });
+            setValues({ ...onChangeInterceptedValues });
+          } else {
+            handleChange(fieldName, e);
+          }
         }
         setTouched((prev) => ({ ...prev, [fieldName]: true }));
       },
     };
   };
-  return { register, values, handleSubmit, touched, errors, formState };
+  return { register, values, handleSubmit, touched, errors, formState, setBindValues: setValues };
 }

@@ -15,11 +15,19 @@ export default function Login() {
   const LoginService = ApiFactory.createQuery({ key: '/login', url: '/auth/user/login' });
   const { isLoading, error, isError, isSuccess, mutate } = LoginService.postData();
   const { register, formState, handleSubmit } = useForm({
-    initialValues: { email: '', password: '' },
+    initialValues: { username: '', password: '' },
     validationSchema: LoginFormValidation,
     service: mutate,
+    callback: () => {},
   });
+
   const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   // navigate('/');
+  //   // localStorage.setItem('token', data?.tokens?.accessToken);
+  // }, [data]);
+
   return (
     <main className="w-full h-screen flex flex-col items-center justify-center bg-gray-50 sm:px-4">
       <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
@@ -138,7 +146,7 @@ export default function Login() {
           </div>
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <FormControl required label="Email" controlType="input" type="email" {...register('email')} />
+              <FormControl required label="Email" controlType="input" type="email" {...register('username')} />
             </div>
             <div>
               <FormControl required label="Password" controlType="input" type="password" {...register('password')} />

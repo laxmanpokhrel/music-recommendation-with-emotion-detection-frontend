@@ -40,7 +40,7 @@ const appRoutes: IRoute[] = [
     path: '/detect-mood',
     name: 'Detect Mood ',
     component: MoodDetector,
-    authenticated: false,
+    authenticated: true,
   },
   {
     path: '/explore-more',
@@ -52,13 +52,13 @@ const appRoutes: IRoute[] = [
     path: '/upload-music',
     name: 'Upload Music',
     component: UploadMusic,
-    authenticated: false,
+    authenticated: true,
   },
   {
     path: '/your-music',
     name: 'Your Music',
     component: HomePage,
-    authenticated: false,
+    authenticated: true,
   },
 ];
 export default appRoutes;
