@@ -8,7 +8,7 @@ export default function HomePageTemplate(): JSX.Element {
       <div className="grid grid-cols-3 gap-6 w-3/5 m-auto">
         {TestMusicData.map((data) => {
           return (
-            <div className="group transition-all duration-150 ease-in rounded-lg">
+            <div key={data.title} className="group transition-all duration-150 ease-in rounded-lg">
               <Card
                 className="bg-gray-950 group-hover:scale-[1.05] transition-all duration-150 ease-in"
                 key={data.title}

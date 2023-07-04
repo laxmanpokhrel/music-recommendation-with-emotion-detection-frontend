@@ -10,6 +10,7 @@ const ExploreMoreMusicWithMood = React.lazy(() => import('@Pages/ExploreMoreMusi
 const UploadMusic = React.lazy(() => import('@Pages/UploadMusic'));
 const Login = React.lazy(() => import('@Pages/Login'));
 const Signup = React.lazy(() => import('@Pages/Signup'));
+const YourMusic = React.lazy(() => import('@Pages/YourMusic'));
 
 const appRoutes: IRoute[] = [
   {
@@ -57,7 +58,7 @@ const appRoutes: IRoute[] = [
   {
     path: '/your-music',
     name: 'Your Music',
-    component: HomePage,
+    component: YourMusic,
     authenticated: true,
   },
 ];

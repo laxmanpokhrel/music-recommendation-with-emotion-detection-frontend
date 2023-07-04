@@ -26,9 +26,9 @@ interface IUseFormProps {
   onChangeDataInterceptor?: (props: IOnChangeInterceptorProps) => Record<string, any>;
   service?: (data: any) => any;
   postDataInterceptor?: (data: Record<string, any>) => Record<string, any>;
-  postInterceptor?: (data: Record<string, any>, callBackFunc?: (params: any) => void) => Promise<boolean>;
+  postInterceptor?: (data: Record<string, any>) => Promise<boolean>;
   isNestedForm?: boolean;
-  callback: (params: any) => void;
+  // callback: (params: any) => void;
 }
 
 interface IYupError {
@@ -54,8 +54,8 @@ export default function useForm({
   postInterceptor,
   onChangeDataInterceptor,
   isNestedForm,
-  callback,
-}: IUseFormProps) {
+}: // callback,
+IUseFormProps) {
   const [values, setValues] = useState<typeof initialValues>(initialValues);
   const [errors, setErrors] = useState<typeof initialValues>({});
   const [touched, setTouched] = useState<typeof initialValues>({});
@@ -131,14 +131,13 @@ export default function useForm({
 
     // if there is post intercepptor and postDataInterceptor we provide the intercepted data to the postInterceptor and rest is handled by postInterceptor
     if (postInterceptor && postDataInterceptor) {
-      if (callback) await postInterceptor(postDataInterceptor(values), () => callback(values));
-      else await postInterceptor(postDataInterceptor(values));
+      await postInterceptor(postDataInterceptor(values));
       return;
     }
 
     // if there is postInterceptor we pass the values to the interceprot and rest is handled by postInterceptor
     if (postInterceptor) {
-      if (service) service(postInterceptor(values, () => callback(values)));
+      postInterceptor(values);
       return;
     }
 
@@ -147,12 +146,12 @@ export default function useForm({
     if (postDataInterceptor && service) {
       const interceptedValues = postDataInterceptor(values);
       service(interceptedValues);
-      callback(values);
+      // callback(values);
       return;
     }
 
     if (service) service(values);
-    callback(values);
+    // callback(values);
   };
 
   /**

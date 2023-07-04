@@ -12,21 +12,21 @@ import SubmitButton from '@Molecules/SubmitButton';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export default function Login() {
+  const navigate = useNavigate();
   const LoginService = ApiFactory.createQuery({ key: '/login', url: '/auth/user/login' });
-  const { isLoading, error, isError, isSuccess, mutate } = LoginService.postData();
+  const { isLoading, error, isError, isSuccess, mutate } = LoginService.postData({
+    mutationParams: {
+      onSuccess: (data) => {
+        navigate('/');
+        localStorage.setItem('token', data?.tokens?.accessToken);
+      },
+    },
+  });
   const { register, formState, handleSubmit } = useForm({
     initialValues: { username: '', password: '' },
     validationSchema: LoginFormValidation,
     service: mutate,
-    callback: () => {},
   });
-
-  const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   // navigate('/');
-  //   // localStorage.setItem('token', data?.tokens?.accessToken);
-  // }, [data]);
 
   return (
     <main className="w-full h-screen flex flex-col items-center justify-center bg-gray-50 sm:px-4">

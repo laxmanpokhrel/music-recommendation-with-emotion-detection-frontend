@@ -3,6 +3,7 @@ import Dropdown from '@Atoms/radixComponents/Dropdown';
 import { Input } from '@Atoms/radixComponents/Input';
 import ErrorLabel from '@Molecules/ErrorLabel';
 import InputLabel from '@Molecules/InputLabel';
+import RadioButton from '@Molecules/RadioButton';
 import Upload from '@Molecules/Upload';
 import hasErrorBoundary from '@Molecules/_lib_/hasErrorBoundary';
 import { IComboBoxProps, IInputLabelProps, IInputProps } from '@Schemas/interfaces';
@@ -14,13 +15,14 @@ interface IFormControlProps
     Partial<IInputProps>,
     Partial<Omit<IInputLabelProps, 'astric'>> {
   controlType: FormControlTypes;
+  disabled?: boolean;
 }
 function FormControl({
   controlType,
   label = '',
   touched = false,
   error,
-  required,
+  required = false,
   tooltipMessage,
   className,
   disabled,
@@ -31,11 +33,12 @@ function FormControl({
     comboBox: ComboBox,
     dropDown: Dropdown,
     upload: Upload,
+    radio: RadioButton,
   };
 
   const ControlElement = controlElements[controlType];
   return (
-    <div className={cn('form-control flex flex-col gap-[0.5rem] ', className)}>
+    <div className={cn('form-control naxatw-flex naxatw-flex-col naxatw-gap-[0.5rem] ', className)}>
       {label && <InputLabel label={label} tooltipMessage={tooltipMessage} astric={required} disabled={disabled} />}
       <ControlElement {...props} disabled={disabled} />
       {touched && error ? <ErrorLabel message={error} disabled={disabled} /> : null}

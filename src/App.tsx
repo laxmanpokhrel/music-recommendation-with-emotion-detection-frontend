@@ -7,7 +7,7 @@ import testRoutes from '@Routes/_test_/index.test';
 import 'react-day-picker/dist/style.css';
 import './assets/css/tailwind.css';
 import Header from '@Organisms/Header';
-import MusicPlayer from '@Organisms/MusicPlayer';
+// import MusicPlayer from '@Organisms/MusicPlayer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ export default function App() {
           </div>
         </div>
       </div>
-      <MusicPlayer />
+      {/* <MusicPlayer /> */}
     </>
   );
 }
