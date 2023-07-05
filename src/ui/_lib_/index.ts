@@ -9,7 +9,7 @@ export const ownMusicService = ApiFactory.createQuery({
 
 export const PlaylistCreateService = ApiFactory.createQuery({
   key: 'personal_playlist',
-  url: '/playlists/create',
+  url: '/playlists/own',
   authenticated: true,
 });
 
