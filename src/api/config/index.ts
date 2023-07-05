@@ -30,6 +30,7 @@ export const authenticatedFormDataApi = axios.create({
   headers: {
     Accept: 'application/json',
     'Content-Type': 'multipart/form-data',
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkNPTlNVTUVSIiwiaWF0IjoxNjg4NDM3NDQzLCJleHAiOjE2ODg1MjM4NDN9.Ms7ucZIMLWe87VI_7KcLGJA4Qz3DUhvCEdS3OcWnU1k`,
+    Authorization: `Bearer ${token}`,
+    // Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkNPTlNVTUVSIiwiaWF0IjoxNjg4NDM3NDQzLCJleHAiOjE2ODg1MjM4NDN9.Ms7ucZIMLWe87VI_7KcLGJA4Qz3DUhvCEdS3OcWnU1k`,
   },
 });

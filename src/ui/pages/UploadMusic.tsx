@@ -70,10 +70,6 @@ function UploadMusic() {
               controlType="input"
               type="date"
               label="Is Published"
-              options={[
-                { value: true, label: 'Published' },
-                { value: false, label: 'Not Published' },
-              ]}
               required
               choose="value"
               {...register('releaseDate')}
