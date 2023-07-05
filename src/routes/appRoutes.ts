@@ -11,6 +11,8 @@ const UploadMusic = React.lazy(() => import('@Pages/UploadMusic'));
 const Login = React.lazy(() => import('@Pages/Login'));
 const Signup = React.lazy(() => import('@Pages/Signup'));
 const YourMusic = React.lazy(() => import('@Pages/YourMusic'));
+const YourPlaylist = React.lazy(() => import('@Pages/YourPlaylist'));
+const CreatePlaylist = React.lazy(() => import('@Pages/CreatePlaylist'));
 
 const appRoutes: IRoute[] = [
   {
@@ -59,6 +61,18 @@ const appRoutes: IRoute[] = [
     path: '/your-music',
     name: 'Your Music',
     component: YourMusic,
+    authenticated: true,
+  },
+  {
+    path: '/your-playlist',
+    name: 'Your Music',
+    component: YourPlaylist,
+    authenticated: true,
+  },
+  {
+    path: '/create-playlist',
+    name: 'Your Music',
+    component: CreatePlaylist,
     authenticated: true,
   },
 ];

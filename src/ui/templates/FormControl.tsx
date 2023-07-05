@@ -38,7 +38,7 @@ function FormControl({
 
   const ControlElement = controlElements[controlType];
   return (
-    <div className={cn('form-control naxatw-flex naxatw-flex-col naxatw-gap-[0.5rem] ', className)}>
+    <div className={cn('form-control flex flex-col gap-[.7rem] ', className)}>
       {label && <InputLabel label={label} tooltipMessage={tooltipMessage} astric={required} disabled={disabled} />}
       <ControlElement {...props} disabled={disabled} />
       {touched && error ? <ErrorLabel message={error} disabled={disabled} /> : null}
