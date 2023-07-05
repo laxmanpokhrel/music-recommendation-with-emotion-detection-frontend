@@ -17,6 +17,10 @@ export default function MenuOverlay() {
         <Icon iconName="music_note" className="naxatw-p-0 naxatw-m-0 naxatw-text-gray-600" />
         <p>Your Music</p>
       </Button>
+      <Button type="button" variant="link" size="sm" onClick={() => navigate('/your-playlist')} className="flex gap-2">
+        <Icon iconName="playlist_add" className="naxatw-p-0 naxatw-m-0 naxatw-text-gray-600" />
+        <p>Your Playlist</p>
+      </Button>
     </motion.div>
   );
 }

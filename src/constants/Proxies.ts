@@ -1,4 +1,4 @@
 export enum Proxies {
-  api = '/api',
-  fastapi = '/fastapi',
+  API_URL = '/api',
+  FAST_API_URL = '/fastapi',
 }

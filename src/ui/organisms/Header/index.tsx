@@ -13,7 +13,7 @@ export default function Header() {
   const [menuIsVisible, setMenuIsVisible] = useState<boolean>(false);
   return (
     <>
-      <div className="w-full px-4 py-2">
+      <div className="w-full px-4 py-2 min-h-[8vh]">
         <div className="cover w-full flex gap-2">
           <div className="left flex gap-8 items-center justify-center flex-1 ">
             <Button type="button" variant="icon-primary" size="sm-icon" onClick={() => setMenuIsVisible(true)}>
