@@ -44,7 +44,8 @@
       "@Queries/*": ["api/queries/*"],
       "@Routes/*": ["routes/*"],
       "@Animations/*": ["animations/*"],
-      "@Validation/*": ["validation/*"]
+      "@Validation/*": ["validation/*"],
+      "@Ui/*": ["ui/*"]
     }
   },
   "include": [".eslintrc.cjs", "src", "src/**/*.ts"],

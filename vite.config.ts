@@ -36,6 +36,7 @@ export default defineConfig({
       '@Routes': '/src/routes',
       '@Animations': '/src/animations',
       '@Validation': '/src/validation',
+      '@Ui': '/src/ui',
     },
   },
   define: {
