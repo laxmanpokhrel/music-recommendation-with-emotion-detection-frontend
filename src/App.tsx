@@ -7,6 +7,7 @@ import testRoutes from '@Routes/_test_/index.test';
 import 'react-day-picker/dist/style.css';
 import './assets/css/tailwind.css';
 import Header from '@Organisms/Header';
+// import MusicPlayer from '@Organisms/MusicPlayer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -15,16 +16,17 @@ export default function App() {
   return (
     <>
       {process.env.NODE_ENV !== 'production' && initDomToCode()}
-      <div className="laxutw-m-auto laxutw-bg-white laxutw-h-fit">
+      <div className="m-auto  h-fit relative">
         <Header />
-        <div className="App">
-          <div className="app-playground">
+        <div className="App h-full">
+          <div className="app-playground h-full">
             {process.env.NODE_ENV !== 'production'
               ? generateRoutes({ routes: [...testRoutes, ...appRoutes] })
               : generateRoutes({ routes: appRoutes })}
           </div>
         </div>
       </div>
+      {/* <MusicPlayer /> */}
     </>
   );
 }

@@ -3,9 +3,5 @@ interface IErrorLabelProps {
   disabled?: boolean;
 }
 export default function ErrorLabel({ message = '', disabled }: IErrorLabelProps) {
-  return (
-    <p className={`laxutw-text-[#FF0F0F] laxutw-font-normal laxutw-body-sm ${disabled ? 'laxutw-text-gray-600' : ''}`}>
-      {message}
-    </p>
-  );
+  return <p className={`text-[#FF0F0F] font-normal body-sm ${disabled ? 'text-gray-600' : ''}`}>{message}</p>;
 }

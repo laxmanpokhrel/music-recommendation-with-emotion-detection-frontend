@@ -5,7 +5,7 @@
   /* outline: 1px solid red; */
 }
 /* body {
-  @apply laxutw-bg-red-200;
+  @apply bg-red-200;
 } */
 
 .no-scrollbar::-webkit-scrollbar {
@@ -57,5 +57,5 @@
 
 .half-bg-gray::before {
   content: '';
-  @apply laxutw-w-full laxutw-h-[65%] laxutw-absolute laxutw-top-0 laxutw-left-0 laxutw-bg-gray-200 laxutw-z-[-1];
+  @apply w-full h-[65%] absolute top-0 left-0 bg-gray-200 z-[-1];
 }

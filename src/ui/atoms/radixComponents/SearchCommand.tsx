@@ -45,7 +45,7 @@ const SearchCommand = ({ options, choose = 'id', className, onChange, onFocus }:
   };
 
   return (
-    <Command className={`laxutw-p-0 laxutw-m-0 laxutw-border ${className}`}>
+    <Command className={`p-0 m-0 border ${className}`}>
       <CommandInput
         placeholder="Search..."
         value={searchQuery}
@@ -57,17 +57,15 @@ const SearchCommand = ({ options, choose = 'id', className, onChange, onFocus }:
 
       {open && (
         <>
-          {!filteredData.length && (
-            <div className="laxutw-px-2 laxutw-py-1 laxutw-text-gray-500 laxutw-font-extralight">No match found!</div>
-          )}
+          {!filteredData.length && <div className="px-2 py-1 text-gray-500 font-extralight">No match found!</div>}
 
           <CommandGroup>
             {filteredData.map((option: IDropDownData) => (
               <CommandItem key={option.label} onSelect={() => handleSelect(option[choose])}>
                 <Icon
                   iconName="done"
-                  className={`laxutw-mr-[1px] laxutw-text-[20px] ${
-                    Array.isArray(value) && value.includes(option[choose]) ? 'laxutw-opacity-100' : 'laxutw-opacity-0'
+                  className={`mr-[1px] text-[20px] ${
+                    Array.isArray(value) && value.includes(option[choose]) ? 'opacity-100' : 'opacity-0'
                   }`}
                 />
                 {option.label}

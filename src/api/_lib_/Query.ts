@@ -9,7 +9,7 @@ import {
   softDeleteService,
 } from '@Api/services';
 import { QueryParamsType, MutationParamsType } from '@Schemas/types/index';
-import { IFetchDataProps, IFetchPaginatedDataProps } from '@Schemas/interfaces';
+import { IFetchDataProps, IFetchPaginatedDataProps, IPostDataProps } from '@Schemas/interfaces';
 // import { objectsEqual } from '@Utils/index';
 
 /**
@@ -35,7 +35,7 @@ class Query<T> {
     this.key = key;
     this.proxy = proxy;
     this.authenticated = authenticated;
-    this.ClassModule = ClassModule || undefined;
+    this.ClassModule = ClassModule;
   }
 
   /**
@@ -56,7 +56,7 @@ class Query<T> {
       queryFn: () =>
         this.ClassModule
           ? getService(this.authenticated, this.proxy, this.url, this.ClassModule, props.params)
-          : getService(this.authenticated, this.proxy, this.url, props.params),
+          : getService(this.authenticated, this.proxy, this.url, undefined, props.params),
       ...props.queryParams,
     });
   }
@@ -115,8 +115,8 @@ class Query<T> {
    * @returns The function `postData` returns a `UseMutationResult` object, which is the result of
    * calling the `useMutation` hook with the provided parameters.
    */
-  // public postData(props: IPostDataProps): UseMutationResult<T, Error, void, unknown> {
-  public postData(): UseMutationResult<T, Error, void, unknown> {
+  public postData(props: IPostDataProps = { mutationParams: {} }): UseMutationResult<T, Error, void, unknown> {
+    // public postData(): UseMutationResult<T, Error, void, unknown> {
     const queryClient = useQueryClient();
     return useMutation<T, Error, void, unknown>({
       mutationKey: [this.proxy, `post-${this.key}`],
@@ -130,7 +130,7 @@ class Query<T> {
         queryClient.invalidateQueries({ queryKey: [this.key] });
         //* show notification here
       },
-      // ...props.mutationParams,
+      ...(props.mutationParams || {}),
     });
   }
 

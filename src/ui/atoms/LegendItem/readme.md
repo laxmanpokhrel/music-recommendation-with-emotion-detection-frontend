@@ -59,10 +59,10 @@ This event handler toggles the `legendIsDisabled` state using the `setLegendIsDi
 
 The appearance of the legend item is styled using CSS classes and inline styles.
 
-- The button element has the following CSS classes: `laxutw-flex`, `laxutw-items-center`, `laxutw-justify-center`, and `laxutw-gap-2`.
-- The span element representing the color indicator has a width and height of 16 pixels (`laxutw-w-[16px]` and `laxutw-h-[16px]`).
+- The button element has the following CSS classes: `flex`, `items-center`, `justify-center`, and `gap-2`.
+- The span element representing the color indicator has a width and height of 16 pixels (`w-[16px]` and `h-[16px]`).
 - The span's background color and border color are determined dynamically based on the `legendIsDisabled` state.
-- The paragraph element representing the name has the CSS class `laxutw-text-lg` and an additional class `laxutw-text-gray-300` when the `legendIsDisabled` state is `true`.
+- The paragraph element representing the name has the CSS class `text-lg` and an additional class `text-gray-300` when the `legendIsDisabled` state is `true`.
 
 
 ### Example Usage

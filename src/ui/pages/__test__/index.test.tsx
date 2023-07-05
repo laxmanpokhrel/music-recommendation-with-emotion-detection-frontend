@@ -1,12 +1,12 @@
 import { Button } from '@Atoms/radixComponents/Button';
-import { comboboxTestData } from '@Constants/_test_/index.test';
+// import { comboboxTestData } from '@Constants/_test_/index.test';
 import RoundedContainer from '@Molecules/RoundedContainer';
-import Dropdown from '@Atoms/radixComponents/Dropdown';
+// import Dropdown from '@Atoms/radixComponents/Dropdown';
 import DatePicker from '@Atoms/radixComponents/DatePicker';
 import { Input } from '@Atoms/radixComponents/Input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@Atoms/radixComponents/TabList';
-import Combobox from '@Atoms/radixComponents/ComboBox';
-import SearchCommand from '@Atoms/radixComponents/SearchCommand';
+// import Combobox from '@Atoms/radixComponents/ComboBox';
+// import SearchCommand from '@Atoms/radixComponents/SearchCommand';
 import Upload from '@Molecules/Upload';
 
 export default function TestPage() {
@@ -20,18 +20,18 @@ export default function TestPage() {
   // });
 
   return (
-    <div className="laxutw-flex laxutw-flex-col laxutw-gap-4 laxutw-p-6">
+    <div className="flex flex-col gap-4 p-6">
       <h1>Testing Page</h1>
       <h6>This page will not appear in production</h6>
 
       <h2>Upload</h2>
-      <Upload className="laxutw-w-[11rem]" placeholder="Type Sth..." type="file" />
+      <Upload className="w-[11rem]" placeholder="Type Sth..." type="file" />
       {/* <h2>Form Demo</h2>
-      <RoundedContainer className="laxutw-bg-gray-300 laxutw-p-2 laxutw-w-[50vw] laxutw-flex laxutw-flex-col laxutw-gap-2">
+      <RoundedContainer className="bg-gray-300 p-2 w-[50vw] flex flex-col gap-2">
         <h5>This is a template form</h5>
-        <div className="cover laxutw-flex laxutw-flex-col laxutw-gap-4">
-          <div className="form laxutw-flex laxutw-gap-2 laxutw-w-full laxutw-justify-around">
-            <div className="form-controls laxutw-flex-1 laxutw-flex laxutw-flex-col laxutw-gap-2">
+        <div className="cover flex flex-col gap-4">
+          <div className="form flex gap-2 w-full justify-around">
+            <div className="form-controls flex-1 flex flex-col gap-2">
               <FormControl
                 type="combobox"
                 label="Test Form Control"
@@ -79,11 +79,11 @@ export default function TestPage() {
               </div>
             </div>
           </div>
-          <div className="form-values laxutw-flex-1">
+          <div className="form-values flex-1">
             {Object.keys(values).map((key) => (
-              <div key={key} className=" laxutw-flex laxutw-gap-2 laxutw-mb-1">
+              <div key={key} className=" flex gap-2 mb-1">
                 <p>{key}: </p>
-                <p className="laxutw-bg-green-300 laxutw-p-1 laxutw-rounded-r-xl">{values[key].toString()}</p>
+                <p className="bg-green-300 p-1 rounded-r-xl">{values[key].toString()}</p>
               </div>
             ))}
             <p>Errors: {JSON.stringify(errors)}</p>
@@ -93,7 +93,7 @@ export default function TestPage() {
 
       <h2>Radix components </h2>
 
-      <h5>Combo box with search on dropdown single select</h5>
+      {/* <h5>Combo box with search on dropdown single select</h5>
       <Combobox options={comboboxTestData} />
 
       <h5>Combo box with search on dropdown single select</h5>
@@ -103,7 +103,7 @@ export default function TestPage() {
       <Dropdown options={comboboxTestData} bindvalue="" />
 
       <h5>Multiselect select dropdown</h5>
-      <Dropdown options={comboboxTestData} multiple bindvalue={[]} />
+      <Dropdown options={comboboxTestData} multiple bindvalue={[]} /> */}
 
       <h5>Date Picker</h5>
       <DatePicker canType />
@@ -121,18 +121,18 @@ export default function TestPage() {
       </Tabs>
 
       <h5>Input field With icon</h5>
-      <RoundedContainer className="laxutw-flex laxutw-gap-1 laxutw-bg-gray-100 laxutw-p-5">
-        <Input className="laxutw-w-[11rem]" hasIcon iconName="circle" placeholder="Type Sth..." varientSize="lg" />
-        <Input className="laxutw-w-[11rem]" hasIcon iconName="circle" placeholder="Type Sth..." />
+      <RoundedContainer className="flex gap-1 bg-gray-100 p-5">
+        <Input className="w-[11rem]" hasIcon iconName="circle" placeholder="Type Sth..." varientSize="lg" />
+        <Input className="w-[11rem]" hasIcon iconName="circle" placeholder="Type Sth..." />
       </RoundedContainer>
 
       <h5>Input field</h5>
-      <RoundedContainer className="laxutw-flex laxutw-gap-1 laxutw-bg-gray-100 laxutw-p-5">
-        <Input className="laxutw-w-[11rem]" />
-        <Input className="laxutw-w-[11rem]" varientSize="sm" />
+      <RoundedContainer className="flex gap-1 bg-gray-100 p-5">
+        <Input className="w-[11rem]" />
+        <Input className="w-[11rem]" varientSize="sm" />
       </RoundedContainer>
 
-      <RoundedContainer className="laxutw-h-24 laxutw-bg-[#F2F2F2] laxutw-w-2/5 laxutw-p-4 ">
+      <RoundedContainer className="h-24 bg-[#F2F2F2] w-2/5 p-4 ">
         <h3>Rounded Container</h3>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet obcaecati ipsum numquam. Accusamus
@@ -178,7 +178,7 @@ export default function TestPage() {
       <h3>Heading 3</h3>
       <h4>Heading 4</h4>
       <h5>Heading 5</h5>
-      <SearchCommand choose="id" options={comboboxTestData} />
+      {/* <SearchCommand choose="id" options={comboboxTestData} /> */}
     </div>
   );
 }

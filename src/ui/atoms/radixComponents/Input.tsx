@@ -28,36 +28,32 @@ const Input = React.forwardRef<HTMLInputElement, IInputProps>(
     ref,
   ) => {
     const sizeVarient = {
-      sm: 'laxutw-h-[2.25rem]',
-      lg: 'laxutw-h-[2.75rem]',
+      sm: 'h-[2.25rem]',
+      lg: 'h-[2.75rem]',
     };
     if (hasIcon)
       return (
         <div
           className={cn(
-            `laxutw-bg-white laxutw-flex laxutw-gap-[2px] laxutw-w-full laxutw-items-center laxutw-justify-center laxutw-rounded-md laxutw-border laxutw--[12px] file:laxutw-border-0 file:laxutw-bg-transparent file:laxutw-text-sm file:laxutw-font-medium placeholder:laxutw-text-gray-400 focus-visible:laxutw-outline-none focus-visible:laxutw-ring-2 focus-visible:laxutw-ring-ring focus-visible:laxutw-ring-offset-2 disabled:laxutw-cursor-not-allowed disabled:laxutw-opacity-5 disabled:laxutw-border-b-gray-600`,
+            `bg-white flex gap-[2px] w-full items-center justify-center rounded-md border -[12px] file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-5 disabled:border-b-gray-600`,
             className,
             sizeVarient[varientSize],
           )}
         >
           {iconPosition === 'left' && (
-            <Icon iconName={iconName} className={cn('laxutw-text-2xl ', iconStyle)} onClick={onClick} />
+            <Icon iconName={iconName} className={cn('text-2xl ', iconStyle)} onClick={onClick} />
           )}
           <input
             type={type}
             className={cn(
-              'laxutw-flex laxutw-pl-[8px] laxutw-h-full laxutw-w-full  laxutw-border-input laxutw-bg-transparent laxutw-text-sm laxutw-ring-offset-background file:laxutw-border-0 file:laxutw-bg-transparent file:laxutw-text-sm file:laxutw-font-medium placeholder:laxutw-text-gray-400  disabled:laxutw-cursor-not-allowed disabled:laxutw-opacity-50 focus:laxutw-border-none focus:laxutw-outline-none hover:laxutw-bg-teal-green-50 laxutw-transition-all laxutw-duration-200',
+              'flex pl-[8px] h-full w-full  border-input bg-transparent text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-400  disabled:cursor-not-allowed disabled:opacity-50 focus:border-none focus:outline-none hover:bg-teal-green-50 transition-all duration-200',
             )}
             ref={ref}
             onClick={onClick}
             {...props}
           />
           {iconPosition === 'right' && (
-            <Icon
-              iconName={iconName}
-              className={cn('laxutw-text-2xl  laxutw-px-[12px]', iconStyle)}
-              onClick={onClick}
-            />
+            <Icon iconName={iconName} className={cn('text-2xl  px-[12px]', iconStyle)} onClick={onClick} />
           )}
         </div>
       );
@@ -66,7 +62,7 @@ const Input = React.forwardRef<HTMLInputElement, IInputProps>(
       <input
         type={type}
         className={cn(
-          'laxutw-bg-white laxutw-flex laxutw-h-10 laxutw-w-full laxutw-rounded-md laxutw-border laxutw-border-gray-400 laxutw-bg-transparent laxutw-px-3 laxutw-py-2 laxutw-text-sm laxutw-ring-offset-background file:laxutw-border-0 file:laxutw-bg-transparent file:laxutw-text-sm file:laxutw-font-medium placeholder:laxutw-text-gray-400 focus-visible:laxutw-outline-none focus-visible:laxutw-ring-2 focus-visible:laxutw-ring-ring focus-visible:laxutw-ring-offset-2 disabled:laxutw-cursor-not-allowed disabled:laxutw-opacity-50 hover:laxutw-bg-teal-green-50 laxutw-transition-all laxutw-duration-200',
+          'bg-white flex h-10 w-full rounded-md border border-gray-400 bg-transparent px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 hover:bg-teal-green-50 transition-all duration-200',
           className,
           sizeVarient[varientSize],
         )}

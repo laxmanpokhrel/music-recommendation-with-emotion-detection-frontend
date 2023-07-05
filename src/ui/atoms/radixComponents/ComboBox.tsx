@@ -66,14 +66,14 @@ function Combobox({
           size="drop-lg"
           role="combobox"
           aria-expanded={open}
-          className="laxutw-flex laxutw-justify-between laxutw-pr-3 laxutw-items-center"
+          className="flex justify-between pr-3 items-center"
         >
           {multiple ? (
-            <div className="laxutw-flex laxutw-flex-wrap">
+            <div className="flex flex-wrap">
               {Array.isArray(value) && value.length > 0 ? (
                 <span>{value.length} items selected</span>
               ) : (
-                <span className="laxutw-opacity-50">Select options...</span>
+                <span className="opacity-50">Select options...</span>
               )}
             </div>
           ) : (
@@ -81,18 +81,15 @@ function Combobox({
               {value ? (
                 options.find((option: IDropDownData) => option[choose] === value)?.label
               ) : (
-                <span className="laxutw-opacity-50">Select options...</span>
+                <span className="opacity-50">Select options...</span>
               )}
             </>
           )}
-          <Icon
-            iconName="arrow_drop_down"
-            className=" laxutw-h-4 laxutw-w-4 laxutw-flex laxutw-justify-center laxutw-items-center laxutw-shrink-0 laxutw-opacity-50"
-          />
+          <Icon iconName="arrow_drop_down" className=" h-4 w-4 flex justify-center items-center shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="laxutw-p-[0px] laxutw-bg-white laxutw-w-full" style={{ width: 'inherit' }}>
-        <Command className="laxutw-p-0 laxutw-m-0">
+      <PopoverContent className="p-[0px] bg-white w-full" style={{ width: 'inherit' }}>
+        <Command className="p-0 m-0">
           <CommandInput
             placeholder="Search data..."
             value={searchQuery}
@@ -101,7 +98,7 @@ function Combobox({
             }}
           />
           {/* {!filteredData.length && (
-            <div className="laxutw-px-2 laxutw-py-1 laxutw-text-gray-500 laxutw-font-extralight">No match found!</div>
+            <div className="px-2 py-1 text-gray-500 font-extralight">No match found!</div>
           )} */}
           <CommandEmpty>No match found.</CommandEmpty>
           <CommandGroup>
@@ -109,14 +106,14 @@ function Combobox({
               <CommandItem key={option.label} onSelect={() => handleSelect(option[choose])}>
                 <Icon
                   iconName="done"
-                  className={`laxutw-mr-[1px] laxutw-text-[20px] ${
+                  className={`mr-[1px] text-[20px] ${
                     !multiple
                       ? value === option[choose]
-                        ? 'laxutw-opacity-100'
-                        : 'laxutw-opacity-0'
+                        ? 'opacity-100'
+                        : 'opacity-0'
                       : Array.isArray(value) && value.includes(option[choose])
-                      ? 'laxutw-opacity-100'
-                      : 'laxutw-opacity-0'
+                      ? 'opacity-100'
+                      : 'opacity-0'
                   }`}
                 />
                 {option.label}

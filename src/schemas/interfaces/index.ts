@@ -96,7 +96,7 @@ export interface IBudget {
 }
 export interface IDropDownData {
   label: string;
-  value: string;
+  value: string | boolean;
   id?: string | number;
   code?: string;
 }
@@ -153,4 +153,17 @@ export interface IFileDataObject {
 export interface IFormState {
   formHasError: boolean;
   formIsValid: boolean;
+}
+
+export interface IRadioData {
+  label: string;
+  value: string | boolean;
+  id?: string | number;
+  code?: string;
+}
+
+export interface IRadioDataProps extends Partial<IRegisterProps> {
+  options: IDropDownData[];
+  choose?: keyof IDropDownData;
+  disabled?: boolean;
 }

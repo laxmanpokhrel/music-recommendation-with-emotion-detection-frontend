@@ -10,7 +10,7 @@ interface IPreviewFilesProps {
 export default function PreviewFiles({ files, handleFileDelete }: IPreviewFilesProps) {
   if (files)
     return (
-      <div className="laxutw-flex laxutw-flex-col laxutw-gap-1 ">
+      <div className="flex flex-col gap-1 ">
         <AnimatePresence>
           {Array.from(files).map((file, index) => (
             <FileCard key={`${file.name}`} file={file} handleFileDelete={handleFileDelete} index={index} />

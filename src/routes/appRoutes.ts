@@ -8,6 +8,11 @@ const MusicProfile = React.lazy(() => import('@Pages/MusicProfile'));
 const MoodDetector = React.lazy(() => import('@Pages/MoodDetector'));
 const ExploreMoreMusicWithMood = React.lazy(() => import('@Pages/ExploreMoreMusicWithMood'));
 const UploadMusic = React.lazy(() => import('@Pages/UploadMusic'));
+const Login = React.lazy(() => import('@Pages/Login'));
+const Signup = React.lazy(() => import('@Pages/Signup'));
+const YourMusic = React.lazy(() => import('@Pages/YourMusic'));
+const YourPlaylist = React.lazy(() => import('@Pages/YourPlaylist'));
+const CreatePlaylist = React.lazy(() => import('@Pages/CreatePlaylist'));
 
 const appRoutes: IRoute[] = [
   {
@@ -23,10 +28,22 @@ const appRoutes: IRoute[] = [
     authenticated: false,
   },
   {
+    path: '/login',
+    name: 'Login ',
+    component: Login,
+    authenticated: false,
+  },
+  {
+    path: '/signup',
+    name: 'Signup ',
+    component: Signup,
+    authenticated: false,
+  },
+  {
     path: '/detect-mood',
     name: 'Detect Mood ',
     component: MoodDetector,
-    authenticated: false,
+    authenticated: true,
   },
   {
     path: '/explore-more',
@@ -38,13 +55,25 @@ const appRoutes: IRoute[] = [
     path: '/upload-music',
     name: 'Upload Music',
     component: UploadMusic,
-    authenticated: false,
+    authenticated: true,
   },
   {
     path: '/your-music',
     name: 'Your Music',
-    component: HomePage,
-    authenticated: false,
+    component: YourMusic,
+    authenticated: true,
+  },
+  {
+    path: '/your-playlist',
+    name: 'Your Music',
+    component: YourPlaylist,
+    authenticated: true,
+  },
+  {
+    path: '/create-playlist',
+    name: 'Your Music',
+    component: CreatePlaylist,
+    authenticated: true,
   },
 ];
 export default appRoutes;

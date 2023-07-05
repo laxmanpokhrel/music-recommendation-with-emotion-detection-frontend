@@ -26,7 +26,7 @@ function PortalTemplate({ children, onClose }: IPortalTemplateProps) {
         ? createPortal(
             <motion.div
               {...backDropAnimation}
-              className="laxutw-w-screen laxutw-h-screen laxutw-bg-gray-800 laxutw-bg-opacity-20 laxutw-z-10  laxutw-fixed laxutw-top-0 laxutw-left-0"
+              className="w-screen h-screen bg-gray-800 bg-opacity-20 z-10  fixed top-0 left-0"
             />,
             backdropNode,
           )
@@ -35,9 +35,9 @@ function PortalTemplate({ children, onClose }: IPortalTemplateProps) {
         ? createPortal(
             <div
               onClick={() => (onClose ? onClose() : null)}
-              className="laxutw-fixed laxutw-top-0 laxutw-left-0 laxutw-w-screen laxutw-h-screen laxutw-bg-opacity-0 laxutw-z-20"
+              className="fixed top-0 left-0 w-screen h-screen bg-opacity-0 z-20"
             >
-              <div className="overlay-container laxutw-relative laxutw-w-full laxutw-h-full ">{children}</div>
+              <div className="overlay-container relative w-full h-full ">{children}</div>
             </div>,
             portalNode,
           )
