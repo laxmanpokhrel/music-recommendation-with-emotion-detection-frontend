@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite';
 import dotenv from 'dotenv';
+import { defineConfig } from 'vite';
 // import reactRefresh from '@vitejs/plugin-react-refresh';
-import { domToCodePlugin } from 'dom-to-code/vite';
 import react from '@vitejs/plugin-react';
+import { domToCodePlugin } from 'dom-to-code/vite';
 dotenv.config();
 export default defineConfig({
   base: '/',
@@ -10,8 +10,8 @@ export default defineConfig({
     react(),
     process.env.NODE_ENV !== 'production'
       ? domToCodePlugin({
-          mode: 'react',
-        })
+        mode: 'react',
+      })
       : undefined,
   ],
   resolve: {
@@ -44,6 +44,7 @@ export default defineConfig({
       API_URL: process.env.API_URL,
       SITE_NAME: process.env.SITE_NAME,
       FAST_API_URL: process.env.FAST_API_URL,
+      AI_URL: process.env.AI_URL,
     },
   },
   server: {
