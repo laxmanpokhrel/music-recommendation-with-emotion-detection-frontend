@@ -1,7 +1,6 @@
-import { HTMLAttributes } from 'react';
 import { cn } from '@Utils/index';
 
-interface MusicCardType extends HTMLAttributes<HTMLDivElement> {
+interface MusicCardType /* extends HTMLAttributes<HTMLDivElement>*/ {
   image?: string;
   title?: string;
   description?: string;
