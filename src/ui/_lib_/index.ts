@@ -7,6 +7,12 @@ export const ownMusicService = ApiFactory.createQuery({
   authenticated: true,
 });
 
+export const LikedMusicService = ApiFactory.createQuery({
+  key: 'liked_musics',
+  url: '/music/liked',
+  authenticated: true,
+});
+
 export const PlaylistCreateService = ApiFactory.createQuery({
   key: 'personal_playlist',
   url: '/playlists/own',
