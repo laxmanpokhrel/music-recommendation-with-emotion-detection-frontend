@@ -1,5 +1,5 @@
-import React from 'react';
 import IRoute from '@Schemas/interfaces';
+import React from 'react';
 
 // Lazy loading
 //*  Please consider rethinking before implementing lazy loading
@@ -12,6 +12,7 @@ const Login = React.lazy(() => import('@Pages/Login'));
 const Signup = React.lazy(() => import('@Pages/Signup'));
 const YourMusic = React.lazy(() => import('@Pages/YourMusic'));
 const YourPlaylist = React.lazy(() => import('@Pages/YourPlaylist'));
+const LikedMusics = React.lazy(() => import('@Pages/LikedMusics'));
 const CreatePlaylist = React.lazy(() => import('@Pages/CreatePlaylist'));
 
 const appRoutes: IRoute[] = [
@@ -67,6 +68,12 @@ const appRoutes: IRoute[] = [
     path: '/your-playlist',
     name: 'Your Music',
     component: YourPlaylist,
+    authenticated: true,
+  },
+  {
+    path: '/liked-musics',
+    name: 'Liked Music',
+    component: LikedMusics,
     authenticated: true,
   },
   {

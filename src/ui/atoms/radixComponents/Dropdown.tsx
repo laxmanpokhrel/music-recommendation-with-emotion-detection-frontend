@@ -1,9 +1,9 @@
 /* eslint-disable no-nested-ternary */
-import React from 'react';
 import Icon from '@Atoms/Icon';
-import { cn } from '@Utils/index';
-import { IComboBoxProps, IDropDownData } from '@Schemas/interfaces';
 import hasErrorBoundary from '@Molecules/_lib_/hasErrorBoundary';
+import { IComboBoxProps, IDropDownData } from '@Schemas/interfaces';
+import { cn } from '@Utils/index';
+import React from 'react';
 import { Button } from './Button';
 
 import { Command, CommandEmpty, CommandGroup, CommandItem } from './Command';

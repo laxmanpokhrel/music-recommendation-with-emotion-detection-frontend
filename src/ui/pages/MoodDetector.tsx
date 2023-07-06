@@ -30,8 +30,8 @@ export default function MooDetector() {
 
   return (
     <div className="w-full  h-[80vh] flex gap-8 p-4">
-      <div className="flex-2">
-        <iframe title="camera" className="w-full h-full" src={`${process.env.AI_URL}/video`} />
+      <div className="flex-2  w-fit">
+        <iframe title="camera" className="w-full h-full " src={`${process.env.AI_URL}/video`} />
       </div>
       <div>
         <div className="songs flex-1 flex gap-4 items-start justify-start">

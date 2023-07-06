@@ -1,9 +1,10 @@
-import Card from '@Atoms/Card';
-import MusicCard from '@Atoms/MusicCard';
-import { MusicService } from '../_lib_';
+import { LikedMusicService } from '../_lib_';
+import Card from '../atoms/Card';
+import MusicCard from '../atoms/MusicCard';
 
-export default function HomePageTemplate(): JSX.Element {
-  const { data } = MusicService.fetchData();
+export default function LikedMusics() {
+  const { data } = LikedMusicService.fetchData();
+  console.log('🚀 ~ file: LikedMusics.tsx:7 ~ LikedMusics ~ data:', data);
 
   return (
     <div className="home-page-template text-lg w-full h-full grid pt-10">
