@@ -96,17 +96,21 @@ export interface IBudget {
 }
 export interface IDropDownData {
   label: string;
-  value: string | boolean;
+  value: string;
   id?: string | number;
   code?: string;
 }
 
-export interface IRegisterProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'onFocus'> {
+export interface IRegisterProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'onFocus' | 'onAbort'> {
   bindvalue: any;
   onFocus: (e?: any) => void;
   onChange: (e: any) => void;
   touched: boolean;
   error: string;
+  pretoucherror: any;
+  controlleddisabled: boolean | undefined;
+  uniquename: string;
 }
 
 export interface IComboBoxProps extends Partial<IRegisterProps> {
@@ -151,8 +155,10 @@ export interface IFileDataObject {
 }
 
 export interface IFormState {
-  formHasError: boolean;
-  formIsValid: boolean;
+  isSubmitting?: boolean;
+  isSuccess?: boolean;
+  isError?: boolean;
+  error?: string;
 }
 
 export interface IRadioData {
@@ -166,4 +172,8 @@ export interface IRadioDataProps extends Partial<IRegisterProps> {
   options: IDropDownData[];
   choose?: keyof IDropDownData;
   disabled?: boolean;
+}
+
+export interface IDatePickerProps extends Partial<IRegisterProps> {
+  canType?: boolean;
 }

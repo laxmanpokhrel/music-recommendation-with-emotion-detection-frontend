@@ -3,26 +3,27 @@ import React from 'react';
 import { cn } from '@Utils/index';
 import Icon from '@Atoms/Icon';
 
-export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   hasIcon?: boolean;
-  iconName?: string;
-  iconPosition?: 'left' | 'right';
+  rightIconName?: string;
+  leftIconName?: string;
   varientSize?: 'sm' | 'lg';
   iconStyle?: string;
   disabled?: boolean;
+  onClick?: () => void;
 }
 
-const Input = React.forwardRef<HTMLInputElement, IInputProps>(
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
       type,
       hasIcon = false,
-      iconName = 'calendar_month',
+      rightIconName = '',
+      leftIconName = 'idators',
       varientSize = 'lg',
       iconStyle = '',
       onClick,
-      iconPosition = 'right',
       ...props
     },
     ref,
@@ -35,13 +36,17 @@ const Input = React.forwardRef<HTMLInputElement, IInputProps>(
       return (
         <div
           className={cn(
-            `bg-white flex gap-[2px] w-full items-center justify-center rounded-md border -[12px] file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-5 disabled:border-b-gray-600`,
+            `bg-white group flex gap-[2px] w-full items-center justify-center rounded-md border -[12px] file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-5 disabled:border-b-gray-600`,
             className,
             sizeVarient[varientSize],
           )}
         >
-          {iconPosition === 'left' && (
-            <Icon iconName={iconName} className={cn('text-2xl ', iconStyle)} onClick={onClick} />
+          {rightIconName && (
+            <Icon
+              iconName={rightIconName}
+              className={cn('text-2xl px-[12px] group-hover:bg-teal-green-50', iconStyle)}
+              onClick={onClick}
+            />
           )}
           <input
             type={type}
@@ -52,8 +57,8 @@ const Input = React.forwardRef<HTMLInputElement, IInputProps>(
             onClick={onClick}
             {...props}
           />
-          {iconPosition === 'right' && (
-            <Icon iconName={iconName} className={cn('text-2xl  px-[12px]', iconStyle)} onClick={onClick} />
+          {leftIconName && (
+            <Icon iconName={leftIconName} className={cn('text-2xl  px-[12px]', iconStyle)} onClick={onClick} />
           )}
         </div>
       );
@@ -74,4 +79,4 @@ const Input = React.forwardRef<HTMLInputElement, IInputProps>(
 );
 Input.displayName = 'Input';
 
-export { Input };
+export default Input;

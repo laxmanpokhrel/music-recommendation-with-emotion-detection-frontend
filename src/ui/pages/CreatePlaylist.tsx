@@ -8,25 +8,21 @@ import { MusicService } from '@Ui/_lib_';
 import { TestFormValidation } from '@Validation/__test__/TestFormValidation';
 
 export default function CreatePlaylist() {
-  const { data: musicData, error } = MusicService.fetchData({
+  const { data: musicData } = MusicService.fetchData({
     queryParams: {
       select: dropDownWrapper,
     },
   });
-  console.log(error, 'error');
   const uploadPlaylistInterceptor = async (data: any) => {
     try {
-      console.log(data, '--');
       const { thumbnail, ...rest } = data;
-      console.log(thumbnail, '===--');
 
       const formData = new FormData();
       formData.append('file', thumbnail[0].fileObject);
       formData.append('type', 'thumbnail');
 
       const uploadedThumbnailResponse = await postService(true, Proxies.API_URL, '/media/upload', formData, true);
-      console.log(uploadedThumbnailResponse, 'asad');
-      const uploadResponse = await postService(true, Proxies.API_URL, '/playlists/create', {
+      await postService(true, Proxies.API_URL, '/playlists/create', {
         ...rest,
         thumbnail: uploadedThumbnailResponse.data.id.toString(),
       });
@@ -60,8 +56,8 @@ export default function CreatePlaylist() {
         controlType="radio"
         label="Is Published"
         options={[
-          { value: true, label: 'Published' },
-          { value: false, label: 'Not Published' },
+          { value: 'true', label: 'Published' },
+          { value: 'false', label: 'Not Published' },
         ]}
         required
         choose="value"

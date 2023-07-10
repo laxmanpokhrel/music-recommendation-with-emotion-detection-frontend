@@ -5,8 +5,10 @@ import generateRoutes from '@Routes/_lib_/generateRoutes';
 import appRoutes from '@Routes/appRoutes';
 import testRoutes from '@Routes/_test_/index.test';
 import 'react-day-picker/dist/style.css';
-import './assets/css/tailwind.css';
 import Header from '@Organisms/Header';
+import { ToastContainer } from 'react-toastify';
+import './assets/css/tailwind.css';
+
 // import MusicPlayer from '@Organisms/MusicPlayer';
 
 export default function App() {
@@ -17,6 +19,7 @@ export default function App() {
     <>
       {process.env.NODE_ENV !== 'production' && initDomToCode()}
       <div className="m-auto  h-fit relative">
+        <ToastContainer />
         <Header />
         <div className="App h-full">
           <div className="app-playground h-full">

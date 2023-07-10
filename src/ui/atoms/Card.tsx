@@ -13,8 +13,7 @@ const Card = ({ children, className }: CardProps) => {
   const { data } = useQuery('playlist', () => {
     return authenticatedApi(`${process.env.API_URL}/playlists/own`);
   });
-  let playlists = data?.data?.data;
-  console.log('🚀 ~ file: Card.tsx:17 ~ Card ~ playlists:', children);
+  const playlists = data?.data?.data;
   return (
     <section className={cn('rounded-xl shadow-xl', className)}>
       {children}

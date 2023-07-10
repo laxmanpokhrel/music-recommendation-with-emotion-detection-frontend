@@ -1,14 +1,11 @@
-import Card from '@Atoms/Card';
-import MusicCard from '@Atoms/MusicCard';
 import { Button } from '@Atoms/radixComponents/Button';
 import { useNavigate } from 'react-router-dom';
-import { PlaylistCreateService } from '../_lib_';
 import Icon from '@Atoms/Icon';
+import { PlaylistCreateService } from '../_lib_';
 
 export default function YourPlaylist() {
   const { data } = PlaylistCreateService.fetchData();
   const navigate = useNavigate();
-  console.log(data?.data, '---data');
   if (!data?.data?.length)
     return (
       <div className="w-full flex flex-col justify-center items-center gap-4 h-[92vh]">

@@ -30,16 +30,22 @@ export const getService = async (
   ClassModule?: any,
   params?: Record<string, any>,
 ) => {
-  const envSpicificProxy = getProxy(proxy);
-  const response = authenticated
-    ? await authenticatedApi.get(`${envSpicificProxy}${path}`, { params })
-    : await api.get(`${envSpicificProxy}${path}`, { params });
-  const instances = ClassModule
-    ? response.data.map((item: any) => {
-        return new ClassModule(item);
-      })
-    : null;
-  return instances || response.data;
+  try {
+    const envSpicificProxy = getProxy(proxy);
+    const response = authenticated
+      ? await authenticatedApi.get(`${envSpicificProxy}${path}`, { params })
+      : await api.get(`${envSpicificProxy}${path}`, { params });
+    const instances = ClassModule
+      ? Array.isArray(response.data)
+        ? response.data.map((item: any) => {
+            return new ClassModule(item);
+          })
+        : new ClassModule(response.data)
+      : null;
+    return instances || response.data;
+  } catch (err: any) {
+    throw new Error(err.response.data.detail);
+  }
 };
 
 /**
@@ -67,11 +73,15 @@ export const getSingleService = async (
   id: string,
   ClassModule?: any,
 ) => {
-  const envSpicificProxy = getProxy(proxy);
-  const response = authenticated
-    ? await authenticatedApi.get(`${envSpicificProxy}${path}/${id}`)
-    : await api.get(`${envSpicificProxy}${path}/${id}`);
-  return ClassModule ? new ClassModule(response.data) : response.data;
+  try {
+    const envSpicificProxy = getProxy(proxy);
+    const response = authenticated
+      ? await authenticatedApi.get(`${envSpicificProxy}${path}/${id}`)
+      : await api.get(`${envSpicificProxy}${path}/${id}`);
+    return ClassModule ? new ClassModule(response.data) : response.data;
+  } catch (err: any) {
+    throw new Error(err.response.data.detail);
+  }
 };
 
 /**
@@ -96,11 +106,15 @@ export const patchService = async (
   path: string,
   params: Record<string, any> | FormData,
 ) => {
-  const envSpicificProxy = getProxy(proxy);
-  const response = authenticated
-    ? await authenticatedApi.patch(`${envSpicificProxy}${path}`, { params })
-    : await api.patch(`${envSpicificProxy}${path}`, { params });
-  return response.data;
+  try {
+    const envSpicificProxy = getProxy(proxy);
+    const response = authenticated
+      ? await authenticatedApi.patch(`${envSpicificProxy}${path}`, { params })
+      : await api.patch(`${envSpicificProxy}${path}`, { params });
+    return response.data;
+  } catch (err: any) {
+    throw new Error(err.response.data.detail);
+  }
 };
 
 /**
@@ -129,13 +143,17 @@ export const postService = async (
   payload: Record<string, any> | FormData,
   formData?: boolean,
 ) => {
-  const envSpicificProxy = getProxy(proxy);
-  const response = authenticated
-    ? formData
-      ? await authenticatedFormDataApi.post(`${envSpicificProxy}${path}`, payload)
-      : await authenticatedApi.post(`${envSpicificProxy}${path}`, payload)
-    : await api.post(`${proxy}${path}`, payload);
-  return response.data;
+  try {
+    const envSpicificProxy = getProxy(proxy);
+    const response = authenticated
+      ? formData
+        ? await authenticatedFormDataApi.post(`${envSpicificProxy}${path}`, payload)
+        : await authenticatedApi.post(`${envSpicificProxy}${path}`, payload)
+      : await api.post(`${envSpicificProxy}${path}`, payload);
+    return response.data;
+  } catch (err: any) {
+    throw new Error(err.response.data.message.join(', '));
+  }
 };
 
 /**
@@ -154,11 +172,15 @@ export const postService = async (
  * @returns the data from the response object.
  */
 export const softDeleteService = async (authenticated: boolean, proxy: string, path: string, id: string) => {
-  const envSpicificProxy = getProxy(proxy);
-  const response = authenticated
-    ? await authenticatedApi.patch(`${envSpicificProxy}${path}/${id}`, { params: { is_deleted: true } })
-    : await api.patch(`${envSpicificProxy}${path}/${id}`, { params: { is_deleted: true } });
-  return response.data;
+  try {
+    const envSpicificProxy = getProxy(proxy);
+    const response = authenticated
+      ? await authenticatedApi.patch(`${envSpicificProxy}${path}/${id}`, { params: { is_deleted: true } })
+      : await api.patch(`${envSpicificProxy}${path}/${id}`, { params: { is_deleted: true } });
+    return response.data;
+  } catch (err: any) {
+    throw new Error(err.response.data.detail);
+  }
 };
 
 /**
@@ -176,11 +198,15 @@ export const softDeleteService = async (authenticated: boolean, proxy: string, p
  * @returns the data from the response.
  */
 export const hardDeleteService = async (authenticated: boolean, proxy: string, path: string, id: string) => {
-  const envSpicificProxy = getProxy(proxy);
-  const response = authenticated
-    ? await authenticatedApi.delete(`${envSpicificProxy}${path}/${id}`)
-    : await api.delete(`${envSpicificProxy}${path}/${id}`);
-  return response.data;
+  try {
+    const envSpicificProxy = getProxy(proxy);
+    const response = authenticated
+      ? await authenticatedApi.delete(`${envSpicificProxy}${path}/${id}`)
+      : await api.delete(`${envSpicificProxy}${path}/${id}`);
+    return response.data;
+  } catch (err: any) {
+    throw new Error(err.response.data.detail);
+  }
 };
 
 /**
@@ -209,14 +235,18 @@ export const getPaginatedService = async (
   ClassModule?: any,
   params?: Record<string, any>,
 ) => {
-  const envSpicificProxy = getProxy(proxy);
-  const response = authenticated
-    ? await authenticatedApi.get(`${envSpicificProxy}${path}`, { params })
-    : await api.get(`${envSpicificProxy}${path}`, { params });
-  const instances = ClassModule
-    ? response.data.results.map((item: any) => {
-        return new ClassModule(item);
-      })
-    : response.data.results;
-  return instances;
+  try {
+    const envSpicificProxy = getProxy(proxy);
+    const response = authenticated
+      ? await authenticatedApi.get(`${envSpicificProxy}${path}`, { params })
+      : await api.get(`${envSpicificProxy}${path}`, { params });
+    const instances = ClassModule
+      ? response.data.results.map((item: any) => {
+          return new ClassModule(item);
+        })
+      : response.data.results;
+    return instances;
+  } catch (err: any) {
+    throw new Error(err.response.data.detail);
+  }
 };

@@ -34,6 +34,5 @@ export async function postInterceptor(data: Record<string, any>) {
     return true;
   } catch (err) {
     return false;
-    // console.log(err.message, 'error');
   }
 }

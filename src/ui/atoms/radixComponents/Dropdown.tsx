@@ -1,16 +1,16 @@
 /* eslint-disable no-nested-ternary */
+import React, { useEffect, useRef } from 'react';
 import Icon from '@Atoms/Icon';
-import hasErrorBoundary from '@Molecules/_lib_/hasErrorBoundary';
-import { IComboBoxProps, IDropDownData } from '@Schemas/interfaces';
 import { cn } from '@Utils/index';
-import React from 'react';
+import { IComboBoxProps, IDropDownData } from '@Schemas/interfaces';
+import hasErrorBoundary from '@Molecules/_lib_/hasErrorBoundary';
 import { Button } from './Button';
 
-import { Command, CommandEmpty, CommandGroup, CommandItem } from './Command';
+import { Command, CommandGroup, CommandItem } from './Command';
 import { Popover, PopoverContent, PopoverTrigger } from './Popover';
 
 function Dropdown({
-  options,
+  options = [],
   multiple = false,
   choose = 'id',
   bindvalue,
@@ -20,9 +20,11 @@ function Dropdown({
   id,
   className,
   disabled,
+  isLoading = false,
 }: IComboBoxProps) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(bindvalue);
+  const [dropDownWidth, setDropDownWidth] = React.useState<number | undefined>(0);
   const handleSelect = (currentValue: any) => {
     if (onFocus) onFocus();
 
@@ -48,9 +50,13 @@ function Dropdown({
     }
   };
 
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  useEffect(() => {
+    setDropDownWidth(triggerRef.current?.clientWidth);
+  }, [triggerRef.current?.clientWidth]);
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
+      <PopoverTrigger asChild ref={triggerRef}>
         <Button
           id={id}
           variant={disabled ? 'ghost' : 'drop'}
@@ -63,17 +69,17 @@ function Dropdown({
           {multiple ? (
             <div className="flex flex-wrap">
               {Array.isArray(value) && value.length > 0 ? (
-                <p>{value.length} items selected</p>
+                <p className="line-clamp-2">{value.length} items selected</p>
               ) : (
-                <p className="body-md text-black px-0">{placeholder || 'Select options...'}</p>
+                <p className="body-md text-gray-400 px-0 line-clamp-2">{placeholder || 'Choose'}</p>
               )}
             </div>
           ) : (
             <>
               {value ? (
-                options.find((option: IDropDownData) => option[choose] === value)?.label
+                options.find((option: IDropDownData) => option[choose as keyof IDropDownData] === value)?.label
               ) : (
-                <p className="body-md text-black px-0">{placeholder || 'Select options...'}</p>
+                <p className="body-md px-0 text-gray-400 line-clamp-2">{placeholder || 'Choose'}</p>
               )}
             </>
           )}
@@ -83,13 +89,17 @@ function Dropdown({
           />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="p-[0px] bg-white min-w-full block" style={{ minWidth: '100%' }}>
+      <PopoverContent
+        className="p-[0px] bg-white block search-scrollbar max-h-[10rem] overflow-y-auto"
+        style={{ width: `${dropDownWidth}px` }}
+      >
         <Command className="p-0 m-0">
-          {options.length === 0 && <CommandEmpty>No match found.</CommandEmpty>}
+          {isLoading && <p>Loading ...</p>}
           <CommandGroup className="">
-            {options.map((option: IDropDownData) => (
-              <CommandItem key={option.value} onSelect={() => handleSelect(option[choose])}>
-                {/* {multiple ? (
+            {options.length ? (
+              options.map((option: IDropDownData) => (
+                <CommandItem key={option.value} onSelect={() => handleSelect(option[choose as keyof IDropDownData])}>
+                  {/* {multiple ? (
                   <Icon
                     iconName={`${
                       Array.isArray(value) && value.includes(option[choose] as T)
@@ -111,21 +121,24 @@ function Dropdown({
                     }`}
                   />
                 )} */}
-                <Icon
-                  iconName="done"
-                  className={`mr-[1px] text-[20px] ${
-                    !multiple
-                      ? value === option[choose]
+                  <Icon
+                    iconName="done"
+                    className={`mr-[1px] text-[20px] ${
+                      !multiple
+                        ? value === option[choose as keyof IDropDownData]
+                          ? 'opacity-100'
+                          : 'opacity-0'
+                        : Array.isArray(value) && value.includes(option[choose as keyof IDropDownData])
                         ? 'opacity-100'
                         : 'opacity-0'
-                      : Array.isArray(value) && value.includes(option[choose])
-                      ? 'opacity-100'
-                      : 'opacity-0'
-                  }`}
-                />
-                {option.label}
-              </CommandItem>
-            ))}
+                    }`}
+                  />
+                  {option.label}
+                </CommandItem>
+              ))
+            ) : (
+              <div className="h-[4.25rem] flex items-center justify-center text-gray-400">No Data Found.</div>
+            )}
           </CommandGroup>
         </Command>
       </PopoverContent>

@@ -3,7 +3,7 @@ import { Button } from '@Atoms/radixComponents/Button';
 import RoundedContainer from '@Molecules/RoundedContainer';
 // import Dropdown from '@Atoms/radixComponents/Dropdown';
 import DatePicker from '@Atoms/radixComponents/DatePicker';
-import { Input } from '@Atoms/radixComponents/Input';
+import Input from '@Atoms/radixComponents/Input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@Atoms/radixComponents/TabList';
 // import Combobox from '@Atoms/radixComponents/ComboBox';
 // import SearchCommand from '@Atoms/radixComponents/SearchCommand';
@@ -121,10 +121,10 @@ export default function TestPage() {
       </Tabs>
 
       <h5>Input field With icon</h5>
-      <RoundedContainer className="flex gap-1 bg-gray-100 p-5">
+      {/* <RoundedContainer className="flex gap-1 bg-gray-100 p-5">
         <Input className="w-[11rem]" hasIcon iconName="circle" placeholder="Type Sth..." varientSize="lg" />
         <Input className="w-[11rem]" hasIcon iconName="circle" placeholder="Type Sth..." />
-      </RoundedContainer>
+      </RoundedContainer> */}
 
       <h5>Input field</h5>
       <RoundedContainer className="flex gap-1 bg-gray-100 p-5">
