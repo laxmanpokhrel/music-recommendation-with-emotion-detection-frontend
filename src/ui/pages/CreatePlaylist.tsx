@@ -1,11 +1,12 @@
 import { postService } from '@Api/services';
 import { dropDownWrapper } from '@Api/wrappers';
-import { Button } from '@Atoms/radixComponents/Button';
 import { Proxies } from '@Constants/Proxies';
 import useForm from '@Hooks/useForm';
+import SubmitButton from '@Molecules/SubmitButton';
 import FormControl from '@Templates/FormControl';
 import { MusicService } from '@Ui/_lib_';
 import { TestFormValidation } from '@Validation/__test__/TestFormValidation';
+import { toast } from 'react-toastify';
 
 export default function CreatePlaylist() {
   const { data: musicData } = MusicService.fetchData({
@@ -13,7 +14,7 @@ export default function CreatePlaylist() {
       select: dropDownWrapper,
     },
   });
-  const uploadPlaylistInterceptor = async (data: any) => {
+  const uploadPlaylistInterceptor = async (data: any, navigate: any) => {
     try {
       const { thumbnail, ...rest } = data;
 
@@ -26,13 +27,14 @@ export default function CreatePlaylist() {
         ...rest,
         thumbnail: uploadedThumbnailResponse.data.id.toString(),
       });
-
+      navigate('/your-playlist');
+      toast('Successfully Created Playlist');
       return true;
     } catch (err) {
       return false;
     }
   };
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, formState } = useForm({
     initialValues: { name: '', thumbnail: '', tag: '', isPrivate: false, musics: [] },
     validationSchema: TestFormValidation,
     postDataInterceptor: ({ tag, isPrivate, musics, ...rest }) => ({
@@ -63,7 +65,7 @@ export default function CreatePlaylist() {
         choose="value"
         {...register('isPrivate')}
       />
-      <Button type="submit">Save</Button>
+      <SubmitButton {...formState}>Save</SubmitButton>
     </form>
   );
 }
