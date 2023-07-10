@@ -1,3 +1,4 @@
 import templateSlice from './templateSlice/templateSlice';
+import musicSlice from './musicSlice';
 
-export default { templateState: templateSlice.reducer };
+export default { music: musicSlice.reducer };

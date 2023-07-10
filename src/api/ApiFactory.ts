@@ -1,5 +1,6 @@
 import { Proxies } from '@Constants/Proxies';
 import Query from './_lib_/Query';
+import { getProxy } from './_lib_/utils';
 
 interface ICreateQueryProps<T> {
   url: string;
@@ -20,15 +21,22 @@ class ApiFactory {
    * @param ClassModule The class model to which the response data belongs to so that data is received along with the methods specified on that model class.
    * @returns The function `createQuery` is returning an instance of the `Query` class.
    */
-  static createQuery<T>({ url, key, ClassModule, proxy = Proxies.api, authenticated = false }: ICreateQueryProps<T>) {
-    const indentifier = `${key}-${proxy}-${url}-${
+  static createQuery<T>({
+    url,
+    key,
+    ClassModule,
+    proxy = Proxies.API_URL,
+    authenticated = false,
+  }: ICreateQueryProps<T>) {
+    const envSpicificProxy = getProxy(proxy);
+    const indentifier = `${key}-${envSpicificProxy}-${url}-${
       ClassModule ? `with-class-module-${ClassModule.toString()}` : 'without-class-module'
     }`;
     let query = ApiFactory.cache.get(indentifier);
     if (!query) {
       query = ClassModule
-        ? new Query<T>(authenticated, url, key, proxy, ClassModule)
-        : new Query<T>(authenticated, url, key, proxy);
+        ? new Query<T>(authenticated, url, key, envSpicificProxy, ClassModule)
+        : new Query<T>(authenticated, url, key, envSpicificProxy);
       ApiFactory.cache.set(indentifier, query);
     }
     return query;

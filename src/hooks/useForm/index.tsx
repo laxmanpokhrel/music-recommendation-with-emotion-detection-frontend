@@ -1,10 +1,15 @@
+/* eslint-disable no-lonely-if */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable prefer-destructuring */
 import { IFormState, IRegisterProps } from '@Schemas/interfaces';
-import { scrollToComponent } from '@Utils/index';
+import { IntersectionOfObjects, scrollToComponent } from '@Utils/index';
 import { useState, useEffect } from 'react';
 import { Schema } from 'yup';
+import { v4 as uuidv4 } from 'uuid';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { DEBOUNCE_TIME } from '@Constants/index';
+import { getControlId, validateValueWithYupSchema } from './_lib_';
 
 interface IOnChangeInterceptorProps {
   currentValues: Record<string, any>;
@@ -15,19 +20,17 @@ interface IOnChangeInterceptorProps {
 interface IRegisterPropType {
   setCustomValue?: (e: any) => void;
   required?: boolean;
+  disableFunc?: (data: Record<string, any>) => boolean;
 }
 interface IUseFormProps {
-  validationSchema: Schema<any>;
   initialValues: Record<string, any>;
   formName?: string;
+  validationSchema?: Schema<any>;
   onChangeDataInterceptor?: (props: IOnChangeInterceptorProps) => Record<string, any>;
   service?: (data: any) => any;
-  postDataInterceptor?: (data: Record<string, any>) => void;
-}
-
-interface IYupError {
-  message: string;
-  path: string;
+  postDataInterceptor?: (data: Record<string, any>) => Record<string, any>;
+  postInterceptor?: (data: Record<string, any>, navigate: NavigateFunction) => Promise<boolean>;
+  isNestedForm?: boolean;
 }
 
 /**
@@ -45,12 +48,17 @@ export default function useForm({
   validationSchema,
   service,
   postDataInterceptor,
+  postInterceptor,
   onChangeDataInterceptor,
+  isNestedForm,
 }: IUseFormProps) {
   const [values, setValues] = useState<typeof initialValues>(initialValues);
   const [errors, setErrors] = useState<typeof initialValues>({});
+  const [pretoucherrorObject, setpretoucherrorObject] = useState<typeof initialValues>({});
   const [touched, setTouched] = useState<typeof initialValues>({});
-  const [formState, setFormState] = useState<Partial<IFormState>>({});
+  const [formIsValid, setFormIsValid] = useState<boolean>(false);
+  const [formState, setFormState] = useState<IFormState>();
+  const navigate = useNavigate();
   const formFieldIds: Record<string, any>[] = [];
 
   // debounced Validation
@@ -59,22 +67,16 @@ export default function useForm({
       // * while validating the data we have to wrap it using try catch, because when there is validation error it will throw an exception which ahs to be catched and set the error state.
       // ! Note: if you find that the useForm hook is not setting the error values then
       // ! most probably the validation schema you should have error. To make sure please console the error in catch block and debug
-
-      try {
-        if (Object.keys(values).length) await validationSchema.validateSync(values, { abortEarly: false });
-        if (Object.keys(errors).length) setErrors({});
-        setFormState({ formIsValid: true, formHasError: false });
-      } catch (err: any) {
-        const tempError: Record<string, any> = {};
-        err.inner.forEach(({ path, message }: IYupError) => {
-          tempError[path] = message;
-        });
-        setErrors(tempError);
-        setFormState({ formIsValid: false, formHasError: true });
+      if (validationSchema) {
+        const errorObject = await validateValueWithYupSchema(validationSchema, values);
+        // set pre touched error if the validation message is required before the touch of the control
+        setpretoucherrorObject(errorObject);
+        setErrors(IntersectionOfObjects(errorObject, touched));
+        setFormIsValid(!Object.keys(errorObject).length);
       }
-    }, 200);
+    }, DEBOUNCE_TIME);
     return () => clearTimeout(timerInstance);
-  }, [values]);
+  }, [values, touched]);
 
   /**
    * Handles the values changed in the fields.
@@ -96,27 +98,58 @@ export default function useForm({
    * errors and the control is scrolled to the first error. If there are no errors and a service is
    * provided, it will call the service with the form values.
    */
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    //! DO NOT execute this block of code if the form is nested inside another form
+    if (isNestedForm) return;
     e.preventDefault();
-    const errorKeys = Object.keys(errors);
-    const controlId = `-${formName}-form-field-${errorKeys[0]}}`;
-    const tempTouched = touched;
-    errorKeys.map((key) => {
-      tempTouched[key] = true;
-      return 0;
-    });
-    setTouched({ ...tempTouched });
-    if (errorKeys.length) {
-      scrollToComponent(controlId);
-      return;
+    if (validationSchema) {
+      const errorObject = await validateValueWithYupSchema(validationSchema, values);
+      setErrors(errorObject);
+      const errorKeys = Object.keys(errorObject);
+      const tempTouched = touched;
+      errorKeys.map((key) => {
+        tempTouched[key] = true;
+        return 0;
+      });
+      setTouched({ ...tempTouched });
+
+      // * scroll to the first error component --start
+      if (errorKeys.length) {
+        const controlId = getControlId(formName, errorKeys[0]);
+        scrollToComponent(controlId);
+        return;
+      }
+      // * scroll to the first error component --end
     }
-    // const castedObject = validationSchema.cast(values);
-    if (postDataInterceptor && service) {
-      const interceptedValues = postDataInterceptor(values);
-      service(interceptedValues);
-      return;
+    setFormState({ isSubmitting: true });
+
+    try {
+      if (postInterceptor && postDataInterceptor) {
+        await postInterceptor(postDataInterceptor(values), navigate);
+        setFormState({ isSuccess: true });
+        return;
+      }
+
+      if (postInterceptor) {
+        await postInterceptor(values, navigate);
+        setFormState({ isSuccess: true });
+        return;
+      }
+
+      // const castedObject = validationSchema.cast(values);
+      if (postDataInterceptor && service) {
+        const interceptedValues = postDataInterceptor(values);
+        await service(interceptedValues);
+        setFormState({ isSuccess: true });
+        return;
+      }
+
+      if (service) await service(values);
+    } catch (err: any) {
+      setFormState({ isError: true, error: err.message });
     }
-    if (service) service(values);
   };
 
   /**
@@ -133,12 +166,13 @@ export default function useForm({
    */
   const register = (fieldName: string, props: IRegisterPropType = { required: false }): IRegisterProps => {
     //* create a unique form field id so that we can navigate the form field where the error occurs
-    const formFieldId = `-${formName}-form-field-${fieldName}}`;
+    const formFieldId = getControlId(formName, fieldName);
     formFieldIds.push({ [fieldName]: formFieldId });
 
     return {
       id: formFieldId,
       name: fieldName,
+      uniquename: `${uuidv4()}-${fieldName}`,
       required: props.required,
 
       // ! why `value` and `bindvalue` for same value ?
@@ -147,16 +181,19 @@ export default function useForm({
       // * if we only used native html input tags we may not need to add additional `bindedValue` prop
       value: values && values[fieldName] ? values[fieldName] : '',
       bindvalue: values && values[fieldName] ? values[fieldName] : '',
+      controlleddisabled: props.disableFunc ? props.disableFunc(values) : undefined,
       // * -----------
 
       touched: touched && touched[fieldName] ? touched[fieldName] : false,
       error: errors && errors[fieldName] ? errors[fieldName] : '',
+      pretoucherror: pretoucherrorObject && pretoucherrorObject[fieldName] ? pretoucherrorObject[fieldName] : '',
 
       onFocus: (e?: any) => {
         const isEvent = e instanceof Event;
         if (isEvent) e.stopPropagation();
         // setTouched((prev) => ({ ...prev, [fieldName]: true }));
       },
+
       /**
        *  This `onChange` function is responsible for handling changes in the form fields. It first sets
        *  the `touched` state for the current field to `true`. Then, it checks if the event is an
@@ -173,7 +210,9 @@ export default function useForm({
        */
       onChange: (e: any) => {
         const isEvent = e instanceof Event || !!e.target;
-
+        // setTimeout(() => {
+        //   setTouched((prev) => ({ ...prev, [fieldName]: true }));
+        // }, DEBOUNCE_TIME + 100);
         if (isEvent) {
           e.stopPropagation();
           if (onChangeDataInterceptor) {
@@ -183,19 +222,45 @@ export default function useForm({
               currentTouchedControls: touched,
             });
             setValues({ ...onChangeInterceptedValues });
-            return;
+          } else {
+            handleChange(fieldName, e.target.value);
           }
-          handleChange(fieldName, e.target.value);
-        } else {
-          if (props.setCustomValue) {
+        } else if (props.setCustomValue) {
+          if (onChangeDataInterceptor) {
+            const onChangeInterceptedValues: Record<string, any> = onChangeDataInterceptor({
+              currentValues: { ...values, [fieldName]: props.setCustomValue(e) },
+              errors,
+              currentTouchedControls: touched,
+            });
+            setValues({ ...onChangeInterceptedValues });
+          } else {
             handleChange(fieldName, props.setCustomValue(e));
-            return;
           }
-          handleChange(fieldName, e);
+        } else {
+          if (onChangeDataInterceptor) {
+            const onChangeInterceptedValues: Record<string, any> = onChangeDataInterceptor({
+              currentValues: { ...values, [fieldName]: e },
+              errors,
+              currentTouchedControls: touched,
+            });
+            setValues({ ...onChangeInterceptedValues });
+          } else {
+            handleChange(fieldName, e);
+          }
         }
         setTouched((prev) => ({ ...prev, [fieldName]: true }));
       },
     };
   };
-  return { register, values, handleSubmit, touched, errors, formState };
+  return {
+    register,
+    values,
+    handleSubmit,
+    touched,
+    errors,
+    pretoucherrorObject,
+    formIsValid,
+    setBindValues: setValues,
+    formState,
+  };
 }

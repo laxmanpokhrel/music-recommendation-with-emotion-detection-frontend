@@ -5,9 +5,12 @@ import generateRoutes from '@Routes/_lib_/generateRoutes';
 import appRoutes from '@Routes/appRoutes';
 import testRoutes from '@Routes/_test_/index.test';
 import 'react-day-picker/dist/style.css';
-import './assets/css/tailwind.css';
 import Header from '@Organisms/Header';
-import MusicPlayer from '@Organisms/MusicPlayer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './assets/css/tailwind.css';
+
+// import MusicPlayer from '@Organisms/MusicPlayer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -25,8 +28,9 @@ export default function App() {
               : generateRoutes({ routes: appRoutes })}
           </div>
         </div>
+        <ToastContainer position="bottom-right" newestOnTop />
       </div>
-      <MusicPlayer />
+      {/* <MusicPlayer /> */}
     </>
   );
 }

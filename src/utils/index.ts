@@ -344,3 +344,56 @@ export function scrollToComponent(componentId: string) {
     // element.focus();
   }
 }
+
+/**
+ * The function converts an input object with nested keys in the format of "name[index].nestedKey" into
+ * an output object with nested arrays and objects.
+ * @param input - The input parameter is a JavaScript object with string keys and any values.
+ * @returns an object with the converted input. The input is an object with string keys and any values.
+ * The function converts any keys that match the pattern of "name[index].nestedKey" into nested objects
+ * within an array. The function returns the converted object.
+ */
+export function convertObject(input: Record<string, any>): any {
+  const output: Record<string, any> = {};
+  for (const key in input) {
+    if (input.hasOwnProperty(key)) {
+      const match = key.match(/^(.*?)\[(\d+)\]\.(.*)$/);
+      if (match) {
+        const name = match[1];
+        const index = match[2];
+        const nestedKey = match[3];
+
+        if (!output[name]) {
+          output[name] = [];
+        }
+        if (!output[name][index]) {
+          output[name][index] = {};
+        }
+
+        output[name][index][nestedKey] = input[key];
+      } else {
+        output[key] = input[key];
+      }
+    }
+  }
+  return output;
+}
+
+/**
+ * The IntersectionOfObjects function takes two objects as input and returns a new object that contains
+ * only the properties that exist in both input objects.
+ * @param obj1 - An object of type `Record<string, any>`, which means it can have any number of
+ * properties of any type.
+ * @param obj2 - The `obj2` parameter is a record object that contains key-value pairs.
+ * @returns The function `IntersectionOfObjects` returns a new object that contains the intersection of
+ * properties between `obj1` and `obj2`.
+ */
+export function IntersectionOfObjects(obj1: Record<string, any>, obj2: Record<string, any>): Record<string, any> {
+  const obj2Keys = Object.keys(obj2);
+  if (!obj2Keys.length) return {};
+  const intersectedObj = obj2Keys.reduce((acc: Record<string, any>, item: string) => {
+    if (obj1[item]) acc[item] = obj1[item];
+    return acc;
+  }, {});
+  return intersectedObj;
+}

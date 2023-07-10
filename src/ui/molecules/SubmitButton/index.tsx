@@ -2,20 +2,17 @@
 import Icon from '@Atoms/Icon';
 import { useEffect, useState } from 'react';
 import { Button, ButtonProps } from '@Atoms/radixComponents/Button';
-import ErrorLabel from '@Molecules/ErrorLabel';
-import { IFormState } from '@Schemas/interfaces';
+// import ErrorLabel from '@Molecules/ErrorLabel';
 import { SyncLoader } from 'react-spinners';
+import { AnimatePresence, motion } from 'framer-motion';
+import { IFormState } from '@Schemas/interfaces';
+import RoundedContainer from '@Molecules/RoundedContainer';
 
-interface ISubmitButtonProps extends ButtonProps {
-  state: Partial<IFormState>;
-  error: Error | null;
-  isSubmitting: boolean;
-  isError: boolean;
-  isSuccess: boolean;
+interface ISubmitButtonProps extends ButtonProps, IFormState {
+  disableTillValid?: boolean;
 }
 
 export default function SubmitButton({
-  state,
   children,
   error,
   isError,
@@ -30,33 +27,49 @@ export default function SubmitButton({
       setTickIsVisible(true);
       timeoutInstance = setTimeout(() => {
         setTickIsVisible(false);
-      }, 5000);
+      }, 3000);
     }
 
     return () => clearTimeout(timeoutInstance);
   }, [isSuccess]);
+
   return (
-    <div className="flex flex-col items-center justify-center ">
+    <div className="naxatw-flex naxatw-flex-col naxatw-items-center naxatw-justify-center naxatw-gap-3 ">
       <Button
         {...props}
         type="submit"
-        variant={state.formHasError ? 'ghost' : 'primary'}
-        className="min-w-[4.75rem] flex gap-3"
+        variant={isSubmitting ? 'ghost' : 'primary'}
+        className="naxatw-min-w-[4.75rem] naxatw-flex naxatw-gap-3 naxatw-overflow-hidden naxatw-transition-all naxatw-duration-500 naxatw-ease-in-out"
       >
-        {children}&nbsp;
-        {isSubmitting ? (
-          <SyncLoader
-            color="#ffffff"
-            cssOverride={{ margin: '2px' }}
-            loading
-            margin={0.5}
-            size={8}
-            speedMultiplier={1.5}
-          />
-        ) : null}
+        {tickIsVisible ? 'Success' : children}&nbsp;
+        <AnimatePresence>
+          {isSubmitting ? (
+            <motion.div
+              initial={{
+                background: 'blue',
+              }}
+              animate={{ background: 'none' }}
+              exit={{ background: 'black' }}
+              className="loader"
+            >
+              <SyncLoader
+                color="#000000"
+                cssOverride={{ margin: '2px' }}
+                loading
+                margin={0.5}
+                size={8}
+                speedMultiplier={1.5}
+              />
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
         {tickIsVisible ? <Icon iconName="check" /> : null}
       </Button>
-      {error ? <ErrorLabel message="Error Submiting Form." /> : null}
+      {isError ? (
+        <RoundedContainer className="naxatw-bg-red-400 naxatw-p-2 naxatw-w-full naxatw-text-center naxatw-text-white">
+          {error || 'Something is not right.'}
+        </RoundedContainer>
+      ) : null}
     </div>
   );
 }
