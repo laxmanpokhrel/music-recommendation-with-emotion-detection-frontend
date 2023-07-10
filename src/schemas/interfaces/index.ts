@@ -177,3 +177,8 @@ export interface IRadioDataProps extends Partial<IRegisterProps> {
 export interface IDatePickerProps extends Partial<IRegisterProps> {
   canType?: boolean;
 }
+
+export interface IYupError {
+  message: string;
+  path: string;
+}
