@@ -9,6 +9,7 @@ import useForm from '@Hooks/useForm';
 import { LoginFormValidation } from '@Validation/index';
 import ApiFactory from '@Api/ApiFactory';
 import SubmitButton from '@Molecules/SubmitButton';
+import { toast } from 'react-toastify';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export default function Login() {
@@ -18,6 +19,7 @@ export default function Login() {
     mutationParams: {
       onSuccess: (data) => {
         navigate('/');
+        toast('Successfully Logged In. Enjoy!');
         localStorage.setItem('token', data?.tokens?.accessToken);
       },
     },
