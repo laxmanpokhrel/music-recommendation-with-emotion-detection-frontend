@@ -1,13 +1,13 @@
 import FormRow from '@Atoms/FormRow';
-import { Button } from '@Atoms/radixComponents/Button';
 import useForm from '@Hooks/useForm';
 import hasErrorBoundary from '@Molecules/_lib_/hasErrorBoundary';
 import FormControl from '@Templates/FormControl';
 import { UploadMusiVakidation } from '@Validation/index';
+import SubmitButton from '@Molecules/SubmitButton';
 import { postInterceptor } from './_lib_';
 
 function UploadMusic() {
-  const { handleSubmit, register } = useForm({
+  const { handleSubmit, register, formState } = useForm({
     initialValues: { title: '', artist_name: '', thumbnail: '' },
     validationSchema: UploadMusiVakidation,
     postInterceptor,
@@ -56,11 +56,24 @@ function UploadMusic() {
               <FormControl controlType="upload" label="Music" required {...register('music')} className="flex-1" />
             </FormRow>
             <FormControl
+              controlType="dropDown"
+              label="Song Type"
+              {...register('type')}
+              required
+              options={[
+                { id: 1, label: 'Happy', value: 'HAPPY' },
+                { id: 2, label: 'Sad', value: 'SAD' },
+                { id: 3, label: 'Neutral', value: 'NEUTRAL' },
+                { id: 4, label: 'None', value: 'NONE' },
+              ]}
+              choose="value"
+            />
+            <FormControl
               controlType="radio"
               label="Is Published"
               options={[
-                { value: true, label: 'Published' },
-                { value: false, label: 'Not Published' },
+                { value: 'true', label: 'Published' },
+                { value: 'false', label: 'Not Published' },
               ]}
               required
               choose="value"
@@ -69,16 +82,14 @@ function UploadMusic() {
             <FormControl
               controlType="input"
               type="date"
-              label="Is Published"
+              label="Release Date"
               required
               choose="value"
               {...register('releaseDate')}
             />
           </div>
           <div className="form-actions">
-            <Button type="submit" variant="primary">
-              Upload
-            </Button>
+            <SubmitButton {...formState}>Upload</SubmitButton>
           </div>
         </form>
       </div>

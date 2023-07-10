@@ -1,8 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 import { postService } from '@Api/services';
 import { Proxies } from '@Constants/Proxies';
+import { toast } from 'react-toastify';
 
-export async function postInterceptor(data: Record<string, any>) {
+export async function postInterceptor(data: Record<string, any>, navigate) {
   try {
     const { music, thumbnail, singer, writer, composer, keywords, duration, releaseDate, isPublished, ...rest } = data;
 
@@ -31,6 +32,8 @@ export async function postInterceptor(data: Record<string, any>) {
       isPublished: !!isPublished,
     };
     await postService(true, Proxies.API_URL, '/music/upload', finalPostData);
+    toast('Successfully uploaded');
+    navigate('/your-music');
     return true;
   } catch (err) {
     return false;
