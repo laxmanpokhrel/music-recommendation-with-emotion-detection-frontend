@@ -29,7 +29,7 @@ interface IUseFormProps {
   onChangeDataInterceptor?: (props: IOnChangeInterceptorProps) => Record<string, any>;
   service?: (data: any) => any;
   postDataInterceptor?: (data: Record<string, any>) => Record<string, any>;
-  postInterceptor?: (data: Record<string, any>, navigate: NavigateFunction) => Promise<boolean>;
+  postInterceptor?: (data: Record<string, any>, navigate: NavigateFunction) => Promise<any>;
   isNestedForm?: boolean;
 }
 

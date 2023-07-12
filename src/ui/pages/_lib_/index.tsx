@@ -3,7 +3,7 @@ import { postService } from '@Api/services';
 import { Proxies } from '@Constants/Proxies';
 import { toast } from 'react-toastify';
 
-export async function postInterceptor(data: Record<string, any>, navigate) {
+export async function postInterceptor(data: Record<string, any>, navigate: any) {
   try {
     const { music, thumbnail, singer, writer, composer, keywords, duration, releaseDate, isPublished, ...rest } = data;
 
@@ -34,8 +34,7 @@ export async function postInterceptor(data: Record<string, any>, navigate) {
     await postService(true, Proxies.API_URL, '/music/upload', finalPostData);
     toast('Successfully uploaded');
     navigate('/your-music');
-    return true;
-  } catch (err) {
-    return false;
+  } catch (err: any) {
+    throw new Error(err.message);
   }
 }

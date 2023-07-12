@@ -192,19 +192,19 @@ class Query<T> {
    * status of the mutation (loading, error, success), the result of the mutation, and functions to
    * trigger the mutation.
    */
-  public hardDeleteData(id: string, mutationParams?: MutationParamsType): UseMutationResult<T, Error, void, unknown> {
+  public hardDeleteData(mutationParams?: MutationParamsType): UseMutationResult<T, Error, any, unknown> {
     const queryClient = useQueryClient();
     return useMutation<T, Error, void, unknown>({
       mutationKey: [this.proxy, `delete-${this.key}-s`],
       onMutate: () => {
         // * display posting data notification
       },
-      mutationFn: () => hardDeleteService(this.authenticated, this.proxy, this.url, id),
+      mutationFn: (id: any) => hardDeleteService(this.authenticated, this.proxy, this.url, id),
       onSuccess: () => {
         // * Here we can follow two approach for updating the list
         // * 1. We can manually search the data and remove it, which is done as:
         // * 2. We can inform useQuery that the stored data is not invalid. On doing so react-query will fetch the data again, which is done as:
-        queryClient.invalidateQueries({ queryKey: [this.key] });
+        queryClient.invalidateQueries({ queryKey: mutationParams?.mutationKey });
       },
       ...mutationParams,
     });

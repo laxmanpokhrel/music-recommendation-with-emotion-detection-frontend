@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { getProxy } from '@Api/_lib_/utils';
 import { api, authenticatedApi, authenticatedFormDataApi } from '@Api/config';
+import { toast } from 'react-toastify';
 
 /**
  * The function `getService` is an asynchronous function that makes an API request to a specified path
@@ -152,7 +153,7 @@ export const postService = async (
       : await api.post(`${envSpicificProxy}${path}`, payload);
     return response.data;
   } catch (err: any) {
-    throw new Error(err.response.data.message.join(', '));
+    throw new Error(err.response.data.message);
   }
 };
 
@@ -203,9 +204,11 @@ export const hardDeleteService = async (authenticated: boolean, proxy: string, p
     const response = authenticated
       ? await authenticatedApi.delete(`${envSpicificProxy}${path}/${id}`)
       : await api.delete(`${envSpicificProxy}${path}/${id}`);
+    toast('Success!');
     return response.data;
   } catch (err: any) {
-    throw new Error(err.response.data.detail);
+    toast(`Failed! ${err.response.data.message}.`);
+    throw new Error(err.response.data.message);
   }
 };
 

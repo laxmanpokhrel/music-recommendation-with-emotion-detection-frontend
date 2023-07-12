@@ -12,7 +12,7 @@ export default function Upload({
   id = 'input-form-control',
   onChange,
   className,
-  multiple = true,
+  multiple = false,
   bindvalue,
 }: IUploadProps) {
   const [files, setFiles] = useState<IFileDataObject[]>(bindvalue);

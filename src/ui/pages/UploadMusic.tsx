@@ -2,14 +2,14 @@ import FormRow from '@Atoms/FormRow';
 import useForm from '@Hooks/useForm';
 import hasErrorBoundary from '@Molecules/_lib_/hasErrorBoundary';
 import FormControl from '@Templates/FormControl';
-import { UploadMusiVakidation } from '@Validation/index';
+import { UploadMusiValidation } from '@Validation/index';
 import SubmitButton from '@Molecules/SubmitButton';
 import { postInterceptor } from './_lib_';
 
 function UploadMusic() {
   const { handleSubmit, register, formState } = useForm({
     initialValues: { title: '', artist_name: '', thumbnail: '' },
-    validationSchema: UploadMusiVakidation,
+    validationSchema: UploadMusiValidation,
     postInterceptor,
   });
   return (

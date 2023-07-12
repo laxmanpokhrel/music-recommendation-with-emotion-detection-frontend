@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { object, string } from 'yup';
+import { mixed, object, string } from 'yup';
 
 export const LoginFormValidation = object({
   username: string().required('Email is Required.'),
@@ -15,7 +15,7 @@ export const SignUpFormValidation = object({
   gender: string().required('Gender must be Selected.'),
 });
 
-export const UploadMusiVakidation = object({
+export const UploadMusiValidation = object({
   title: string().required('Title is Required.'),
   album: string().required('Album is Required.'),
   duration: string().required('Duration is Required.'),
@@ -24,4 +24,20 @@ export const UploadMusiVakidation = object({
   composer: string().required('composer is Required.'),
   genre: string().required('Genre is Required.'),
   keywords: string().required('Keywords is Required.'),
+  music: mixed()
+    .test('fileFormat', 'Unsupported Format', (value: any) => {
+      if (value) {
+        return ['audio/mpeg', 'audio/mp3'].includes(value[0].fileObject.type);
+      }
+      return true;
+    })
+    .required('File is required'),
+  thumbnail: mixed()
+    .test('fileFormat', 'Unsupported Format', (value: any) => {
+      if (value) {
+        return ['image/jpeg', 'image/png'].includes(value[0].fileObject.type);
+      }
+      return true;
+    })
+    .required('File is required'),
 });

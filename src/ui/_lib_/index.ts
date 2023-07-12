@@ -22,4 +22,5 @@ export const PlaylistCreateService = ApiFactory.createQuery({
 export const MusicService = ApiFactory.createQuery({
   key: 'music',
   url: '/music',
+  authenticated: true,
 });
