@@ -1,14 +1,14 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
-import ApiFactory from '@Api/ApiFactory';
-import logo from '@Assets/images/logo.png';
 import Image from '@Atoms/Image';
-import useForm from '@Hooks/useForm';
-import SubmitButton from '@Molecules/SubmitButton';
-import FormControl from '@Templates/FormControl';
-import { LoginFormValidation } from '@Validation/index';
 import { useNavigate } from 'react-router-dom';
+import logo from '@Assets/images/logo.svg';
+import FormControl from '@Templates/FormControl';
+import useForm from '@Hooks/useForm';
+import { LoginFormValidation } from '@Validation/index';
+import ApiFactory from '@Api/ApiFactory';
+import SubmitButton from '@Molecules/SubmitButton';
 import { toast } from 'react-toastify';
 import useUser from '../../hooks/useUser';
 

@@ -9,18 +9,23 @@ import Header from '@Organisms/Header';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './assets/css/tailwind.css';
-
-// import MusicPlayer from '@Organisms/MusicPlayer';
+import MusicPlayer from '@Organisms/MusicPlayer';
+import { useLocation } from 'react-router-dom';
+import useAuth from '@Hooks/useAuth';
 
 export default function App() {
+  const location = useLocation();
   const dispatch = useDispatch();
   dispatch(templateActions.templateReducerOne({ key: 'value' }));
+  const { isAuthenticated } = useAuth();
+  console.log('🚀 ~ file: App.tsx:23 ~ App ~ isAuthenticated:', isAuthenticated);
 
   return (
     <>
       {process.env.NODE_ENV !== 'production' && initDomToCode()}
-      <div className="m-auto  h-fit relative">
+      <div className="m-auto h-fit relative">
         <Header />
+
         <div className="App h-full">
           <div className="app-playground h-full">
             {process.env.NODE_ENV !== 'production'
@@ -30,7 +35,7 @@ export default function App() {
         </div>
         <ToastContainer position="bottom-right" newestOnTop />
       </div>
-      {/* <MusicPlayer /> */}
+      {!(location.pathname === '/upload-music') && <MusicPlayer />}
     </>
   );
 }

@@ -36,7 +36,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           </AuthContextProvider>
         </BrowserRouter>
       </Provider>
-      <ReactQueryDevtools initialIsOpen={false} />
+      <ReactQueryDevtools initialIsOpen={false} position="top-right" />
     </QueryClientProvider>
   </AnimatePresence>,
 );

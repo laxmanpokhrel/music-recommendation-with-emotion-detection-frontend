@@ -1,4 +1,3 @@
-import templateSlice from './templateSlice/templateSlice';
-import musicSlice from './musicSlice';
+import musicPlayerSlice from './musicPlayerSlice';
 
-export default { music: musicSlice.reducer };
+export default { music: musicPlayerSlice.reducer };

@@ -34,12 +34,12 @@ export default function SubmitButton({
   }, [isSuccess]);
 
   return (
-    <div className="naxatw-flex naxatw-flex-col naxatw-items-center naxatw-justify-center naxatw-gap-3 ">
+    <div className="flex flex-col items-center justify-center gap-3 ">
       <Button
         {...props}
         type="submit"
         variant={isSubmitting ? 'ghost' : 'primary'}
-        className="naxatw-min-w-[4.75rem] naxatw-flex naxatw-gap-3 naxatw-overflow-hidden naxatw-transition-all naxatw-duration-500 naxatw-ease-in-out"
+        className="min-w-[4.75rem] flex gap-3 overflow-hidden transition-all duration-500 ease-in-out"
       >
         {tickIsVisible ? 'Success' : children}&nbsp;
         <AnimatePresence>
@@ -66,7 +66,7 @@ export default function SubmitButton({
         {tickIsVisible ? <Icon iconName="check" /> : null}
       </Button>
       {isError ? (
-        <RoundedContainer className="naxatw-bg-red-400 naxatw-p-2 naxatw-w-full naxatw-text-center naxatw-text-white">
+        <RoundedContainer className="bg-red-400 p-2 w-full text-center text-white">
           {error || 'Something is not right.'}
         </RoundedContainer>
       ) : null}
