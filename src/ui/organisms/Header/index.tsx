@@ -1,5 +1,5 @@
 import Icon from '@Atoms/Icon';
-import logo from '@Assets/images/logo.png';
+import logo from '@Assets/images/logo.svg';
 import Image from '@Atoms/Image';
 import Input from '@Atoms/radixComponents/Input';
 import { Button } from '@Atoms/radixComponents/Button';

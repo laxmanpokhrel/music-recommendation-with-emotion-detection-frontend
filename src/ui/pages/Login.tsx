@@ -3,7 +3,7 @@
 
 import Image from '@Atoms/Image';
 import { useNavigate } from 'react-router-dom';
-import logo from '@Assets/images/logo.png';
+import logo from '@Assets/images/logo.svg';
 import FormControl from '@Templates/FormControl';
 import useForm from '@Hooks/useForm';
 import { LoginFormValidation } from '@Validation/index';

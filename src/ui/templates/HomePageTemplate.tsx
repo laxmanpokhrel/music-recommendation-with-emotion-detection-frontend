@@ -4,6 +4,7 @@ import { MusicService } from '../_lib_';
 
 export default function HomePageTemplate(): JSX.Element {
   const { data: music } = MusicService.fetchData();
+  console.log('🚀 ~ file: HomePageTemplate.tsx:7 ~ HomePageTemplate ~ music:', music);
 
   return (
     <div className="home-page-template text-lg w-full h-full grid pt-10">
@@ -14,6 +15,7 @@ export default function HomePageTemplate(): JSX.Element {
               <Card
                 className="bg-gray-950 group-hover:scale-[1.05] transition-all duration-150 ease-in"
                 key={data.title}
+                music={data.media.find((item: any) => item.type === 'MUSIC')}
               >
                 <MusicCard
                   image={data.media?.find((el: any) => el.type === 'THUMBNAIL')?.path}
