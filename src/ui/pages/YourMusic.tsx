@@ -6,9 +6,12 @@ import { useState } from 'react';
 import { useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { MusicService } from '../_lib_';
+import { useDispatch } from 'react-redux';
+import { musicPlayerActions } from '@Store/actions/musicPlayerActions';
 
 export default function YourMusic() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
   const [deleteId, setDeleteId] = useState<string>('');
   const queryClient = useQueryClient();
@@ -38,8 +41,15 @@ export default function YourMusic() {
                 <div className="w-full flex justify-between items-center bg-gray-100 min-h-[1rem] px-4 py-3 ">
                   <div>{item.title}</div>
                   <div className="actions flex gap-2">
-                    <Button variant="icon-primary" className="!p-1 !bg-gray-100">
-                      <Icon iconName="visibility" className="text-black cursor-pointer" />
+                    <Button
+                      variant="icon-primary"
+                      className="!p-1 !bg-gray-100"
+                      onClick={() => {
+                        dispatch(musicPlayerActions.setMusic(item?.media?.find((item: any) => item.type === 'MUSIC')));
+                        dispatch(musicPlayerActions.togglePlay(true));
+                      }}
+                    >
+                      <Icon iconName="play_arrow" className="text-black cursor-pointer" />
                     </Button>
                     <Button
                       variant="icon-primary"
