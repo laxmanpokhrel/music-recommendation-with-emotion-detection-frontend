@@ -14,6 +14,7 @@ const YourMusic = React.lazy(() => import('@Pages/YourMusic'));
 const YourPlaylist = React.lazy(() => import('@Pages/YourPlaylist'));
 const LikedMusics = React.lazy(() => import('@Pages/LikedMusics'));
 const CreatePlaylist = React.lazy(() => import('@Pages/CreatePlaylist'));
+const Profile = React.lazy(() => import('@Pages/Profile'));
 
 const appRoutes: IRoute[] = [
   {
@@ -21,6 +22,12 @@ const appRoutes: IRoute[] = [
     name: 'Home ',
     component: HomePage,
     authenticated: false,
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
+    authenticated: true,
   },
   {
     path: '/music/:musicId',
