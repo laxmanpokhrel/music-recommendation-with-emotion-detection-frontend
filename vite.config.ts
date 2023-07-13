@@ -45,6 +45,7 @@ export default defineConfig({
       SITE_NAME: process.env.SITE_NAME,
       FAST_API_URL: process.env.FAST_API_URL,
       AI_URL: process.env.AI_URL,
+      ENV: process.env.ENV,
     },
   },
   server: {

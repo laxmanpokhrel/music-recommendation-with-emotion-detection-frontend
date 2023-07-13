@@ -12,6 +12,7 @@ export default function LikedMusics() {
           return (
             <div key={item.id} className="group transition-all duration-150 ease-in rounded-lg">
               <Card
+                id={item.id}
                 className="bg-gray-950 group-hover:scale-[1.05] transition-all duration-150 ease-in"
                 key={item.title}
               >

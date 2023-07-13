@@ -12,6 +12,7 @@ export default function HomePageTemplate(): JSX.Element {
           return (
             <div key={data.id} className="group transition-all duration-150 ease-in rounded-lg">
               <Card
+                id={data.id}
                 className="bg-gray-950 group-hover:scale-[1.05] transition-all duration-150 ease-in"
                 key={data.title}
               >
