@@ -157,10 +157,9 @@ export default function Login() {
               isError={isError}
               isSubmitting={isLoading}
               isSuccess={isSuccess}
-              state={formState}
               type="submit"
               variant="primary"
-              error={error}
+              error={error?.message}
               className="w-full"
             >
               Login

@@ -7,13 +7,18 @@ export async function postInterceptor(data: Record<string, any>, navigate: any) 
   try {
     const { music, thumbnail, singer, writer, composer, keywords, duration, releaseDate, isPublished, ...rest } = data;
 
+    // if (music.id) {
+    // }
     // postmusic
-
     const musicFormData = new FormData();
     musicFormData.append('file', music[0].fileObject);
     musicFormData.append('type', 'music');
     const musicResponse = await postService(true, Proxies.API_URL, '/media/upload', musicFormData, true);
     // post thumbnail
+
+    // if (thumbnail.id) {
+
+    // }
     const thumbnailFormData = new FormData();
     thumbnailFormData.append('file', thumbnail[0].fileObject);
     thumbnailFormData.append('type', 'thumbnail');

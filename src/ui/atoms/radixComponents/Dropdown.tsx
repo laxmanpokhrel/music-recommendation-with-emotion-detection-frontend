@@ -24,6 +24,9 @@ function Dropdown({
 }: IComboBoxProps) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(bindvalue);
+  useEffect(() => {
+    setValue(bindvalue);
+  }, [bindvalue]);
   const [dropDownWidth, setDropDownWidth] = React.useState<number | undefined>(0);
   const handleSelect = (currentValue: any) => {
     if (onFocus) onFocus();

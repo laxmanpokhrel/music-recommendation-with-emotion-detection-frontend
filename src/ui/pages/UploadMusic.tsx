@@ -1,17 +1,36 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import FormRow from '@Atoms/FormRow';
 import useForm from '@Hooks/useForm';
 import hasErrorBoundary from '@Molecules/_lib_/hasErrorBoundary';
 import FormControl from '@Templates/FormControl';
 import { UploadMusiValidation } from '@Validation/index';
 import SubmitButton from '@Molecules/SubmitButton';
+import { useParams } from 'react-router-dom';
+import { MusicService } from '@Ui/_lib_';
+import { useEffect } from 'react';
 import { postInterceptor } from './_lib_';
 
 function UploadMusic() {
-  const { handleSubmit, register, formState } = useForm({
-    initialValues: { title: '', artist_name: '', thumbnail: '' },
+  const { musicId } = useParams();
+
+  const { data: musicData } = MusicService.fetchSingleData(musicId || '', {
+    enabled: !!musicId,
+    select: (data) => {
+      const { music, thumbnail, ...rest } = data.data;
+      const convertedData = { ...rest, thumbnail: [thumbnail], music: [music] };
+      return convertedData;
+    },
+  });
+
+  const { handleSubmit, register, formState, setBindValues } = useForm({
+    initialValues: musicId ? musicData : { title: '', artist_name: '', thumbnail: '' },
     validationSchema: UploadMusiValidation,
     postInterceptor,
   });
+
+  useEffect(() => {
+    if (musicData) setBindValues(musicData);
+  }, [musicData]);
   return (
     <div className="w-full h-[70vh] pt-8">
       <div className="content m-auto w-[50%] h-full flex flex-col gap-4">
@@ -89,7 +108,7 @@ function UploadMusic() {
             />
           </div>
           <div className="form-actions">
-            <SubmitButton {...formState}>Upload</SubmitButton>
+            <SubmitButton {...formState}>{musicId ? 'Update' : 'Upload'}</SubmitButton>
           </div>
         </form>
       </div>

@@ -32,21 +32,20 @@ export default function FileCard({ file, className, handleFileDelete, index = 0 
             className="rounded-full p-2 text-blue-500 bg-teal-green-50 border border-gray-300"
           />
           <div className="description flex justify-center items-center">
-            <p className="body-md text-gray-800">{file.name}</p>
-            {!file.fileObject ? <p className="body-sm text-gray-600"> {file.name}</p> : null}
+            {!file.fileObject ? <p className="body-md text-gray-800"> {file.name}</p> : null}
           </div>
         </div>
         <div className="actions flex justify-center items-center gap-3">
-          {!file.fileObject ? (
+          {/* {!file.fileObject ? (
             <Button type="button" variant="link" className="font-bold !px-0">
               View&nbsp;Document
             </Button>
-          ) : null}
-          {!file.fileObject ? (
+          ) : null} */}
+          {/* {!file.fileObject ? (
             <Button type="button" variant="icon-primary" size="sm-icon">
               <Icon iconName="download" className="p-0 m-0 text-gray-600" />
             </Button>
-          ) : null}
+          ) : null} */}
 
           <Button type="button" variant="icon-primary" size="sm-icon" onClick={() => handleFileDelete(file)}>
             <Icon iconName="delete" className="p-0 m-0 text-other-red" />
