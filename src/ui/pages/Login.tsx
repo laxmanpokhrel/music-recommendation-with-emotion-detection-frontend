@@ -1,26 +1,32 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
-import Image from '@Atoms/Image';
-import { useNavigate } from 'react-router-dom';
-import logo from '@Assets/images/logo.png';
-import FormControl from '@Templates/FormControl';
-import useForm from '@Hooks/useForm';
-import { LoginFormValidation } from '@Validation/index';
 import ApiFactory from '@Api/ApiFactory';
+import logo from '@Assets/images/logo.png';
+import Image from '@Atoms/Image';
+import useForm from '@Hooks/useForm';
 import SubmitButton from '@Molecules/SubmitButton';
+import FormControl from '@Templates/FormControl';
+import { LoginFormValidation } from '@Validation/index';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useUser from '../../hooks/useUser';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export default function Login() {
   const navigate = useNavigate();
+  const { user, setUser } = useUser();
   const LoginService = ApiFactory.createQuery({ key: '/login', url: '/auth/user/login' });
   const { isLoading, error, isError, isSuccess, mutate } = LoginService.postData({
     mutationParams: {
       onSuccess: (data) => {
+        console.log('🚀 ~ file: Login.tsx:23 ~ Login ~ data:', data);
         navigate('/');
-        toast('Successfully Logged In. Enjoy!');
-        localStorage.setItem('token', data?.tokens?.accessToken);
+        toast('Successfully logged in.');
+        setUser({
+          data: data?.data,
+          tokens: data?.tokens,
+        });
       },
     },
   });

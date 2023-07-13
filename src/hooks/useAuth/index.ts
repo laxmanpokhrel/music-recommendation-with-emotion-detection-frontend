@@ -1,7 +1,6 @@
+import useUser from '../useUser';
+
 export default function useAuth() {
-  const isAuthenticated = () => {
-    const token = localStorage.getItem('token');
-    return !!token;
-  };
-  return { isAuthenticated };
+  const { user } = useUser();
+  return { isAuthenticated: !!user };
 }

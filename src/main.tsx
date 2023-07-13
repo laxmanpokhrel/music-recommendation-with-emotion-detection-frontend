@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './assets/css/index.css';
+import AuthContextProvider from './context/auth.context';
 import store from './store';
 
 if (process.env.NODE_ENV === 'development') {
@@ -30,7 +31,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <BrowserRouter>
-          <App />
+          <AuthContextProvider>
+            <App />
+          </AuthContextProvider>
         </BrowserRouter>
       </Provider>
       <ReactQueryDevtools initialIsOpen={false} />
