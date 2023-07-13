@@ -3,6 +3,7 @@ import { Button } from '@Atoms/radixComponents/Button';
 import RoundedContainer from '@Molecules/RoundedContainer';
 import PortalTemplate from '@Templates/PortalTemplate';
 import { useState } from 'react';
+import { useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { MusicService } from '../_lib_';
 
@@ -10,6 +11,7 @@ export default function YourMusic() {
   const navigate = useNavigate();
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
   const [deleteId, setDeleteId] = useState<string>('');
+  const queryClient = useQueryClient();
 
   const { data } = MusicService.fetchData();
 
@@ -17,6 +19,7 @@ export default function YourMusic() {
     onSuccess: () => {
       setConfirmDelete(false);
       navigate('/your-music');
+      queryClient.refetchQueries(['/api', 'music']);
     },
     mutationKey: ['delete-music', deleteId],
   });
