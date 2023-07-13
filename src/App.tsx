@@ -18,7 +18,6 @@ export default function App() {
   const dispatch = useDispatch();
   dispatch(templateActions.templateReducerOne({ key: 'value' }));
   const { isAuthenticated } = useAuth();
-  console.log('🚀 ~ file: App.tsx:23 ~ App ~ isAuthenticated:', isAuthenticated);
 
   return (
     <>
@@ -35,7 +34,9 @@ export default function App() {
         </div>
         <ToastContainer position="bottom-right" newestOnTop />
       </div>
-      {!(location.pathname === '/upload-music') && <MusicPlayer />}
+      {isAuthenticated && !['/upload-music', '/create-playlist', '/your-playlist'].includes(location.pathname) && (
+        <MusicPlayer />
+      )}
     </>
   );
 }
