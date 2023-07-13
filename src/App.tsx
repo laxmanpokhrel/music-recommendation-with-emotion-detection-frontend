@@ -11,13 +11,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import './assets/css/tailwind.css';
 import MusicPlayer from '@Organisms/MusicPlayer';
 import { useLocation } from 'react-router-dom';
-
-// import MusicPlayer from '@Organisms/MusicPlayer';
+import useAuth from '@Hooks/useAuth';
 
 export default function App() {
   const location = useLocation();
   const dispatch = useDispatch();
   dispatch(templateActions.templateReducerOne({ key: 'value' }));
+  const { isAuthenticated } = useAuth();
+  console.log('🚀 ~ file: App.tsx:23 ~ App ~ isAuthenticated:', isAuthenticated);
 
   return (
     <>

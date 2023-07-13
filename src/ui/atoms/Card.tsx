@@ -56,7 +56,6 @@ const Card = ({ children, className, id, music }: CardProps) => {
         >
           <Icon iconName="play_circle" className="text-2xl text-orange-400 hover:text-[#ffffff]" />
         </button>
-        <Icon iconName="play_circle" className="text-6xl text-orange-400 hover:text-[#ffffff]" />
         <AiFillHeart
           size={30}
           color="white"
