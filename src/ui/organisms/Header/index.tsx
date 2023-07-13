@@ -6,6 +6,7 @@ import Input from '@Atoms/radixComponents/Input';
 import MenuOverlay from '@Organisms/MenuOverlay';
 import PortalTemplate from '@Templates/PortalTemplate';
 import { useState } from 'react';
+import { BiUserCircle } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import useUser from '../../../hooks/useUser';
 import RoundedContainer from '../../molecules/RoundedContainer';
@@ -39,14 +40,24 @@ export default function Header() {
             </Button>
           )}
           {user && !isLoginPage && (
-            <Button
-              type="button"
-              variant="secondary"
-              className="flex !px-2 !py-1 gap-4"
-              onClick={() => setConfirmLogout(true)}
-            >
-              Logout
-            </Button>
+            <div className="flex items-center ">
+              <BiUserCircle
+                className="mr-2"
+                size={30}
+                onClick={() => navigate('/profile')}
+                style={{
+                  color: '#05A48E',
+                }}
+              />
+              <Button
+                type="button"
+                variant="secondary"
+                className="flex !px-2 !py-1 gap-4"
+                onClick={() => setConfirmLogout(true)}
+              >
+                Logout
+              </Button>
+            </div>
           )}
           <Button type="button" variant="primary" className="flex gap-4" onClick={() => navigate('/detect-mood')}>
             <h5>Detect Mood</h5> <Icon iconName="detection_and_zone" />
