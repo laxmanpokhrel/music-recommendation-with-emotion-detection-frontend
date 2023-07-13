@@ -1,7 +1,7 @@
 import { cn } from '@Utils/index';
 import { HTMLAttributes, ReactNode } from 'react';
 import { AiFillHeart } from 'react-icons/ai';
-import { useMutation, useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { toast } from 'react-toastify';
 import { authenticatedApi } from '../../api/config';
 import Icon from './Icon';
@@ -13,6 +13,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Card = ({ children, className, id }: CardProps) => {
+  const queryClient = useQueryClient();
   const { data } = useQuery('playlist', () => {
     return authenticatedApi(`${process.env.API_URL}/playlists/own`);
   });
@@ -23,6 +24,9 @@ const Card = ({ children, className, id }: CardProps) => {
   } = useMutation({
     mutationFn: (payload) => {
       return authenticatedApi.post(`${process.env.API_URL}/music/toggle-like`, payload);
+    },
+    onSuccess: () => {
+      queryClient.refetchQueries('liked_musics');
     },
   });
   toast.dismiss();
