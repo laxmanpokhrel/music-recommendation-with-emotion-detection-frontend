@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const token = localStorage.getItem('token');
-
+const payload = localStorage.getItem('user');
+const user = JSON.parse(payload ?? '{}');
 /* This code is creating an instance of the Axios library with default headers and timeout settings.
 The `api` instance can be used to make HTTP requests to an API that accepts JSON data. */
 export const api = axios.create({
@@ -21,7 +21,7 @@ export const authenticatedApi = axios.create({
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${user?.tokens?.accessToken}`,
   },
 });
 export const authenticatedFormDataApi = axios.create({
@@ -29,6 +29,6 @@ export const authenticatedFormDataApi = axios.create({
   headers: {
     Accept: 'application/json',
     'Content-Type': 'multipart/form-data',
-    Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${user?.tokens?.accessToken}`,
   },
 });
