@@ -12,6 +12,7 @@ export default function YourMusic() {
   const [deleteId, setDeleteId] = useState<string>('');
 
   const { data } = MusicService.fetchData();
+  console.log("🚀 ~ file: YourMusic.tsx:15 ~ YourMusic ~ data:", data)
 
   const { mutate: deleteYourMusic } = MusicService.hardDeleteData({
     onSuccess: () => {
@@ -24,7 +25,7 @@ export default function YourMusic() {
   return (
     <>
       <div className="home-page-template text-lg w-full h-full grid pt-10">
-        <div className="flex flex-col gap-6 w-3/5 m-auto">
+        <div className="flex flex-col gap-3 w-3/5 m-auto">
           <div className="info flex- flex-col gap-2">
             <h4>Your musics</h4>
             <p className="text-sm">You can edit, update and delete music here.</p>
@@ -38,7 +39,13 @@ export default function YourMusic() {
                     <Button variant="icon-primary" className="!p-1 !bg-gray-100">
                       <Icon iconName="visibility" className="text-black cursor-pointer" />
                     </Button>
-                    <Button variant="icon-primary" className="!p-1 !bg-gray-100">
+                    <Button
+                      variant="icon-primary"
+                      className="!p-1 !bg-gray-100"
+                      onClick={() => {
+                        navigate(`/upload-music/edit/${item.id}`);
+                      }}
+                    >
                       <Icon iconName="edit" className="text-black cursor-pointer" />
                     </Button>
                     <Button

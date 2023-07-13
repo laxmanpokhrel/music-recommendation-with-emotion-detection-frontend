@@ -60,6 +60,9 @@ export default function useForm({
   const [formState, setFormState] = useState<IFormState>();
   const navigate = useNavigate();
   const formFieldIds: Record<string, any>[] = [];
+  // useEffect(() => {
+  //   setValues(initialValues);
+  // }, [initialValues]);
 
   // debounced Validation
   useEffect(() => {

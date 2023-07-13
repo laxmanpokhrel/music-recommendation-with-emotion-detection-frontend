@@ -53,6 +53,12 @@ const appRoutes: IRoute[] = [
     authenticated: false,
   },
   {
+    path: '/upload-music/edit/:musicId',
+    name: 'Upload Music',
+    component: UploadMusic,
+    authenticated: true,
+  },
+  {
     path: '/upload-music',
     name: 'Upload Music',
     component: UploadMusic,
