@@ -1213,6 +1213,13 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.3.1.tgz#4d795b649cc3b1cbb760d191c80dcb4353c9a366"
   integrity sha512-Bu+AMaXNjrpjh41znzHqaz3r2Nr8hHuHZT6V2LBKMhyMl0FgKA62PNYbqnfgmzOhoWZj70Zecisbo4H1rotP5g==
 
+"@floating-ui/dom@^1.0.1":
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.4.5.tgz#336dfb9870c98b471ff5802002982e489b8bd1c5"
+  integrity sha512-96KnRWkRnuBSSFbj0sFGwwOUd8EkiecINVl0O9wiZlZ64EkpyAOG3Xc2vKKNJmru0Z7RqWNymA+6b8OZqjgyyw==
+  dependencies:
+    "@floating-ui/core" "^1.3.1"
+
 "@floating-ui/dom@^1.3.0":
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.4.2.tgz#eb3a37f7506c4f95ef735967dc3496b5012e11cb"
@@ -1277,6 +1284,21 @@
   dependencies:
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
+
+"@locator/runtime@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@locator/runtime/-/runtime-0.2.4.tgz#d71641bbb5e6fd39fb0e03a3e26a03c6c1052f13"
+  integrity sha512-bdTCvwAAjOG+aHFhcDnQeiWeze8BQDmaF2PHGqy/WjVdI3trH3RNxFjnFYFVDKcX2AIHPk4KhfgTN2De3sbcGw==
+  dependencies:
+    "@floating-ui/dom" "^1.0.1"
+    "@locator/shared" "^0.2.2"
+    solid-js "^1.6.9"
+    tailwindcss "^3.1.6"
+
+"@locator/shared@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@locator/shared/-/shared-0.2.2.tgz#ee23a77e8c0b7f45f792f4fbceb3255ae4ffabfd"
+  integrity sha512-T0hTha5VioTL1M0tF2QmxbBbaZ3JgmQ2kmh1msNc+Yse7KY7wbPaBDBi8w/kWvf+lR2KA9rw/BJphS7fJzwUIw==
 
 "@mapbox/geojson-rewind@^0.5.2":
   version "0.5.2"
@@ -2707,7 +2729,7 @@ cssesc@^3.0.0:
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
 
-csstype@^3.0.2:
+csstype@^3.0.2, csstype@^3.1.0:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.2.tgz#1d4bf9d572f11c14031f0436e1c10bc1f571f50b"
   integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
@@ -4639,6 +4661,11 @@ react-error-boundary@^4.0.4:
   dependencies:
     "@babel/runtime" "^7.12.5"
 
+react-icons@^4.10.1:
+  version "4.10.1"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.10.1.tgz#3f3b5eec1f63c1796f6a26174a1091ca6437a500"
+  integrity sha512-/ngzDP/77tlCfqthiiGNZeYFACw85fUjZtLbedmJ5DTlNDIwETxhwBzdOJ21zj4iJdvc0J3y7yOsX3PpxAJzrw==
+
 react-is@^16.10.2, react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -5017,6 +5044,11 @@ semver@^7.2.1, semver@^7.3.7:
   dependencies:
     lru-cache "^6.0.0"
 
+seroval@^0.5.0:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/seroval/-/seroval-0.5.1.tgz#e6d17365cdaaae7e50815c7e0bcd7102facdadf3"
+  integrity sha512-ZfhQVB59hmIauJG5Ydynupy8KHyr5imGNtdDhbZG68Ufh1Ynkv9KOYOAABf71oVbQxJ8VkWnMHAjEHE7fWkH5g==
+
 set-value@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/set-value/-/set-value-2.0.1.tgz#a18d40530e6f07de4228c7defe4227af8cad005b"
@@ -5088,6 +5120,14 @@ slice-ansi@^5.0.0:
   dependencies:
     ansi-styles "^6.0.0"
     is-fullwidth-code-point "^4.0.0"
+
+solid-js@^1.6.9:
+  version "1.7.8"
+  resolved "https://registry.yarnpkg.com/solid-js/-/solid-js-1.7.8.tgz#6856983e3edbcc57b0e003e6fd0c741dd8865892"
+  integrity sha512-XHBWk1FvFd0JMKljko7FfhefJMTSgYEuVKcQ2a8hzRXfiuSJAGsrPPafqEo+f6l+e8Oe3cROSpIL6kbzjC1fjQ==
+  dependencies:
+    csstype "^3.1.0"
+    seroval "^0.5.0"
 
 sort-asc@^0.2.0:
   version "0.2.0"
@@ -5270,7 +5310,7 @@ tailwind-merge@^1.12.0:
   resolved "https://registry.yarnpkg.com/tailwind-merge/-/tailwind-merge-1.13.2.tgz#1d06c9e95ffda2320efc50ed33c65be0cda23091"
   integrity sha512-R2/nULkdg1VR/EL4RXg4dEohdoxNUJGLMnWIQnPKL+O9Twu7Cn3Rxi4dlXkDzZrEGtR+G+psSXFouWlpTyLhCQ==
 
-tailwindcss@^3.3.1:
+tailwindcss@^3.1.6, tailwindcss@^3.3.1:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.3.2.tgz#2f9e35d715fdf0bbf674d90147a0684d7054a2d3"
   integrity sha512-9jPkMiIBXvPc2KywkraqsUfbfj+dHDb+JPWtSJa9MLFdrPyazI7q6WX2sUrm7R9eVR7qqv3Pas7EvQFzxKnI6w==

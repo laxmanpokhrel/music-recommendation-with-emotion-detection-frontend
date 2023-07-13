@@ -1,8 +1,8 @@
 import Icon from '@Atoms/Icon';
-import { useState } from 'react';
-import PortalTemplate from '@Templates/PortalTemplate';
 import { Button } from '@Atoms/radixComponents/Button';
 import RoundedContainer from '@Molecules/RoundedContainer';
+import PortalTemplate from '@Templates/PortalTemplate';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MusicService } from '../_lib_';
 
@@ -12,7 +12,6 @@ export default function YourMusic() {
   const [deleteId, setDeleteId] = useState<string>('');
 
   const { data } = MusicService.fetchData();
-  console.log("🚀 ~ file: YourMusic.tsx:15 ~ YourMusic ~ data:", data)
 
   const { mutate: deleteYourMusic } = MusicService.hardDeleteData({
     onSuccess: () => {

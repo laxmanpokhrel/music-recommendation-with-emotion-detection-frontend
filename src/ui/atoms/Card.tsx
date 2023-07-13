@@ -2,21 +2,44 @@ import { useDispatch } from 'react-redux';
 import { cn } from '@Utils/index';
 import { HTMLAttributes, ReactNode } from 'react';
 import { musicPlayerActions } from '@Store/actions/musicPlayerActions';
-import { useQuery } from 'react-query';
+import { AiFillHeart } from 'react-icons/ai';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { toast } from 'react-toastify';
 import { authenticatedApi } from '../../api/config';
 import Icon from './Icon';
-import { Select, SelectContent, SelectItem, SelectTrigger } from './radixComponents/Select';
+import { Select, SelectContent, SelectItem } from './radixComponents/Select';
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   music: string;
+  id: string;
 }
 
-const Card = ({ children, className, music }: CardProps) => {
+const Card = ({ children, className, id, music }: CardProps) => {
+  const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const { data } = useQuery('playlist', () => {
     return authenticatedApi(`${process.env.API_URL}/playlists/own`);
   });
+  const {
+    mutate,
+    error,
+    data: response,
+  } = useMutation({
+    mutationFn: (payload) => {
+      return authenticatedApi.post(`${process.env.API_URL}/music/toggle-like`, payload);
+    },
+    onSuccess: () => {
+      queryClient.refetchQueries('liked_musics');
+    },
+  });
+  toast.dismiss();
+  if (response) {
+    toast.success(response?.data?.message);
+  } else if (error) {
+    toast.error(error?.response?.data?.message);
+  }
+
   const playlists = data?.data?.data;
 
   return (
@@ -33,10 +56,15 @@ const Card = ({ children, className, music }: CardProps) => {
         >
           <Icon iconName="play_circle" className="text-2xl text-orange-400 hover:text-[#ffffff]" />
         </button>
+        <Icon iconName="play_circle" className="text-6xl text-orange-400 hover:text-[#ffffff]" />
+        <AiFillHeart
+          size={30}
+          color="white"
+          onClick={() => {
+            mutate({ music: id.toString() });
+          }}
+        />
         <Select>
-          <SelectTrigger className="w-fit flex justify-center items-center">
-            <Icon iconName="playlist_add" className="text-2xl text-orange-400 hover:text-[#ffffff]" />
-          </SelectTrigger>
           <SelectContent className="bg-white">
             {playlists?.map((playlist: any) => {
               return <SelectItem value={playlist.id}>{playlist.name}</SelectItem>;
@@ -49,3 +77,9 @@ const Card = ({ children, className, music }: CardProps) => {
 };
 
 export default Card;
+
+{
+  /* <SelectTrigger className="w-fit flex justify-center items-center">
+  <Icon iconName="playlist_add" className="text-2xl text-orange-400 hover:text-[#ffffff]" />
+</SelectTrigger> */
+}

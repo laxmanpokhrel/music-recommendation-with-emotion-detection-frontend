@@ -1,17 +1,21 @@
-import { LikedMusicService } from '../_lib_';
+import { useQuery } from 'react-query';
+import { authenticatedApi } from '../../api/config';
 import Card from '../atoms/Card';
 import MusicCard from '../atoms/MusicCard';
 
 export default function LikedMusics() {
-  const { data } = LikedMusicService.fetchData();
+  const { data } = useQuery('liked_musics', () => {
+    return authenticatedApi.get(`${process.env.API_URL}/music/liked`);
+  });
 
   return (
     <div className="home-page-template text-lg w-full h-full grid pt-10">
       <div className="grid grid-cols-3 gap-6 w-3/5 m-auto">
-        {data?.data?.map((item: any) => {
+        {data?.data?.data?.map((item: any) => {
           return (
             <div key={item.id} className="group transition-all duration-150 ease-in rounded-lg">
               <Card
+                id={item.id}
                 className="bg-gray-950 group-hover:scale-[1.05] transition-all duration-150 ease-in"
                 key={item.title}
               >

@@ -10,17 +10,23 @@ import { LoginFormValidation } from '@Validation/index';
 import ApiFactory from '@Api/ApiFactory';
 import SubmitButton from '@Molecules/SubmitButton';
 import { toast } from 'react-toastify';
+import useUser from '../../hooks/useUser';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export default function Login() {
   const navigate = useNavigate();
+  const { user, setUser } = useUser();
   const LoginService = ApiFactory.createQuery({ key: '/login', url: '/auth/user/login' });
   const { isLoading, error, isError, isSuccess, mutate } = LoginService.postData({
     mutationParams: {
       onSuccess: (data) => {
+        console.log('🚀 ~ file: Login.tsx:23 ~ Login ~ data:', data);
         navigate('/');
-        toast('Successfully Logged In. Enjoy!');
-        localStorage.setItem('token', data?.tokens?.accessToken);
+        toast('Successfully logged in.');
+        setUser({
+          data: data?.data,
+          tokens: data?.tokens,
+        });
       },
     },
   });
