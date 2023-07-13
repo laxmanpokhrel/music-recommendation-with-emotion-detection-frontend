@@ -34,7 +34,7 @@ export default function App() {
         </div>
         <ToastContainer position="bottom-right" newestOnTop />
       </div>
-      {isAuthenticated && !['/upload-music', '/create-playlist', '/your-playlist'].includes(location.pathname) && (
+      {isAuthenticated && !['/upload-music', '/create-playlist'].includes(location.pathname) && (
         <MusicPlayer />
       )}
     </>

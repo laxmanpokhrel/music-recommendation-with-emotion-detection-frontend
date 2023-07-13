@@ -49,7 +49,7 @@ export default function YourMusic() {
                         dispatch(musicPlayerActions.togglePlay(true));
                       }}
                     >
-                      <Icon iconName="play_arrow" className="text-black cursor-pointer" />
+                      <Icon iconName="play_arrow" className="text-black cursor-pointer" />  
                     </Button>
                     <Button
                       variant="icon-primary"

@@ -3,16 +3,19 @@ import { Button } from '@Atoms/radixComponents/Button';
 import { useState } from 'react';
 import { PiTrashSimple } from 'react-icons/pi';
 import { useMutation, useQueryClient } from 'react-query';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { authenticatedApi } from '../../api/config';
 import { PlaylistCreateService } from '../_lib_';
 import RoundedContainer from '../molecules/RoundedContainer';
 import PortalTemplate from '../templates/PortalTemplate';
+import { musicPlayerActions } from '@Store/actions/musicPlayerActions';
 
 export default function YourPlaylist() {
   const { data } = PlaylistCreateService.fetchData();
   const queryClient = useQueryClient();
+  const dispatch = useDispatch();
   const [deleteID, setDeleteID] = useState<string>('');
   const {
     mutate: deletePlaylist,
@@ -64,7 +67,16 @@ export default function YourPlaylist() {
                 {item.musics.map((itm: any) => (
                   <h6 className="pl-4 flex gap-1 w-fit border p-2 hover:bg-gray-400 items-center justify-center">
                     <p className="flex-1">{itm.title}</p>
-                    <Icon iconName="play_arrow" className="cursor-pointer" />
+                    <Button
+                      variant="icon-primary"
+                      size="lg-icon"
+                      onClick={() => {
+                        dispatch(musicPlayerActions.setMusic({...itm?.media?.find((x: any) => x.type === 'MUSIC'),title:itm.title}));
+                        dispatch(musicPlayerActions.togglePlay(true));
+                      }}
+                    >
+                      <Icon iconName="play_arrow" className="cursor-pointer" />
+                    </Button>
                   </h6>
                 ))}
               </div>
