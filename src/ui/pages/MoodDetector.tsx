@@ -1,14 +1,11 @@
 /* eslint-disable react/no-array-index-key */
-import { Button } from '@Atoms/radixComponents/Button';
 import { useEffect, useMemo } from 'react';
 import Card from '@Atoms/Card';
 import { useQuery } from 'react-query';
-import { useNavigate } from 'react-router-dom';
 import { Mood } from '../../constants/type';
 import MusicCard from '../atoms/MusicCard';
 
 export default function MooDetector() {
-  const navigate = useNavigate();
   const { data, refetch: refetchMood } = useQuery('mood', () =>
     fetch(`${process.env.AI_URL}/emotion-parameters`).then((res) => res.json()),
   );
@@ -37,11 +34,15 @@ export default function MooDetector() {
       <div className="absolute right-0 h-[90%] w-1/5">
         <div className="songs  flex flex-col flex-1 overflow-y-auto gap-4 h-full items-start justify-start scrollbar">
           {recommendedMusics?.data?.map((item: any, index: number) => (
-            <Card music={item?.media?.find((x: any) => x.type === 'MUSIC')} className="bg-gray-500 w-full">
+            <Card
+              id={item?.id}
+              music={item?.media?.find((x: any) => x.type === 'MUSIC')}
+              className="bg-gray-500 w-full"
+            >
               <MusicCard
                 key={index}
                 title={item.title}
-                image={item?.media?.find((el) => el.type === 'THUMBNAIL')?.path}
+                image={item?.media?.find((el: any) => el.type === 'THUMBNAIL')?.path}
                 description={item.genre}
               />
             </Card>
