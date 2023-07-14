@@ -71,23 +71,22 @@ export default function MusicPlayer() {
   const musicPath = music?.media?.find((el: any) => el.type === 'MUSIC')?.path;
   const thumbnail = music?.media?.find((el: any) => el.type === 'THUMBNAIL')?.src;
   console.log('🚀 ~ file: index.tsx:73 ~ MusicPlayer ~ thumbnail:', thumbnail);
-    <div className="fixed bottom-0 w-full h-50 bg-gray-100 shadow-2xl px-4 py-2">
-      {music && (
-        <div className="flex">
-          <img
-            src={music?.media?.find((el) => el.type === 'THUMBNAIL')?.path}
-            alt="Thumbnail"
-            className="w-12 h-12 object-contain"
-          />
-          <div className="ml-4">
-            <h4>{music?.title}</h4>
-            <p>{music?.album}</p>
-          </div>
+  <div className="fixed bottom-0 w-full h-50 bg-gray-100 shadow-2xl px-4 py-2">
+    {music && (
+      <div className="flex">
+        <img
+          src={music?.media?.find((el) => el.type === 'THUMBNAIL')?.path}
+          alt="Thumbnail"
+          className="w-12 h-12 object-contain"
+        />
+        <div className="ml-4">
+          <h4>{music?.title}</h4>
+          <p>{music?.album}</p>
         </div>
-      )}
-      <audio ref={audioRef} controls className="w-full bg-gray-100">
-        <source src={musicPath} type="audio/ogg" />
-      </audio>
-    </div>
-  );
+      </div>
+    )}
+    <audio ref={audioRef} controls className="w-full bg-gray-100">
+      <source src={musicPath} type="audio/ogg" />
+    </audio>
+  </div>;
 }
