@@ -4,23 +4,24 @@ import RoundedContainer from '@Molecules/RoundedContainer';
 import { musicPlayerActions } from '@Store/actions/musicPlayerActions';
 import PortalTemplate from '@Templates/PortalTemplate';
 import { useState } from 'react';
-import { useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { MusicService, ownMusicService } from '../_lib_';
+import { authenticatedApi } from '../../api/config';
+import { MusicService } from '../_lib_';
 
 export default function YourMusic() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
   const [deleteId, setDeleteId] = useState<string>('');
-  const queryClient = useQueryClient();
-  const { data } = ownMusicService.fetchData();
+  const { data, refetch } = useQuery('personal_music', () => authenticatedApi.get(`${process.env.API_URL}/music/own`));
+
   const { mutate: deleteYourMusic } = MusicService.hardDeleteData({
     onSuccess: () => {
       setConfirmDelete(false);
       navigate('/your-music');
-      queryClient.refetchQueries(['/api', 'music']);
+      refetch();
     },
     mutationKey: ['delete-music', deleteId],
   });
@@ -33,7 +34,7 @@ export default function YourMusic() {
             <h4>Your musics</h4>
             <p className="text-sm">You can edit, update and delete music here.</p>
           </div>
-          {data?.data.map((item: any) => {
+          {data?.data?.data?.map((item: any) => {
             return (
               <div key={item.title} className="group transition-all duration-150 ease-in rounded-lg overflow-hidden">
                 <div className="w-full flex justify-between items-center bg-gray-100 min-h-[1rem] px-4 py-3 ">
