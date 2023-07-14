@@ -15,7 +15,7 @@ export default function HomePageTemplate(): JSX.Element {
                 id={data.id}
                 className="bg-gray-950 group-hover:scale-[1.05] transition-all duration-150 ease-in"
                 key={data.title}
-                music={data.media.find((item: any) => item.type === 'MUSIC')}
+                music={data}
               >
                 <MusicCard
                   image={data.media?.find((el: any) => el.type === 'THUMBNAIL')?.path}

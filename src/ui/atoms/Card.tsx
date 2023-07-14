@@ -16,7 +16,6 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Card = ({ children, className, id, music }: CardProps) => {
-  console.log('🚀 ~ file: Card.tsx:19 ~ Card ~ music:', music);
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const { data } = useQuery('playlist', () => {

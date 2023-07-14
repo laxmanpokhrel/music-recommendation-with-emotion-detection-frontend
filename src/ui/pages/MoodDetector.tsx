@@ -54,11 +54,7 @@ export default function MooDetector() {
         <div className="h-[90%] w-3/5">
           <div className="songs  flex flex-col flex-1 overflow-y-auto gap-4 h-full items-start justify-start scrollbar">
             {recommendedMusics?.data?.map((item: any, index: number) => (
-              <Card
-                id={item?.id}
-                music={item?.media?.find((x: any) => x.type === 'MUSIC')}
-                className="bg-gray-500 w-full"
-              >
+              <Card id={item?.id} music={item} className="bg-gray-500 w-full">
                 <MusicCard
                   key={index}
                   title={item.title}

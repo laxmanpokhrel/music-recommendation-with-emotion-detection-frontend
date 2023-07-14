@@ -1,13 +1,13 @@
 import Icon from '@Atoms/Icon';
 import { Button } from '@Atoms/radixComponents/Button';
 import RoundedContainer from '@Molecules/RoundedContainer';
+import { musicPlayerActions } from '@Store/actions/musicPlayerActions';
 import PortalTemplate from '@Templates/PortalTemplate';
 import { useState } from 'react';
 import { useQueryClient } from 'react-query';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { MusicService } from '../_lib_';
-import { useDispatch } from 'react-redux';
-import { musicPlayerActions } from '@Store/actions/musicPlayerActions';
 
 export default function YourMusic() {
   const navigate = useNavigate();
@@ -45,11 +45,11 @@ export default function YourMusic() {
                       variant="icon-primary"
                       className="!p-1 !bg-gray-100"
                       onClick={() => {
-                        dispatch(musicPlayerActions.setMusic(item?.media?.find((item: any) => item.type === 'MUSIC')));
+                        dispatch(musicPlayerActions.setMusic(item));
                         dispatch(musicPlayerActions.togglePlay(true));
                       }}
                     >
-                      <Icon iconName="play_arrow" className="text-black cursor-pointer" />  
+                      <Icon iconName="play_arrow" className="text-black cursor-pointer" />
                     </Button>
                     <Button
                       variant="icon-primary"

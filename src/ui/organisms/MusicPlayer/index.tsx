@@ -54,7 +54,11 @@ export default function MusicPlayer() {
 
     if (audioElement) {
       try {
-        if (music && music.path) audioElement.src = music.path;
+        if (music) {
+          let path = music?.media?.find((el) => el.type === 'MUSIC')?.path;
+          console.log('🚀 ~ file: index.tsx:59 ~ useEffect ~ path:', path);
+          audioElement.src = path;
+        }
         audioElement.play();
 
         // if (playStatus) if (!playStatus) audioElement.pause();
@@ -64,10 +68,26 @@ export default function MusicPlayer() {
     }
   }, [music, playStatus]);
 
+  const musicPath = music?.media?.find((el: any) => el.type === 'MUSIC')?.path;
+  const thumbnail = music?.media?.find((el: any) => el.type === 'THUMBNAIL')?.src;
+  console.log('🚀 ~ file: index.tsx:73 ~ MusicPlayer ~ thumbnail:', thumbnail);
   return (
-    <div className="fixed bottom-0 w-full h-20 bg-gray-100 shadow-2xl px-4 py-2">
+    <div className="fixed bottom-0 w-full h-50 bg-gray-100 shadow-2xl px-4 py-2">
+      {music && (
+        <div className="flex">
+          <img
+            src={music?.media?.find((el) => el.type === 'THUMBNAIL')?.path}
+            alt="Thumbnail"
+            className="w-12 h-12 object-contain"
+          />
+          <div className="ml-4">
+            <h4>{music?.title}</h4>
+            <p>{music?.album}</p>
+          </div>
+        </div>
+      )}
       <audio ref={audioRef} controls className="w-full bg-gray-100">
-        <source src={music?.path} type="audio/ogg" />
+        <source src={musicPath} type="audio/ogg" />
       </audio>
     </div>
   );

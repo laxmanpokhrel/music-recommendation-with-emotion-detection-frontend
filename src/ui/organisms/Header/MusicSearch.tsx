@@ -33,8 +33,8 @@ const MusicSearch = () => {
 
   useEffect(() => {
     if (selectedMusic) {
-      const music = selectedMusic?.media?.find((item: any) => item.type === 'MUSIC');
-      dispatch(musicPlayerActions.setMusic(music));
+      //   const music = selectedMusic?.media?.find((item: any) => item.type === 'MUSIC');
+      dispatch(musicPlayerActions.setMusic(selectedMusic));
       dispatch(musicPlayerActions.togglePlay(true));
     }
   }, [selectedMusic]);

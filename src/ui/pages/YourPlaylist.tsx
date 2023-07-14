@@ -1,5 +1,6 @@
 import Icon from '@Atoms/Icon';
 import { Button } from '@Atoms/radixComponents/Button';
+import { musicPlayerActions } from '@Store/actions/musicPlayerActions';
 import { useState } from 'react';
 import { PiTrashSimple } from 'react-icons/pi';
 import { useMutation, useQueryClient } from 'react-query';
@@ -10,7 +11,6 @@ import { authenticatedApi } from '../../api/config';
 import { PlaylistCreateService } from '../_lib_';
 import RoundedContainer from '../molecules/RoundedContainer';
 import PortalTemplate from '../templates/PortalTemplate';
-import { musicPlayerActions } from '@Store/actions/musicPlayerActions';
 
 export default function YourPlaylist() {
   const { data } = PlaylistCreateService.fetchData();
@@ -71,7 +71,7 @@ export default function YourPlaylist() {
                       variant="icon-primary"
                       size="lg-icon"
                       onClick={() => {
-                        dispatch(musicPlayerActions.setMusic({...itm?.media?.find((x: any) => x.type === 'MUSIC'),title:itm.title}));
+                        dispatch(musicPlayerActions.setMusic(itm));
                         dispatch(musicPlayerActions.togglePlay(true));
                       }}
                     >
