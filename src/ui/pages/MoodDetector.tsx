@@ -2,6 +2,7 @@
 import Card from '@Atoms/Card';
 import { useEffect, useMemo } from 'react';
 import { useQuery } from 'react-query';
+import { api } from '../../api/config';
 import { Mood } from '../../constants/type';
 import MusicCard from '../atoms/MusicCard';
 
@@ -17,6 +18,16 @@ export default function MooDetector() {
   const { data: recommendedMusics, refetch: refetchSong } = useQuery('recommended-songs', () =>
     fetch(`${process.env.API_URL}/music?type=${mood.toUpperCase()}`).then((res) => res.json()),
   );
+  const { data: _, refetch: closeCamera } = useQuery(
+    'close-camera',
+    () => api.get(`${process.env.AI_URL}/close-camera`),
+    {
+      enabled: false,
+    },
+  );
+  const { refetch: openCamera } = useQuery('close-camera', () => api.get(`${process.env.AI_URL}/open-camera`), {
+    enabled: false,
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -25,7 +36,15 @@ export default function MooDetector() {
     }, 2000);
     return () => clearInterval(interval);
   }, [refetchMood, refetchSong]);
-  console.log(data);
+
+  // *Send request to the server to close the camera
+  useEffect(() => {
+    openCamera();
+    return () => {
+      closeCamera();
+    };
+  }, [openCamera, closeCamera]);
+
   return (
     <>
       <p>Happy: {data?.Happy}</p>

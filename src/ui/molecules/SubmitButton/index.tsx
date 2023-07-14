@@ -1,12 +1,11 @@
 /* eslint-disable no-nested-ternary */
 import Icon from '@Atoms/Icon';
-import { useEffect, useState } from 'react';
 import { Button, ButtonProps } from '@Atoms/radixComponents/Button';
-// import ErrorLabel from '@Molecules/ErrorLabel';
-import { SyncLoader } from 'react-spinners';
-import { AnimatePresence, motion } from 'framer-motion';
 import { IFormState } from '@Schemas/interfaces';
-import RoundedContainer from '@Molecules/RoundedContainer';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { SyncLoader } from 'react-spinners';
+import { toast } from 'react-toastify';
 
 interface ISubmitButtonProps extends ButtonProps, IFormState {
   disableTillValid?: boolean;
@@ -32,6 +31,9 @@ export default function SubmitButton({
 
     return () => clearTimeout(timeoutInstance);
   }, [isSuccess]);
+
+  toast.dismiss();
+  if (isError) toast.error(error || 'Something is not right.');
 
   return (
     <div className="flex flex-col items-center justify-center gap-3 ">
@@ -65,11 +67,6 @@ export default function SubmitButton({
         </AnimatePresence>
         {tickIsVisible ? <Icon iconName="check" /> : null}
       </Button>
-      {isError ? (
-        <RoundedContainer className="bg-red-400 p-2 w-full text-center text-white">
-          {error || 'Something is not right.'}
-        </RoundedContainer>
-      ) : null}
     </div>
   );
 }
