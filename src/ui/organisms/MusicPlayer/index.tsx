@@ -83,7 +83,7 @@ export default function MusicPlayer() {
           </div>
         </div>
       )}
-      <audio ref={audioRef} controls className="w-full bg-gray-100">
+      <audio ref={audioRef} controls className="w-full bg-gray-100" on >
         <source src={musicPath} type="audio/ogg" />
       </audio>
     </div>

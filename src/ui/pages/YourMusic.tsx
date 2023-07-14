@@ -15,7 +15,9 @@ export default function YourMusic() {
   const dispatch = useDispatch();
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
   const [deleteId, setDeleteId] = useState<string>('');
-  const { data, refetch } = useQuery('personal_music', () => authenticatedApi.get(`${process.env.API_URL}/music/own`));
+  const { data, refetch } = useQuery('personal_music', () => authenticatedApi.get(`${process.env.API_URL}/music/own`), {
+    cacheTime: 0,
+  });
 
   const { mutate: deleteYourMusic } = MusicService.hardDeleteData({
     onSuccess: () => {

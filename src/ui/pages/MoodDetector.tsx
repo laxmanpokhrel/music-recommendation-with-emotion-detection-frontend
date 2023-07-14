@@ -66,6 +66,8 @@ export default function MooDetector() {
       <div className="w-full h-[80vh] flex gap-8 p-4 items-start justify-start">
         <div className="user-video w-2/5">.</div>
         <div className="h-[90%] w-3/5">
+          <h3>Recommended Musics</h3>
+          <p>Play music based on your mood</p>
           <div className="songs flex  flex-1 overflow-y-auto gap-4 h-full items-start justify-start scrollbar">
             {recommendedMusics?.data?.map((item: any, index: number) => (
               <Card id={item?.id} music={item} className="bg-gray-500 w-full">
