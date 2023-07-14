@@ -1,8 +1,8 @@
 /* eslint-disable react/no-array-index-key */
+import { api } from '@Api/config';
 import Card from '@Atoms/Card';
 import { useEffect, useMemo } from 'react';
 import { useQuery } from 'react-query';
-import { api } from '../../api/config';
 import { Mood } from '../../constants/type';
 import MusicCard from '../atoms/MusicCard';
 
@@ -36,14 +36,12 @@ export default function MooDetector() {
     }, 2000);
     return () => clearInterval(interval);
   }, [refetchMood, refetchSong]);
-
-  // *Send request to the server to close the camera
-  useEffect(() => {
-    openCamera();
-    return () => {
-      closeCamera();
-    };
-  }, [openCamera, closeCamera]);
+  // useEffect(() => {
+  //   openCamera();
+  //   return () => {
+  //     closeCamera();
+  //   };
+  // }, [openCamera, closeCamera]);
 
   return (
     <>

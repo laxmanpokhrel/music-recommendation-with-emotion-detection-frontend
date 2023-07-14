@@ -66,7 +66,7 @@ audio::-webkit-media-controls-panel {
 }
 
 .user-video{
-    background: url("http://127.0.0.1:5000/video");
+    background: url("http://127.0.0.1:5001/video");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
