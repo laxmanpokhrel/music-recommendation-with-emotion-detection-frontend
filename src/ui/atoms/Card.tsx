@@ -1,9 +1,9 @@
-import { useDispatch } from 'react-redux';
+import { musicPlayerActions } from '@Store/actions/musicPlayerActions';
 import { cn } from '@Utils/index';
 import { HTMLAttributes, ReactNode } from 'react';
-import { musicPlayerActions } from '@Store/actions/musicPlayerActions';
 import { AiFillHeart } from 'react-icons/ai';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { authenticatedApi } from '../../api/config';
 import Icon from './Icon';
@@ -16,6 +16,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Card = ({ children, className, id, music }: CardProps) => {
+  console.log('🚀 ~ file: Card.tsx:19 ~ Card ~ music:', music);
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const { data } = useQuery('playlist', () => {

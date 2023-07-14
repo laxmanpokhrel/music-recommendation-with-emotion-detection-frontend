@@ -26,3 +26,4 @@ dist-ssr
 # **/__test__/
 .env
 todo.txt
+yarn.lock

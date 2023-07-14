@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import setupLocatorUI from '@locator/runtime';
+import { MantineProvider } from '@mantine/core';
 import { AnimatePresence } from 'framer-motion';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -27,16 +28,18 @@ const queryClient = new QueryClient({
 });
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <AnimatePresence>
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <BrowserRouter>
-          <AuthContextProvider>
-            <App />
-          </AuthContextProvider>
-        </BrowserRouter>
-      </Provider>
-      <ReactQueryDevtools initialIsOpen={false} position="top-right" />
-    </QueryClientProvider>
-  </AnimatePresence>,
+  <MantineProvider withGlobalStyles withNormalizeCSS>
+    <AnimatePresence>
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <BrowserRouter>
+            <AuthContextProvider>
+              <App />
+            </AuthContextProvider>
+          </BrowserRouter>
+        </Provider>
+        <ReactQueryDevtools initialIsOpen={false} position="top-right" />
+      </QueryClientProvider>
+    </AnimatePresence>
+  </MantineProvider>,
 );
