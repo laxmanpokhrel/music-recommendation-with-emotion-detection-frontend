@@ -1,5 +1,5 @@
-import Icon from '@Atoms/Icon';
 import logo from '@Assets/images/logo.svg';
+import Icon from '@Atoms/Icon';
 import Image from '@Atoms/Image';
 import { Button } from '@Atoms/radixComponents/Button';
 import Input from '@Atoms/radixComponents/Input';
@@ -15,6 +15,7 @@ export default function Header() {
   const navigate = useNavigate();
   const [menuIsVisible, setMenuIsVisible] = useState<boolean>(false);
   const { user, setUser } = useUser();
+  console.log('🚀 ~ file: index.tsx:18 ~ Header ~ user:', user);
   const [confirmLogout, setConfirmLogout] = useState<boolean>(false);
   const pathName = window.location.pathname;
   const isLoginPage = pathName === '/login';
