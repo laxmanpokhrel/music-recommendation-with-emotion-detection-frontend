@@ -1,5 +1,4 @@
 import { cn } from '@Utils/index';
-import Icon from './Icon';
 
 interface MusicCardType /* extends HTMLAttributes<HTMLDivElement>*/ {
   image?: string;
