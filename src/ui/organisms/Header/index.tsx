@@ -6,8 +6,10 @@ import MenuOverlay from '@Organisms/MenuOverlay';
 import PortalTemplate from '@Templates/PortalTemplate';
 import { useState } from 'react';
 import { BiUserCircle } from 'react-icons/bi';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import useUser from '../../../hooks/useUser';
+import { musicPlayerActions } from '../../../store/actions/musicPlayerActions';
 import RoundedContainer from '../../molecules/RoundedContainer';
 import MusicSearch from './MusicSearch';
 
@@ -18,6 +20,7 @@ export default function Header() {
   const [confirmLogout, setConfirmLogout] = useState<boolean>(false);
   const pathName = window.location.pathname;
   const isLoginPage = pathName === '/login';
+  const dispatch = useDispatch();
   return (
     <>
       <div className="w-full px-4 py-2 min-h-[8vh]">
@@ -82,6 +85,8 @@ export default function Header() {
                 <Button
                   variant="primary"
                   onClick={() => {
+                    dispatch(musicPlayerActions.setMusic(undefined));
+                    dispatch(musicPlayerActions.togglePlay(false));
                     setUser(null);
                     setConfirmLogout(false);
                     navigate('/login');

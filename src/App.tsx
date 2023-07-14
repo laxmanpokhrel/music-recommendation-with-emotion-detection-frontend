@@ -7,14 +7,16 @@ import { templateActions } from '@Store/actions/templateAction';
 import { initDomToCode } from 'dom-to-code';
 import 'react-day-picker/dist/style.css';
 import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './assets/css/tailwind.css';
 
 export default function App() {
   const dispatch = useDispatch();
+  const location = useLocation();
   dispatch(templateActions.templateReducerOne({ key: 'value' }));
-  
+
   return (
     <>
       {process.env.NODE_ENV !== 'production' && initDomToCode()}
@@ -30,7 +32,7 @@ export default function App() {
         </div>
         <ToastContainer position="bottom-right" newestOnTop />
       </div>
-      {!['/upload-music', '/create-playlist'].includes(location.pathname) && <MusicPlayer />}
+      {!['/upload-music', '/create-playlist', '/login', '/signup'].includes(location.pathname) && <MusicPlayer />}
     </>
   );
 }
