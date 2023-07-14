@@ -14,7 +14,7 @@ import './assets/css/tailwind.css';
 export default function App() {
   const dispatch = useDispatch();
   dispatch(templateActions.templateReducerOne({ key: 'value' }));
-
+  
   return (
     <>
       {process.env.NODE_ENV !== 'production' && initDomToCode()}

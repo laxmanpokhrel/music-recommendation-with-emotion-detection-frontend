@@ -3,7 +3,9 @@ import { api } from '@Api/config';
 import Card from '@Atoms/Card';
 import { useEffect, useMemo } from 'react';
 import { useQuery } from 'react-query';
+import { useDispatch, useSelector } from 'react-redux';
 import { Mood } from '../../constants/type';
+import { musicPlayerActions } from '../../store/actions/musicPlayerActions';
 import MusicCard from '../atoms/MusicCard';
 
 export default function MooDetector() {
@@ -29,6 +31,10 @@ export default function MooDetector() {
     enabled: false,
   });
   const { data: initializeData } = useQuery('initialize-data', () => api.get(`${process.env.AI_URL}/initialize`), {});
+  const music = useSelector((state: any) => state.music.music);
+  const playStatus = useSelector((state: any) => state.music.play);
+  console.log('🚀 ~ file: MoodDetector.tsx:35 ~ MooDetector ~ playStatus:', playStatus);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,12 +43,19 @@ export default function MooDetector() {
     }, 3000);
     return () => clearInterval(interval);
   }, [refetchMood, refetchSong]);
+
   useEffect(() => {
     openCamera();
     return () => {
       closeCamera();
     };
   }, [openCamera, closeCamera]);
+
+  useEffect(() => {
+    if (recommendedMusics && !playStatus && !music) {
+      dispatch(musicPlayerActions.setMusic(recommendedMusics?.data[0]));
+    }
+  }, [recommendedMusics]);
 
   return (
     <>
