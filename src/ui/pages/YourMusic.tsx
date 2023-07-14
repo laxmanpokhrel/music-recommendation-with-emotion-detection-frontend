@@ -1,13 +1,13 @@
 import Icon from '@Atoms/Icon';
 import { Button } from '@Atoms/radixComponents/Button';
 import RoundedContainer from '@Molecules/RoundedContainer';
+import { musicPlayerActions } from '@Store/actions/musicPlayerActions';
 import PortalTemplate from '@Templates/PortalTemplate';
 import { useState } from 'react';
 import { useQueryClient } from 'react-query';
-import { useNavigate } from 'react-router-dom';
-import { MusicService } from '../_lib_';
 import { useDispatch } from 'react-redux';
-import { musicPlayerActions } from '@Store/actions/musicPlayerActions';
+import { useNavigate } from 'react-router-dom';
+import { MusicService, ownMusicService } from '../_lib_';
 
 export default function YourMusic() {
   const navigate = useNavigate();
@@ -15,9 +15,7 @@ export default function YourMusic() {
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
   const [deleteId, setDeleteId] = useState<string>('');
   const queryClient = useQueryClient();
-
-  const { data } = MusicService.fetchData();
-
+  const { data } = ownMusicService.fetchData();
   const { mutate: deleteYourMusic } = MusicService.hardDeleteData({
     onSuccess: () => {
       setConfirmDelete(false);
@@ -49,7 +47,7 @@ export default function YourMusic() {
                         dispatch(musicPlayerActions.togglePlay(true));
                       }}
                     >
-                      <Icon iconName="play_arrow" className="text-black cursor-pointer" />  
+                      <Icon iconName="play_arrow" className="text-black cursor-pointer" />
                     </Button>
                     <Button
                       variant="icon-primary"
