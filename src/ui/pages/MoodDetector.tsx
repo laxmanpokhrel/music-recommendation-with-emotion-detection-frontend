@@ -33,7 +33,7 @@ export default function MooDetector() {
     const interval = setInterval(() => {
       refetchMood();
       refetchSong();
-    }, 2000);
+    }, 1000);
     return () => clearInterval(interval);
   }, [refetchMood, refetchSong]);
   // useEffect(() => {
