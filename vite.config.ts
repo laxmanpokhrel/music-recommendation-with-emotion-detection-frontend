@@ -2,17 +2,11 @@ import dotenv from 'dotenv';
 import { defineConfig } from 'vite';
 // import reactRefresh from '@vitejs/plugin-react-refresh';
 import react from '@vitejs/plugin-react';
-import { domToCodePlugin } from 'dom-to-code/vite';
 dotenv.config();
 export default defineConfig({
   base: '/',
   plugins: [
     react(),
-    process.env.NODE_ENV !== 'production'
-      ? domToCodePlugin({
-        mode: 'react',
-      })
-      : undefined,
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],

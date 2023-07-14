@@ -32,11 +32,9 @@ export default function MooDetector() {
       <p>Sad: {data?.Sad}</p>
       <p>Neutral: {data?.Neutral}</p>
 
-      <div className="w-full  h-[80vh] flex gap-8 p-4 relative items-start justify-start">
-        <div className="flex-2 w-full h-full">
-          <iframe title="camera" className="w-full h-full" src={`${process.env.AI_URL}/video`} />
-        </div>
-        <div className="absolute right-0 h-[90%] w-1/5">
+      <div className="w-full h-[80vh] flex gap-8 p-4 items-start justify-start">
+        <div className="user-video w-2/5">.</div>
+        <div className="h-[90%] w-3/5">
           <div className="songs  flex flex-col flex-1 overflow-y-auto gap-4 h-full items-start justify-start scrollbar">
             {recommendedMusics?.data?.map((item: any, index: number) => (
               <Card

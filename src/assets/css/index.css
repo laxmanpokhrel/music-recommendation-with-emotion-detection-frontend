@@ -64,3 +64,15 @@
 audio::-webkit-media-controls-panel {
   background-color: #FFCECC;
 }
+
+.user-video{
+    background: url("http://127.0.0.1:5000/video");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+
+    /* width: 200px; */
+    /* height: 200px; */
+}
