@@ -6,7 +6,7 @@ export default function HomePageTemplate(): JSX.Element {
   const { data: music } = MusicService.fetchData();
 
   return (
-    <div className="home-page-template text-lg w-full h-full grid pt-10">
+    <div className="home-page-template text-lg w-full h-full grid pt-10 mb-64">
       <div className=" w-3/5 m-auto">
         <h3 className="mb-3">Music for you</h3>
         <div className="grid grid-cols-3 gap-6">
