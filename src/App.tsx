@@ -1,23 +1,19 @@
-import { templateActions } from '@Store/actions/templateAction';
-import { useDispatch } from 'react-redux';
-import { initDomToCode } from 'dom-to-code';
-import generateRoutes from '@Routes/_lib_/generateRoutes';
-import appRoutes from '@Routes/appRoutes';
-import testRoutes from '@Routes/_test_/index.test';
-import 'react-day-picker/dist/style.css';
 import Header from '@Organisms/Header';
+import MusicPlayer from '@Organisms/MusicPlayer';
+import generateRoutes from '@Routes/_lib_/generateRoutes';
+import testRoutes from '@Routes/_test_/index.test';
+import appRoutes from '@Routes/appRoutes';
+import { templateActions } from '@Store/actions/templateAction';
+import { initDomToCode } from 'dom-to-code';
+import 'react-day-picker/dist/style.css';
+import { useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './assets/css/tailwind.css';
-import MusicPlayer from '@Organisms/MusicPlayer';
-import { useLocation } from 'react-router-dom';
-import useAuth from '@Hooks/useAuth';
 
 export default function App() {
-  const location = useLocation();
   const dispatch = useDispatch();
   dispatch(templateActions.templateReducerOne({ key: 'value' }));
-  const { isAuthenticated } = useAuth();
 
   return (
     <>
@@ -34,9 +30,7 @@ export default function App() {
         </div>
         <ToastContainer position="bottom-right" newestOnTop />
       </div>
-      {isAuthenticated && !['/upload-music', '/create-playlist'].includes(location.pathname) && (
-        <MusicPlayer />
-      )}
+      {!['/upload-music', '/create-playlist'].includes(location.pathname) && <MusicPlayer />}
     </>
   );
 }
