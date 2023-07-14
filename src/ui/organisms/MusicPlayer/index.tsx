@@ -42,12 +42,28 @@
 // }
 
 import { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useQuery } from 'react-query';
+import { useDispatch, useSelector } from 'react-redux';
+import { api } from '../../../api/config';
+import { musicPlayerActions } from '../../../store/actions/musicPlayerActions';
 
 export default function MusicPlayer() {
   const music = useSelector((state: any) => state.music.music);
   const playStatus = useSelector((state: any) => state.music.play);
+  const { data: similarMusic, refetch } = useQuery(
+    'similar-music',
+    () => api.get(`${process.env.API_URL}/music/similar/${music?.id}}`),
+    {
+      enabled: false,
+    },
+  );
+  const dispatch = useDispatch();
   const audioRef = useRef(null);
+
+  useEffect(() => {
+    dispatch(musicPlayerActions.setMusic(similarMusic?.data?.data));
+    dispatch(musicPlayerActions.togglePlay(true));
+  }, [similarMusic]);
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -59,8 +75,6 @@ export default function MusicPlayer() {
           audioElement.src = path;
           audioElement.play();
         }
-
-        // if (playStatus) if (!playStatus) audioElement.pause();
       } catch (error) {
         console.error('Error playing audio:', error);
       }
@@ -68,6 +82,11 @@ export default function MusicPlayer() {
   }, [music, playStatus]);
 
   const musicPath = music?.media?.find((el: any) => el.type === 'MUSIC')?.path;
+
+  const playSimilarNextMusicHandler = () => {
+    refetch();
+  };
+
   return (
     <div className="fixed bottom-0 w-full h-50 bg-gray-100 shadow-2xl px-4 py-2">
       {music && (
@@ -83,7 +102,7 @@ export default function MusicPlayer() {
           </div>
         </div>
       )}
-      <audio ref={audioRef} controls className="w-full bg-gray-100">
+      <audio ref={audioRef} controls className="w-full bg-gray-100" onEnded={playSimilarNextMusicHandler}>
         <source src={musicPath} type="audio/ogg" />
       </audio>
     </div>
