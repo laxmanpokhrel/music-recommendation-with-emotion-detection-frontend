@@ -4,7 +4,6 @@ import { MusicService } from '../_lib_';
 
 export default function HomePageTemplate(): JSX.Element {
   const { data: music } = MusicService.fetchData();
-  console.log('🚀 ~ file: HomePageTemplate.tsx:7 ~ HomePageTemplate ~ music:', music);
 
   return (
     <div className="home-page-template text-lg w-full h-full grid pt-10">

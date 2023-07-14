@@ -4,11 +4,11 @@ Represents a legend item with a color indicator, name, and click event.
 
 ### Props
 
-| Name             | Type     | Description                                      |
-| -----------------| -------- | ------------------------------------------------ |
-| color            | string   | The color of the legend item.                    |
-| name             | string   | The name of the legend item.                     |
-| onLegendClick    | Function | The function to be called when the item is clicked. |
+| Name          | Type     | Description                                         |
+| ------------- | -------- | --------------------------------------------------- |
+| color         | string   | The color of the legend item.                       |
+| name          | string   | The name of the legend item.                        |
+| onLegendClick | Function | The function to be called when the item is clicked. |
 
 ### Example Usage
 
@@ -16,24 +16,17 @@ Represents a legend item with a color indicator, name, and click event.
 import LegendItem from './LegendItem';
 
 // Define a click event handler for the legend item
-const handleLegendItemClick = (clickedName) => {
-  console.log(`Clicked: ${clickedName}`);
-};
+const handleLegendItemClick = (clickedName) => {};
 
 // Render the LegendItem component
 function App() {
   return (
     <div>
-      <LegendItem
-        color="#FF0000"
-        name="Red"
-        onLegendClick={handleLegendItemClick}
-      />
+      <LegendItem color="#FF0000" name="Red" onLegendClick={handleLegendItemClick} />
     </div>
   );
 }
 ```
-
 
 ### Component Details
 
@@ -41,9 +34,9 @@ The `LegendItem` component is a functional component that represents a legend it
 
 #### State
 
-| Name              | Type     | Description                                         |
-| ----------------- | -------- | --------------------------------------------------- |
-| legendIsDisabled  | boolean  | Indicates whether the legend item is disabled or not.|
+| Name             | Type    | Description                                           |
+| ---------------- | ------- | ----------------------------------------------------- |
+| legendIsDisabled | boolean | Indicates whether the legend item is disabled or not. |
 
 #### Event Handlers
 
@@ -64,26 +57,19 @@ The appearance of the legend item is styled using CSS classes and inline styles.
 - The span's background color and border color are determined dynamically based on the `legendIsDisabled` state.
 - The paragraph element representing the name has the CSS class `text-lg` and an additional class `text-gray-300` when the `legendIsDisabled` state is `true`.
 
-
 ### Example Usage
 
 ```jsx
 import LegendItem from './LegendItem';
 
 // Define a click event handler for the legend item
-const handleLegendItemClick = (clickedName) => {
-  console.log(`Clicked: ${clickedName}`);
-};
+const handleLegendItemClick = (clickedName) => {};
 
 // Render the LegendItem component
 function App() {
   return (
     <div>
-      <LegendItem
-        color="#FF0000"
-        name="Red"
-        onLegendClick={handleLegendItemClick}
-      />
+      <LegendItem color="#FF0000" name="Red" onLegendClick={handleLegendItemClick} />
     </div>
   );
 }

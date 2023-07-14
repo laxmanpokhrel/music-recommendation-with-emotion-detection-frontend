@@ -1,14 +1,14 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
-import Image from '@Atoms/Image';
-import { useNavigate } from 'react-router-dom';
-import logo from '@Assets/images/logo.svg';
-import FormControl from '@Templates/FormControl';
-import useForm from '@Hooks/useForm';
-import { LoginFormValidation } from '@Validation/index';
 import ApiFactory from '@Api/ApiFactory';
+import logo from '@Assets/images/logo.svg';
+import Image from '@Atoms/Image';
+import useForm from '@Hooks/useForm';
 import SubmitButton from '@Molecules/SubmitButton';
+import FormControl from '@Templates/FormControl';
+import { LoginFormValidation } from '@Validation/index';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useUser from '../../hooks/useUser';
 
@@ -20,7 +20,6 @@ export default function Login() {
   const { isLoading, error, isError, isSuccess, mutate } = LoginService.postData({
     mutationParams: {
       onSuccess: (data) => {
-        console.log('🚀 ~ file: Login.tsx:23 ~ Login ~ data:', data);
         navigate('/');
         toast('Successfully logged in.');
         setUser({

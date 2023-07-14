@@ -1,8 +1,7 @@
-import Icon from '@Atoms/Icon';
 import logo from '@Assets/images/logo.svg';
+import Icon from '@Atoms/Icon';
 import Image from '@Atoms/Image';
 import { Button } from '@Atoms/radixComponents/Button';
-import Input from '@Atoms/radixComponents/Input';
 import MenuOverlay from '@Organisms/MenuOverlay';
 import PortalTemplate from '@Templates/PortalTemplate';
 import { useState } from 'react';
@@ -10,6 +9,7 @@ import { BiUserCircle } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import useUser from '../../../hooks/useUser';
 import RoundedContainer from '../../molecules/RoundedContainer';
+import MusicSearch from './MusicSearch';
 
 export default function Header() {
   const navigate = useNavigate();
@@ -27,7 +27,8 @@ export default function Header() {
               <Icon iconName="menu" className="naxatw-p-0 naxatw-m-0 naxatw-text-gray-600 text-3xl" />
             </Button>
             <Image src={logo} className="h-[1.5rem]" onClick={() => navigate('/')} />
-            <Input type="text" hasIcon leftIconName="search" placeholder="Search Music" className="flex-1" />
+            <MusicSearch />
+            {/* <Input type="text" hasIcon leftIconName="search" placeholder="Search Music" className="flex-1" /> */}
           </div>
           {!user && !isLoginPage && (
             <Button

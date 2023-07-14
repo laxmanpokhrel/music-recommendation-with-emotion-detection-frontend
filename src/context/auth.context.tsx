@@ -40,7 +40,8 @@ const AuthContextProvider = ({ children }: IContextProps) => {
 
   let initialValue = null;
   try {
-    initialValue = JSON.parse(localStorage.getItem('user') ?? '{}');
+    const localStorageItem = localStorage.getItem('user');
+    initialValue = localStorageItem ? JSON.parse(localStorageItem) : null;
   } catch (err) {
     initialValue = null;
   }
@@ -50,7 +51,7 @@ const AuthContextProvider = ({ children }: IContextProps) => {
     if (user) {
       localStorage.setItem('user', JSON.stringify(user));
       refetch();
-    } else localStorage.setItem('user', JSON.stringify({}));
+    } else localStorage.setItem('user', JSON.stringify(null));
   }, [user]);
 
   return (
