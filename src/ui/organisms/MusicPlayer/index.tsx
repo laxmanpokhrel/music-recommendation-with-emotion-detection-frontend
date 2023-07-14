@@ -71,7 +71,6 @@ export default function MusicPlayer() {
   const musicPath = music?.media?.find((el: any) => el.type === 'MUSIC')?.path;
   const thumbnail = music?.media?.find((el: any) => el.type === 'THUMBNAIL')?.src;
   console.log('🚀 ~ file: index.tsx:73 ~ MusicPlayer ~ thumbnail:', thumbnail);
-  return (
     <div className="fixed bottom-0 w-full h-50 bg-gray-100 shadow-2xl px-4 py-2">
       {music && (
         <div className="flex">

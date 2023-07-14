@@ -28,20 +28,21 @@ export default function MooDetector() {
   const { refetch: openCamera } = useQuery('close-camera', () => api.get(`${process.env.AI_URL}/open-camera`), {
     enabled: false,
   });
+  const { data: initializeData } = useQuery('initialize-data', () => api.get(`${process.env.AI_URL}/initialize`), {});
 
   useEffect(() => {
     const interval = setInterval(() => {
       refetchMood();
       refetchSong();
-    }, 2000);
+    }, 3000);
     return () => clearInterval(interval);
   }, [refetchMood, refetchSong]);
-  // useEffect(() => {
-  //   openCamera();
-  //   return () => {
-  //     closeCamera();
-  //   };
-  // }, [openCamera, closeCamera]);
+  useEffect(() => {
+    openCamera();
+    return () => {
+      closeCamera();
+    };
+  }, [openCamera, closeCamera]);
 
   return (
     <>

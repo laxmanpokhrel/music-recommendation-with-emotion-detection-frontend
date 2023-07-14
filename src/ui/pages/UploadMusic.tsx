@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import FormRow from '@Atoms/FormRow';
 import useForm from '@Hooks/useForm';
+import SubmitButton from '@Molecules/SubmitButton';
 import hasErrorBoundary from '@Molecules/_lib_/hasErrorBoundary';
 import FormControl from '@Templates/FormControl';
-import { UploadMusiValidation } from '@Validation/index';
-import SubmitButton from '@Molecules/SubmitButton';
-import { useParams } from 'react-router-dom';
 import { MusicService } from '@Ui/_lib_';
+import { UploadMusiValidation } from '@Validation/index';
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { postInterceptor } from './_lib_';
 
 function UploadMusic() {
@@ -107,7 +107,7 @@ function UploadMusic() {
               {...register('releaseDate')}
             />
           </div>
-          <div className="form-actions">
+          <div className="form-actions mb-36">
             <SubmitButton {...formState}>{musicId ? 'Update' : 'Upload'}</SubmitButton>
           </div>
         </form>

@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useQueryClient } from 'react-query';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { MusicService } from '../_lib_';
+import { MusicService, ownMusicService } from '../_lib_';
 
 export default function YourMusic() {
   const navigate = useNavigate();
@@ -15,9 +15,7 @@ export default function YourMusic() {
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
   const [deleteId, setDeleteId] = useState<string>('');
   const queryClient = useQueryClient();
-
-  const { data } = MusicService.fetchData();
-
+  const { data } = ownMusicService.fetchData();
   const { mutate: deleteYourMusic } = MusicService.hardDeleteData({
     onSuccess: () => {
       setConfirmDelete(false);

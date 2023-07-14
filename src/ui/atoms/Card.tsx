@@ -43,7 +43,12 @@ const Card = ({ children, className, id, music }: CardProps) => {
   const playlists = data?.data?.data;
 
   return (
-    <section className={cn('rounded-xl shadow-xl', className)}>
+    <section
+      className={cn('rounded-xl shadow-xl', className)}
+      style={{
+        width: '300px',
+      }}
+    >
       {children}
       <div className="flex items-center justify-end w-full px-4 pb-3   transition-all duration-300">
         <button
