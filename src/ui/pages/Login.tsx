@@ -27,6 +27,7 @@ export default function Login() {
             data: data?.data,
             tokens: data?.tokens,
           });
+          window.location.reload();
         } else {
           toast.info('Please verify your email address.');
           navigate('/verify-otp', { state: { email: data?.data?.email } });

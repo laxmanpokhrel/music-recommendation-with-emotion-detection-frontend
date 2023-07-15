@@ -51,7 +51,6 @@ const AuthContextProvider = ({ children }: IContextProps) => {
     if (user) {
       localStorage.setItem('user', JSON.stringify(user));
       refetch();
-      window.location.reload();
     } else localStorage.setItem('user', JSON.stringify(null));
   }, [user]);
 
