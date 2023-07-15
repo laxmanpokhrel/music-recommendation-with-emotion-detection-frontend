@@ -78,11 +78,11 @@ export default function Login() {
             </SubmitButton>
           </form>
         </div>
-        <div className="text-center">
+        {/* <div className="text-center">
           <a href="#" className="hover:text-indigo-600">
             Forgot password?
           </a>
-        </div>
+        </div> */}
       </div>
     </main>
   );
