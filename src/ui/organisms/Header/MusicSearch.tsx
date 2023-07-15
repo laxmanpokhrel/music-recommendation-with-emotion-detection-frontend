@@ -24,7 +24,6 @@ const MusicSearch = () => {
     if (musics?.data?.data) {
       setData(musics?.data?.data?.map((item: any) => item.title));
       const searchedMusic = musics?.data?.data?.find((item: any) => item.title === value);
-      console.log('🚀 ~ file: MusicSearch.tsx:27 ~ useEffect ~ searchedMusic:', searchedMusic);
       if (searchedMusic) {
         setSelectedMusic(searchedMusic);
       }

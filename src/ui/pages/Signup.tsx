@@ -1,16 +1,15 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
-import Image from '@Atoms/Image';
-import { useNavigate } from 'react-router-dom';
-import logo from '@Assets/images/logo.svg';
-import FormControl from '@Templates/FormControl';
-import useForm from '@Hooks/useForm';
-import { SignUpFormValidation } from '@Validation/index';
 import ApiFactory from '@Api/ApiFactory';
-import SubmitButton from '@Molecules/SubmitButton';
+import logo from '@Assets/images/logo.svg';
 import FormRow from '@Atoms/FormRow';
-import { toast } from 'react-toastify';
+import Image from '@Atoms/Image';
+import useForm from '@Hooks/useForm';
+import SubmitButton from '@Molecules/SubmitButton';
+import FormControl from '@Templates/FormControl';
+import { SignUpFormValidation } from '@Validation/index';
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
   const SignupService = ApiFactory.createQuery({ key: '/login', url: '/auth/user/register' });
@@ -23,9 +22,11 @@ export default function Signup() {
     mutate: signup,
   } = SignupService.postData({
     mutationParams: {
-      onSuccess: () => {
-        toast('Successfully Signedup. Please Login to continue.');
-        navigate('/login');
+      onSuccess: (data) => {
+        // console.log('🚀 ~ file: Signup.tsx:27 ~ Signup ~ data:', data);
+        // navigate('/login');
+        navigate('/verify-otp', { state: { email: data?.data?.email } });
+        toast('Successfully Signedup. Please Verify your OTP');
       },
     },
   });

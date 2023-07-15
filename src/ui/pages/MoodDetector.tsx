@@ -33,7 +33,6 @@ export default function MooDetector() {
   const { data: initializeData } = useQuery('initialize-data', () => api.get(`${process.env.AI_URL}/initialize`), {});
   const music = useSelector((state: any) => state.music.music);
   const playStatus = useSelector((state: any) => state.music.play);
-  console.log('🚀 ~ file: MoodDetector.tsx:35 ~ MooDetector ~ playStatus:', playStatus);
   const dispatch = useDispatch();
 
   useEffect(() => {

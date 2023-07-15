@@ -32,7 +32,9 @@ export default function App() {
         </div>
         <ToastContainer position="bottom-right" newestOnTop />
       </div>
-      {!['/upload-music', '/create-playlist', '/login', '/signup'].includes(location.pathname) && <MusicPlayer />}
+      {!['/upload-music', '/create-playlist', '/login', '/signup', '/verify-otp'].includes(location.pathname) && (
+        <MusicPlayer />
+      )}
     </>
   );
 }

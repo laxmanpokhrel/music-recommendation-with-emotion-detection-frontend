@@ -1,5 +1,6 @@
 import IRoute from '@Schemas/interfaces';
 import React from 'react';
+import OTPVerify from '../ui/pages/OTPVerify';
 
 // Lazy loading
 //*  Please consider rethinking before implementing lazy loading
@@ -21,6 +22,12 @@ const appRoutes: IRoute[] = [
     path: '/',
     name: 'Home ',
     component: HomePage,
+    authenticated: false,
+  },
+  {
+    path: '/verify-otp',
+    name: 'OTP Verify ',
+    component: OTPVerify,
     authenticated: false,
   },
   {
